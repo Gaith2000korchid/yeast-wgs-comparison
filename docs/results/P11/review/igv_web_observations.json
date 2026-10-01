@@ -1,0 +1,438 @@
+{
+  "review_date": "2026-10-01",
+  "reviewer": "Gaith Korchid",
+  "source": "Coverage popup values transcribed by the reviewer in the project conversation; not independently recomputed IGV output.",
+  "application": "https://igv.org/app/",
+  "igv_version": null,
+  "display_filters": null,
+  "unknown_settings": [
+    "mapping quality threshold",
+    "base quality settings",
+    "excluded alignment flags",
+    "downsampling",
+    "overlapping mate handling"
+  ],
+  "missing_indel_count": "null means not supplied, not confirmed zero",
+  "loci": [
+    {
+      "chrom": "III",
+      "pos_1based": 105658,
+      "ref": "A",
+      "alt": "T",
+      "illumina": {
+        "total_count_displayed": 59,
+        "bases": {
+          "A": {
+            "count": 59,
+            "forward": 30,
+            "reverse": 29
+          },
+          "C": {
+            "count": 0,
+            "forward": 0,
+            "reverse": 0
+          },
+          "G": {
+            "count": 0,
+            "forward": 0,
+            "reverse": 0
+          },
+          "T": {
+            "count": 0,
+            "forward": 0,
+            "reverse": 0
+          },
+          "N": {
+            "count": 0,
+            "forward": 0,
+            "reverse": 0
+          }
+        },
+        "DEL_displayed": null,
+        "INS_displayed": null
+      },
+      "ont": {
+        "total_count_displayed": 10,
+        "bases": {
+          "A": {
+            "count": 3,
+            "forward": 1,
+            "reverse": 2
+          },
+          "C": {
+            "count": 0,
+            "forward": 0,
+            "reverse": 0
+          },
+          "G": {
+            "count": 0,
+            "forward": 0,
+            "reverse": 0
+          },
+          "T": {
+            "count": 7,
+            "forward": 3,
+            "reverse": 4
+          },
+          "N": {
+            "count": 0,
+            "forward": 0,
+            "reverse": 0
+          }
+        },
+        "DEL_displayed": null,
+        "INS_displayed": null
+      }
+    },
+    {
+      "chrom": "IV",
+      "pos_1based": 308249,
+      "ref": "T",
+      "alt": "C",
+      "illumina": {
+        "total_count_displayed": 69,
+        "bases": {
+          "A": {
+            "count": 0,
+            "forward": 0,
+            "reverse": 0
+          },
+          "C": {
+            "count": 0,
+            "forward": 0,
+            "reverse": 0
+          },
+          "G": {
+            "count": 0,
+            "forward": 0,
+            "reverse": 0
+          },
+          "T": {
+            "count": 69,
+            "forward": 40,
+            "reverse": 29
+          },
+          "N": {
+            "count": 0,
+            "forward": 0,
+            "reverse": 0
+          }
+        },
+        "DEL_displayed": null,
+        "INS_displayed": null
+      },
+      "ont": {
+        "total_count_displayed": 13,
+        "bases": {
+          "A": {
+            "count": 1,
+            "forward": 1,
+            "reverse": 0
+          },
+          "C": {
+            "count": 12,
+            "forward": 7,
+            "reverse": 5
+          },
+          "G": {
+            "count": 0,
+            "forward": 0,
+            "reverse": 0
+          },
+          "T": {
+            "count": 0,
+            "forward": 0,
+            "reverse": 0
+          },
+          "N": {
+            "count": 0,
+            "forward": 0,
+            "reverse": 0
+          }
+        },
+        "DEL_displayed": 5,
+        "INS_displayed": null
+      }
+    },
+    {
+      "chrom": "I",
+      "pos_1based": 2533,
+      "ref": "G",
+      "alt": "T",
+      "illumina": {
+        "total_count_displayed": 26,
+        "bases": {
+          "A": {
+            "count": 0,
+            "forward": 0,
+            "reverse": 0
+          },
+          "C": {
+            "count": 0,
+            "forward": 0,
+            "reverse": 0
+          },
+          "G": {
+            "count": 8,
+            "forward": 1,
+            "reverse": 7
+          },
+          "T": {
+            "count": 18,
+            "forward": 9,
+            "reverse": 9
+          },
+          "N": {
+            "count": 0,
+            "forward": 0,
+            "reverse": 0
+          }
+        },
+        "DEL_displayed": null,
+        "INS_displayed": null
+      },
+      "ont": {
+        "total_count_displayed": 9,
+        "bases": {
+          "A": {
+            "count": 0,
+            "forward": 0,
+            "reverse": 0
+          },
+          "C": {
+            "count": 0,
+            "forward": 0,
+            "reverse": 0
+          },
+          "G": {
+            "count": 0,
+            "forward": 0,
+            "reverse": 0
+          },
+          "T": {
+            "count": 8,
+            "forward": 3,
+            "reverse": 5
+          },
+          "N": {
+            "count": 0,
+            "forward": 0,
+            "reverse": 0
+          }
+        },
+        "DEL_displayed": 1,
+        "INS_displayed": 1
+      }
+    },
+    {
+      "chrom": "I",
+      "pos_1based": 27486,
+      "ref": "G",
+      "alt": "A",
+      "illumina": {
+        "total_count_displayed": 5,
+        "bases": {
+          "A": {
+            "count": 5,
+            "forward": 3,
+            "reverse": 2
+          },
+          "C": {
+            "count": 0,
+            "forward": 0,
+            "reverse": 0
+          },
+          "G": {
+            "count": 0,
+            "forward": 0,
+            "reverse": 0
+          },
+          "T": {
+            "count": 0,
+            "forward": 0,
+            "reverse": 0
+          },
+          "N": {
+            "count": 0,
+            "forward": 0,
+            "reverse": 0
+          }
+        },
+        "DEL_displayed": null,
+        "INS_displayed": null
+      },
+      "ont": {
+        "total_count_displayed": 16,
+        "bases": {
+          "A": {
+            "count": 14,
+            "forward": 6,
+            "reverse": 8
+          },
+          "C": {
+            "count": 0,
+            "forward": 0,
+            "reverse": 0
+          },
+          "G": {
+            "count": 2,
+            "forward": 0,
+            "reverse": 2
+          },
+          "T": {
+            "count": 0,
+            "forward": 0,
+            "reverse": 0
+          },
+          "N": {
+            "count": 0,
+            "forward": 0,
+            "reverse": 0
+          }
+        },
+        "DEL_displayed": null,
+        "INS_displayed": 1
+      }
+    },
+    {
+      "chrom": "IV",
+      "pos_1based": 1364942,
+      "ref": "C",
+      "alt": "T",
+      "illumina": {
+        "total_count_displayed": 29,
+        "bases": {
+          "A": {
+            "count": 0,
+            "forward": 0,
+            "reverse": 0
+          },
+          "C": {
+            "count": 1,
+            "forward": 0,
+            "reverse": 1
+          },
+          "G": {
+            "count": 0,
+            "forward": 0,
+            "reverse": 0
+          },
+          "T": {
+            "count": 28,
+            "forward": 12,
+            "reverse": 16
+          },
+          "N": {
+            "count": 0,
+            "forward": 0,
+            "reverse": 0
+          }
+        },
+        "DEL_displayed": null,
+        "INS_displayed": 28
+      },
+      "ont": {
+        "total_count_displayed": 8,
+        "bases": {
+          "A": {
+            "count": 0,
+            "forward": 0,
+            "reverse": 0
+          },
+          "C": {
+            "count": 0,
+            "forward": 0,
+            "reverse": 0
+          },
+          "G": {
+            "count": 0,
+            "forward": 0,
+            "reverse": 0
+          },
+          "T": {
+            "count": 8,
+            "forward": 5,
+            "reverse": 3
+          },
+          "N": {
+            "count": 0,
+            "forward": 0,
+            "reverse": 0
+          }
+        },
+        "DEL_displayed": null,
+        "INS_displayed": 7
+      }
+    },
+    {
+      "chrom": "IX",
+      "pos_1based": 37309,
+      "ref": "A",
+      "alt": "G",
+      "illumina": {
+        "total_count_displayed": 62,
+        "bases": {
+          "A": {
+            "count": 1,
+            "forward": 1,
+            "reverse": 0
+          },
+          "C": {
+            "count": 0,
+            "forward": 0,
+            "reverse": 0
+          },
+          "G": {
+            "count": 60,
+            "forward": 24,
+            "reverse": 36
+          },
+          "T": {
+            "count": 1,
+            "forward": 1,
+            "reverse": 0
+          },
+          "N": {
+            "count": 0,
+            "forward": 0,
+            "reverse": 0
+          }
+        },
+        "DEL_displayed": 6,
+        "INS_displayed": null
+      },
+      "ont": {
+        "total_count_displayed": 13,
+        "bases": {
+          "A": {
+            "count": 0,
+            "forward": 0,
+            "reverse": 0
+          },
+          "C": {
+            "count": 0,
+            "forward": 0,
+            "reverse": 0
+          },
+          "G": {
+            "count": 13,
+            "forward": 8,
+            "reverse": 5
+          },
+          "T": {
+            "count": 0,
+            "forward": 0,
+            "reverse": 0
+          },
+          "N": {
+            "count": 0,
+            "forward": 0,
+            "reverse": 0
+          }
+        },
+        "DEL_displayed": 1,
+        "INS_displayed": null
+      }
+    }
+  ]
+}

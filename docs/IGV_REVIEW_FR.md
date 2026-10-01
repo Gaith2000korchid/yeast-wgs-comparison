@@ -1,6 +1,6 @@
 # Inspection visuelle P11 dans IGV : guide pratique
 
-Le but est de décrire le support des lectures, les différences d'alignement et le contexte local. **Aucune inspection manuelle dans IGV n'est encore déclarée terminée.** Une observation visuelle ne constitue pas à elle seule une validation biologique.
+Le but est de décrire le support des lectures, les différences d'alignement et le contexte local. Une [revue ciblée de six loci dans IGV Web](results/P11/review/IGV_WEB_REVIEW_FR.md) a été documentée le 1 octobre 2026 ; neuf loci restent non examinés. Une observation visuelle ne constitue pas à elle seule une validation biologique.
 
 ## Récupérer le paquet
 
@@ -12,7 +12,17 @@ Le paquet contient la référence complète et les alignements chevauchant des f
 
 **Hors des fenêtres, la couverture est incomplète**, même si des lectures peuvent être visibles. Les mates situés entièrement hors des fenêtres peuvent être absents. Ne pas utiliser ce paquet pour la couverture du génome entier, un nouvel appel de variants ou un bilan global des paires. Le fichier `extraction_windows.bed` donne le périmètre exact.
 
-## Ouvrir IGV
+## Ouvrir IGV Web (méthode utilisée pour la revue)
+
+1. Ouvrir [IGV Web](https://igv.org/app/).
+2. Dans **Genome → Local File**, sélectionner ensemble `reference.fa` et `reference.fa.fai` avec Ctrl, puis ouvrir.
+3. Dans **Tracks → Local File**, sélectionner ensemble les deux `.bam` et leurs deux `.bam.bai`, puis ouvrir. La référence doit être chargée avant les pistes.
+4. Saisir `III:105558-105758` dans le champ de coordonnées. Cliquer la couverture à 105658 pour consulter les comptes, puis les lectures pour consulter leurs détails.
+5. Relever les paramètres d'affichage et la version. Utiliser **Save Image** pour conserver les vues. Les fichiers doivent être extraits du ZIP avant chargement.
+
+Voir le [guide officiel IGV Web](https://igv.org/doc/webapp/UserGuide/). Ces étapes ont permis au reviewer de charger les pistes et de transmettre les comptes ; les réglages exacts restent inconnus.
+
+## Ouvrir IGV Desktop (alternative)
 
 1. Télécharger [IGV Desktop pour Windows avec Java inclus](https://igv.org/doc/desktop/DownloadPage/) et l'installer.
 2. Dans IGV, choisir **File → Open Session** et sélectionner `igv_bundle/session.xml`. La référence et les deux pistes BAM doivent apparaître. Le XML et ses chemins sont testés ; l'ouverture dans l'interface graphique reste à vérifier sur le PC du reviewer.
