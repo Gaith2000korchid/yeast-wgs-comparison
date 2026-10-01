@@ -109,7 +109,7 @@ def export(results,prepared,out):
                     dest.write(f'{path.parent.name}\t{filename}\t{status}\t{module}\n')
     chromosomes=list(cover['illumina']['by_chromosome'])
     with (out/'coverage_by_chromosome.tsv').open('w') as f:
-        w=csv.writer(f,delimiter='\t');w.writerow(['chromosome','platform','bases','mean_filtered_depth','depth_eligible_fraction'])
+        w=csv.writer(f,delimiter='\t',lineterminator='\n');w.writerow(['chromosome','platform','bases','mean_filtered_depth','depth_eligible_fraction'])
         for chrom in chromosomes:
             for platform in cover:
                 v=cover[platform]['by_chromosome'][chrom]
@@ -122,7 +122,7 @@ def export(results,prepared,out):
             if counts.get(cat,0)<5:
                 examples.append(row);counts[cat]=counts.get(cat,0)+1
     with (out/'loci_for_review.tsv').open('w') as f:
-        w=csv.DictWriter(f,fieldnames=['chrom','pos_1based','ref','alt','category','illumina_gt','ont_gt'],delimiter='\t')
+        w=csv.DictWriter(f,fieldnames=['chrom','pos_1based','ref','alt','category','illumina_gt','ont_gt'],delimiter='\t',lineterminator='\n')
         w.writeheader();w.writerows(examples)
     if (sensitivity/'P11.snps.tsv').is_file():
         examples=[];counts={}
@@ -132,7 +132,7 @@ def export(results,prepared,out):
                 if counts.get(cat,0)<5:
                     examples.append(row);counts[cat]=counts.get(cat,0)+1
         with (out/'bq7.loci_for_review.tsv').open('w') as f:
-            w=csv.DictWriter(f,fieldnames=['chrom','pos_1based','ref','alt','category','illumina_gt','ont_gt'],delimiter='\t')
+            w=csv.DictWriter(f,fieldnames=['chrom','pos_1based','ref','alt','category','illumina_gt','ont_gt'],delimiter='\t',lineterminator='\n')
             w.writeheader();w.writerows(examples)
     # Plot all nuclear contigs in reference order, explicitly excluding Mito.
     import matplotlib
