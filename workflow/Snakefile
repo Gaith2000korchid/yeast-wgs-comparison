@@ -50,11 +50,11 @@ rule illumina_qc:
     conda: "../environment.yml"
     shell:
         """
-        mkdir -p {output.fastqc:q}
-        fastqc --threads {threads} --outdir {output.fastqc:q} {input.r1:q} {input.r2:q} > {log:q} 2>&1
+        mkdir -p {output.fastqc:q}/raw {output.fastqc:q}/cleaned
+        fastqc --threads {threads} --outdir {output.fastqc:q}/raw {input.r1:q} {input.r2:q} > {log:q} 2>&1
         fastp --thread {threads} --detect_adapter_for_pe --in1 {input.r1:q} --in2 {input.r2:q} \
           --out1 {output.r1:q} --out2 {output.r2:q} --json {output.json:q} --html {output.html:q} >> {log:q} 2>&1
-        fastqc --threads {threads} --outdir {output.fastqc:q} {output.r1:q} {output.r2:q} >> {log:q} 2>&1
+        fastqc --threads {threads} --outdir {output.fastqc:q}/cleaned {output.r1:q} {output.r2:q} >> {log:q} 2>&1
         """
 
 rule ont_qc:

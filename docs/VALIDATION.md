@@ -20,3 +20,9 @@ The workflow runs unit tests and the committed synthetic workflow on an Ubuntu r
 - Review coverage/filter choices and discordant loci in IGV.
 - Add a suitable ONT-specific caller after reviewing chemistry and basecaller compatibility.
 - Add a resolved environment lockfile and validated repeat/mappability exclusions if the project becomes a benchmark.
+
+## Real-data preparation and QC regression
+
+The preparation tests require synchronized Illumina mates, deterministic pair selection, valid FASTQ records and archive checksums. Historical ONT tests retain one consensus 2D record instead of correlated template/complement reads and reject duplicate consensus molecule identifiers. Comparison tests also cover excluded mitochondrial contigs.
+
+The first real NanoPlot run exposed an upstream incompatibility between NanoPlot 1.43 and Plotly 6/7 when more than 10,000 reads are plotted ([upstream issue #400](https://github.com/wdecoster/NanoPlot/issues/400)). The environment explicitly pins Plotly 5.24.1 and pandas 2.2.3. CI includes a separate 12,001-read synthetic QC regression because the small workflow fixture could not expose that failure.
