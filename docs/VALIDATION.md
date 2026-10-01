@@ -35,3 +35,5 @@ The primary P11 workflow completed successfully on matched public reads; its BAM
 A clean pinned environment was used after an in-place local dependency update retained inconsistent package files. Execution resumed from completed scientific outputs after the NanoPlot failures. Successful completion records versions/configuration; failed QC attempts are acknowledged in the run record. No biological result from a failed or partial QC output is published.
 
 The sensitivity integration test recovers identical toy comparison metrics at BQ13 and BQ7 on synthetic high-quality reads. Unit and integration checks validate computation, not clinical/biological accuracy. The real analysis has no truth set, validated repeat/mappability mask or manual IGV confirmation.
+
+MultiQC was regenerated with directory-qualified sample names. Its extracted FastQC table contains all four real-data reports (`raw`/`cleaned` × R1/R2); same-named mates no longer overwrite each other in the aggregate report. This reporting change leaves coverage, variants and comparison metrics unchanged.

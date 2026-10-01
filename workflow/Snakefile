@@ -237,7 +237,7 @@ rule multiqc:
     conda: "../environment.yml"
     params: qc=f"{OUT}/qc", variants=f"{OUT}/variants", dest=f"{OUT}/multiqc"
     shell:
-        "multiqc {params.qc:q} {params.variants:q} --force --outdir {params.dest:q} > {log:q} 2>&1"
+        "multiqc {params.qc:q} {params.variants:q} --dirs --dirs-depth 1 --force --outdir {params.dest:q} > {log:q} 2>&1"
 
 rule report:
     input:

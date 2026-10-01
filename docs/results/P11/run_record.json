@@ -38,5 +38,12 @@
   "exit_code": 0,
   "finished_utc": "2026-10-01T09:19:33.679612+00:00",
   "resumed_after_failed_qc_attempts": 2,
-  "note": "Initial scientific read processing/mapping/calling outputs were reused. Failures were NanoPlot plotting; successful completion used a clean pinned environment."
+  "note": "Initial scientific read processing/mapping/calling outputs were reused. Failures were NanoPlot plotting; successful completion used a clean pinned environment.",
+  "qc_report_regeneration": {
+    "command": "multiqc results/P11/qc results/P11/variants --dirs --dirs-depth 1 --force --outdir results/P11/multiqc",
+    "exit_code": 0,
+    "fastqc_reports": 4,
+    "purpose": "Keep raw/cleaned mates separate even when filenames match",
+    "workflow_sha256_after_reporting_change": "fbc776bb5032a5cc5f578096f206ae1b70ad6865c68ab0d39f6c2efd74682908"
+  }
 }
