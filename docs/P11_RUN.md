@@ -19,6 +19,8 @@ python workflow/scripts/download_reads.py --manifest config/P11.downloads.json -
 python workflow/scripts/prepare_real_reads.py --fraction 0.25 --seed 20261001
 snakemake -s workflow/Snakefile --configfile config/P11.yaml --cores 4 --dry-run
 snakemake -s workflow/Snakefile --configfile config/P11.yaml --cores 4 --printshellcmds
+# Controlled sensitivity: only ONT BQ changes, from 13 to 7.
+snakemake -s workflow/quality_sensitivity.smk --configfile config/P11.yaml --cores 2 --printshellcmds
 ```
 
 The downloader validates archive byte counts and MD5 before atomically completing each file. Reruns verify completed files and skip them. Failed partial downloads restart; there is no range-resume implementation.
@@ -42,3 +44,9 @@ The two inputs have unequal coverage and different error profiles. SNP overlap i
 ## Local execution limitation
 
 The managed execution environment used for this project cannot expose child PIDs to psutil, causing Snakemake resource benchmarking to fail. Real and synthetic local runs use a temporary otherwise identical Snakefile with `benchmark:` lines omitted; no scientific command or dependency is changed. The committed workflow retains benchmarks, and GitHub's synthetic CI executes them on an ordinary Ubuntu runner. No local CPU/memory benchmark values are claimed.
+
+## Export compact evidence
+
+After completion, `python workflow/scripts/summarize_real_run.py` exports measured QC, coverage, SNP overlap and review loci to `docs/results/P11/`. This optional export step requires `matplotlib==3.10.8`; install it separately if absent. Raw reads, BAMs, VCFs and the full MultiQC HTML remain local and can be regenerated with the commands above. The GitHub archive contains compact metrics and provenance.
+
+[Completed measured results](results/P11/README.md) document that the strict Q13 domain is very small and show the broader Q7 experiment. Their domains differ; their Jaccard values cannot be used as an accuracy ranking.

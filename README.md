@@ -2,7 +2,7 @@
 
 Reproducible **Snakemake** workflow for matched **Illumina paired-end** and **Oxford Nanopore** reads from *Saccharomyces cerevisiae*: read QC, alignment, coverage, small-variant calling and alternate-SNP overlap.
 
-**Status: initial implementation.** The included demonstration uses deterministic synthetic DNA, not a yeast genome. Biological conclusions require a verified matched public dataset. No real-data results are claimed here.
+**Status: a matched real yeast dataset has been analyzed.** [Measured P11 results and limitations](docs/results/P11/README.md) include QC, nuclear SNP overlap and an ONT base-quality sensitivity experiment. A separate deterministic synthetic demonstration validates software execution.
 
 ## What this project does
 
@@ -14,6 +14,24 @@ Reproducible **Snakemake** workflow for matched **Illumina paired-end** and **Ox
 | Reproducibility | Pinned tool versions, tool/version capture, reference SHA256, logs, benchmarks, CI | Traceable execution |
 
 The ONT caller is an **exploratory bcftools baseline**, not a validated ONT calling solution. Indels and structural variants are not compared. A technology-appropriate caller can be added after chemistry/basecaller metadata are established.
+
+## Real analysis: CIC / Ponton11 (P11)
+
+The [reproducible real run](docs/P11_RUN.md) uses ENA sample SAMEA3895683 with documented diploidy, a 25% paired Illumina subset and 29,914 historical ONT consensus 2D reads. Archive byte counts/MD5 and prepared SHA256 fingerprints are recorded.
+
+Illumina maps at 97.40% and has 45.93× mean filtered nuclear depth. These older ONT reads have mean quality Q8; the primary BQ13 comparison covers only 0.80% of nuclear bases. A controlled ONT BQ7 sensitivity comparison covers 53.31%, with 5,444 shared alternate SNPs and 32,968 Illumina-only alternate SNPs in that domain. The baseline strongly underrepresents heterozygous ONT calls. These measured limitations prevent an accuracy or platform-ranking claim.
+
+![Real nuclear coverage](docs/results/P11/coverage.svg)
+
+```bash
+python workflow/scripts/download_reference.py
+python workflow/scripts/download_reads.py --manifest config/P11.downloads.json
+python workflow/scripts/prepare_real_reads.py --fraction 0.25 --seed 20261001
+snakemake -s workflow/Snakefile --configfile config/P11.yaml --cores 4
+snakemake -s workflow/quality_sensitivity.smk --configfile config/P11.yaml --cores 2
+```
+
+See [full QC, both comparison domains and interpretation](docs/results/P11/README.md). Large reads/BAMs/VCFs remain outside Git.
 
 ## Run the synthetic demonstration
 
@@ -34,7 +52,7 @@ python tests/check_demo.py
 
 Open `results/report.html` and `results/multiqc/multiqc_report.html`. The demo plants three known SNPs and checks that both branches recover them. It tests workflow execution, not performance on real sequencing data. It has no realistic ONT indel or homopolymer error model.
 
-The environment pins direct package versions; a resolved conda lockfile is not yet provided. CI also tests the same synthetic workflow from a clean checkout.
+The environment pins tool versions and compatible NanoPlot plotting dependencies. The real result archive records exact resolved Linux package URLs; other-platform locks are not provided. CI runs the synthetic workflow, the quality-sensitivity integration check and a 12,001-read NanoPlot regression from a clean checkout.
 
 ## Use public yeast reads
 
@@ -70,7 +88,7 @@ See [methodology and limitations](docs/METHODS.md) and the [French walkthrough](
 | `docs/` | Methods, data provenance and learning sequence |
 | `.github/workflows/ci.yml` | Unit tests and synthetic end-to-end execution |
 
-Large reads, BAMs and generated outputs are ignored by Git. Publish small results with their provenance only after running and checking the real analysis.
+Large reads, BAMs and generated outputs are ignored by Git. Compact measured P11 results and provenance are published under `docs/results/P11/`.
 
 ## Learning sources and attribution
 

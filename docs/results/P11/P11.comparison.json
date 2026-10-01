@@ -1,0 +1,16 @@
+{
+  "excluded_contigs": [
+    "Mito"
+  ],
+  "shared_depth_eligible_bases": 96235,
+  "illumina_alternate_snps_all_regions": 77276,
+  "ont_alternate_snps_all_regions": 183,
+  "illumina_snps_in_shared_mask": 296,
+  "ont_snps_in_shared_mask": 160,
+  "shared_snps": 156,
+  "illumina_only_snps": 140,
+  "ont_only_snps": 4,
+  "snp_jaccard": 0.52,
+  "genotype_agreement_on_shared_snps": 0.9807692307692307,
+  "interpretation": "Set overlap of non-reference SNPs, not precision/recall or genome-wide genotype concordance. A depth mask is not a validated callable-region mask."
+}

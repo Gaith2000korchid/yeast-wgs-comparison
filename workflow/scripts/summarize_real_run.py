@@ -77,12 +77,24 @@ def export(results,prepared,out):
              'alignment':{p:alignment(root/f'qc/P11/{p}.flagstat.txt') for p in cover},
              'nuclear_snp_genotypes':{p:allele_balance(root/f'variants/P11.{p}.pass.vcf.gz') for p in cover},
              'comparison':comparison}
+    sensitivity = root/'sensitivity/ont_bq7'
+    if (sensitivity/'P11.comparison.json').is_file():
+        sensitivity_coverage = load(sensitivity/'P11.ont.coverage.json')
+        metrics['sensitivity_ont_bq7'] = {'only_changed_parameter': 'ONT minimum base quality: 13 to 7',
+            'comparison': load(sensitivity/'P11.comparison.json'), 'nuclear_coverage': nuclear(sensitivity_coverage),
+            'nuclear_snp_genotypes': allele_balance(sensitivity/'P11.ont.pass.vcf.gz')}
+        metrics['sensitivity_ont_bq7']['shared_nuclear_depth_fraction'] = metrics['sensitivity_ont_bq7']['comparison']['shared_depth_eligible_bases']/metrics['nuclear_coverage']['illumina']['reference_bases']
+        cover['ont_bq7'] = sensitivity_coverage
+        for name in ['P11.comparison.json','P11.ont.coverage.json','P11.ont.bcftools.stats.txt']:
+            shutil.copyfile(sensitivity/name, out/('bq7.'+name))
     metrics['shared_nuclear_depth_fraction']=comparison['shared_depth_eligible_bases']/metrics['nuclear_coverage']['illumina']['reference_bases']
     (out/'metrics.json').write_text(json.dumps(metrics,indent=2)+'\n')
     shutil.copyfile(Path(prepared)/'preparation.json',out/'preparation.json')
     wanted=[root/'comparison/P11.comparison.json',root/'provenance/tool_versions.txt']
-    for platform in cover:
-        wanted.extend(root/f'qc/P11/{platform}.{suffix}' for suffix in ['coverage.json','flagstat.txt','samtools.stats.txt'])
+    for platform in ['illumina','ont']:
+        source = root/f'qc/P11/{platform}.samtools.stats.txt'
+        (out/f'{platform}.samtools.summary.txt').write_text(''.join(line for line in source.read_text().splitlines(keepends=True) if line.startswith('SN\t')))
+        wanted.extend(root/f'qc/P11/{platform}.{suffix}' for suffix in ['coverage.json','flagstat.txt'])
         wanted.append(root/f'variants/P11.{platform}.bcftools.stats.txt')
     wanted.extend((root/'qc/P11/nanoplot').glob('*Stats*.txt'))
     for src in wanted:shutil.copyfile(src,out/src.name)
@@ -112,22 +124,33 @@ def export(results,prepared,out):
     with (out/'loci_for_review.tsv').open('w') as f:
         w=csv.DictWriter(f,fieldnames=['chrom','pos_1based','ref','alt','category','illumina_gt','ont_gt'],delimiter='\t')
         w.writeheader();w.writerows(examples)
+    if (sensitivity/'P11.snps.tsv').is_file():
+        examples=[];counts={}
+        with (sensitivity/'P11.snps.tsv').open() as f:
+            for row in csv.DictReader(f,delimiter='\t'):
+                cat=row['category']
+                if counts.get(cat,0)<5:
+                    examples.append(row);counts[cat]=counts.get(cat,0)+1
+        with (out/'bq7.loci_for_review.tsv').open('w') as f:
+            w=csv.DictWriter(f,fieldnames=['chrom','pos_1based','ref','alt','category','illumina_gt','ont_gt'],delimiter='\t')
+            w.writeheader();w.writerows(examples)
     # Plot all nuclear contigs in reference order, explicitly excluding Mito.
     import matplotlib
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
-    plt.rcParams.update({'font.size':10,'svg.hashsalt':'yeast-wgs-P11'})
+    plt.rcParams.update({'font.size':10,'svg.hashsalt':'yeast-wgs-P11','svg.fonttype':'none'})
     chroms=[c for c in chromosomes if c!='Mito'];x=list(range(len(chroms)))
     fig,axes=plt.subplots(2,1,figsize=(10,6),sharex=True,layout='constrained')
-    for platform,color,offset in [('illumina','#245f99',-.18),('ont','#d76b28',.18)]:
+    for platform,color,offset in [('illumina','#245f99',-.26),('ont','#d76b28',0),('ont_bq7','#479171',.26)]:
+        if platform not in cover: continue
         values=cover[platform]['by_chromosome']
-        axes[0].bar([v+offset for v in x],[values[c]['mean_depth'] for c in chroms],width=.35,label=platform,color=color)
-        axes[1].bar([v+offset for v in x],[100*values[c]['depth_eligible_bases']/values[c]['bases'] for c in chroms],width=.35,color=color)
-    axes[0].set_ylabel('Mean filtered depth (×)');axes[0].legend(frameon=False)
+        axes[0].bar([v+offset for v in x],[values[c]['mean_depth'] for c in chroms],width=.25,label={'illumina':'Illumina BQ13','ont':'ONT BQ13','ont_bq7':'ONT BQ7 sensitivity'}[platform],color=color)
+        axes[1].bar([v+offset for v in x],[100*values[c]['depth_eligible_bases']/values[c]['bases'] for c in chroms],width=.25,color=color)
+    axes[0].set_ylabel('Mean filtered depth (×)');axes[0].set_ylim(0,70);axes[0].legend(frameon=False,ncols=3,loc='upper center',fontsize=9)
     axes[1].set_ylabel('Depth eligible (%)');axes[1].set_ylim(0,105)
     axes[1].set_xticks(x,chroms);axes[1].set_xlabel('Nuclear chromosome')
     for ax in axes:ax.spines[['top','right']].set_visible(False);ax.grid(axis='y',alpha=.2);ax.set_axisbelow(True)
-    fig.suptitle('CIC / Ponton11: Illumina 25% pairs vs historical ONT 2D\nMAPQ ≥20 · base quality ≥13 · eligible depth 8–200',fontsize=12)
+    fig.suptitle('CIC / Ponton11: Illumina 25% pairs vs historical ONT 2D\nMAPQ ≥20 · eligible depth 8–200 · ONT base-quality sensitivity',fontsize=12)
     fig.savefig(out/'coverage.svg',metadata={'Date':None})
     fig.savefig(root/'coverage_preview.png',dpi=150)
     plt.close(fig)

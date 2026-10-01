@@ -1,0 +1,45 @@
+stage	file	status	module
+cleaned	P11.R1.fastq.gz	PASS	Basic Statistics
+cleaned	P11.R1.fastq.gz	PASS	Per base sequence quality
+cleaned	P11.R1.fastq.gz	PASS	Per tile sequence quality
+cleaned	P11.R1.fastq.gz	PASS	Per sequence quality scores
+cleaned	P11.R1.fastq.gz	PASS	Per base sequence content
+cleaned	P11.R1.fastq.gz	FAIL	Per sequence GC content
+cleaned	P11.R1.fastq.gz	PASS	Per base N content
+cleaned	P11.R1.fastq.gz	WARN	Sequence Length Distribution
+cleaned	P11.R1.fastq.gz	PASS	Sequence Duplication Levels
+cleaned	P11.R1.fastq.gz	PASS	Overrepresented sequences
+cleaned	P11.R1.fastq.gz	PASS	Adapter Content
+cleaned	P11.R2.fastq.gz	PASS	Basic Statistics
+cleaned	P11.R2.fastq.gz	PASS	Per base sequence quality
+cleaned	P11.R2.fastq.gz	PASS	Per tile sequence quality
+cleaned	P11.R2.fastq.gz	PASS	Per sequence quality scores
+cleaned	P11.R2.fastq.gz	PASS	Per base sequence content
+cleaned	P11.R2.fastq.gz	FAIL	Per sequence GC content
+cleaned	P11.R2.fastq.gz	PASS	Per base N content
+cleaned	P11.R2.fastq.gz	WARN	Sequence Length Distribution
+cleaned	P11.R2.fastq.gz	PASS	Sequence Duplication Levels
+cleaned	P11.R2.fastq.gz	PASS	Overrepresented sequences
+cleaned	P11.R2.fastq.gz	PASS	Adapter Content
+raw	P11.R1.fastq.gz	PASS	Basic Statistics
+raw	P11.R1.fastq.gz	PASS	Per base sequence quality
+raw	P11.R1.fastq.gz	PASS	Per tile sequence quality
+raw	P11.R1.fastq.gz	PASS	Per sequence quality scores
+raw	P11.R1.fastq.gz	PASS	Per base sequence content
+raw	P11.R1.fastq.gz	FAIL	Per sequence GC content
+raw	P11.R1.fastq.gz	PASS	Per base N content
+raw	P11.R1.fastq.gz	WARN	Sequence Length Distribution
+raw	P11.R1.fastq.gz	PASS	Sequence Duplication Levels
+raw	P11.R1.fastq.gz	PASS	Overrepresented sequences
+raw	P11.R1.fastq.gz	PASS	Adapter Content
+raw	P11.R2.fastq.gz	PASS	Basic Statistics
+raw	P11.R2.fastq.gz	PASS	Per base sequence quality
+raw	P11.R2.fastq.gz	PASS	Per tile sequence quality
+raw	P11.R2.fastq.gz	PASS	Per sequence quality scores
+raw	P11.R2.fastq.gz	PASS	Per base sequence content
+raw	P11.R2.fastq.gz	FAIL	Per sequence GC content
+raw	P11.R2.fastq.gz	PASS	Per base N content
+raw	P11.R2.fastq.gz	WARN	Sequence Length Distribution
+raw	P11.R2.fastq.gz	PASS	Sequence Duplication Levels
+raw	P11.R2.fastq.gz	PASS	Overrepresented sequences
+raw	P11.R2.fastq.gz	PASS	Adapter Content

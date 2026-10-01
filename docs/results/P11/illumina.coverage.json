@@ -1,0 +1,114 @@
+{
+  "reference_bases": 12157105,
+  "covered_bases": 11667245,
+  "depth_eligible_bases": 11456353,
+  "mean_depth": 51.366818333805625,
+  "covered_fraction": 0.9597058674742054,
+  "depth_eligible_fraction": 0.9423586454176385,
+  "min_depth": 8,
+  "max_depth": 200,
+  "by_chromosome": {
+    "I": {
+      "bases": 230218,
+      "covered_bases": 205221,
+      "depth_eligible_bases": 195721,
+      "mean_depth": 46.1390117193269
+    },
+    "II": {
+      "bases": 813184,
+      "covered_bases": 799157,
+      "depth_eligible_bases": 792730,
+      "mean_depth": 46.565887917125764
+    },
+    "III": {
+      "bases": 316620,
+      "covered_bases": 306010,
+      "depth_eligible_bases": 300907,
+      "mean_depth": 48.30254879666477
+    },
+    "IV": {
+      "bases": 1531933,
+      "covered_bases": 1469944,
+      "depth_eligible_bases": 1456060,
+      "mean_depth": 43.50874744522117
+    },
+    "V": {
+      "bases": 576874,
+      "covered_bases": 559438,
+      "depth_eligible_bases": 556459,
+      "mean_depth": 46.2871961641537
+    },
+    "VI": {
+      "bases": 270161,
+      "covered_bases": 259506,
+      "depth_eligible_bases": 254446,
+      "mean_depth": 52.62130729453918
+    },
+    "VII": {
+      "bases": 1090940,
+      "covered_bases": 1046273,
+      "depth_eligible_bases": 1037643,
+      "mean_depth": 45.06235265000825
+    },
+    "VIII": {
+      "bases": 562643,
+      "covered_bases": 538510,
+      "depth_eligible_bases": 525616,
+      "mean_depth": 43.56958675394522
+    },
+    "IX": {
+      "bases": 439888,
+      "covered_bases": 416485,
+      "depth_eligible_bases": 409838,
+      "mean_depth": 45.634720656167026
+    },
+    "X": {
+      "bases": 745751,
+      "covered_bases": 704691,
+      "depth_eligible_bases": 697103,
+      "mean_depth": 45.94351063558748
+    },
+    "XI": {
+      "bases": 666816,
+      "covered_bases": 664921,
+      "depth_eligible_bases": 662713,
+      "mean_depth": 48.05881232603897
+    },
+    "XII": {
+      "bases": 1078177,
+      "covered_bases": 1004063,
+      "depth_eligible_bases": 989951,
+      "mean_depth": 47.50086395832966
+    },
+    "XIII": {
+      "bases": 924431,
+      "covered_bases": 895678,
+      "depth_eligible_bases": 890327,
+      "mean_depth": 45.633845035486694
+    },
+    "XIV": {
+      "bases": 784333,
+      "covered_bases": 768285,
+      "depth_eligible_bases": 759459,
+      "mean_depth": 46.819203068084605
+    },
+    "XV": {
+      "bases": 1091291,
+      "covered_bases": 1040175,
+      "depth_eligible_bases": 1025632,
+      "mean_depth": 44.466910292488436
+    },
+    "XVI": {
+      "bases": 948066,
+      "covered_bases": 905958,
+      "depth_eligible_bases": 899756,
+      "mean_depth": 46.7743543171045
+    },
+    "Mito": {
+      "bases": 85779,
+      "covered_bases": 82930,
+      "depth_eligible_bases": 1992,
+      "mean_depth": 816.8495552524511
+    }
+  }
+}
