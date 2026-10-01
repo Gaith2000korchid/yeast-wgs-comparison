@@ -1,0 +1,11 @@
+# Default: synthetic smoke test, NOT biological yeast data.
+reference: data/demo/reference.fa
+samples: config/samples.demo.tsv
+dataset_label: Synthetic haploid smoke test; not a biological yeast experiment
+minimap2_preset: map-ont
+min_mapping_quality: 20
+min_base_quality: 13
+min_depth: 8
+max_depth: 200
+min_variant_quality: 30
+pileup_max_depth: 1000

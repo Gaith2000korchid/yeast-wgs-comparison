@@ -1,0 +1,11 @@
+# Copy to config/real.yaml after verifying provenance and ploidy.
+reference: data/real/reference.fa
+samples: config/samples.real.example.tsv
+dataset_label: REPLACE with accession, strain, reference version and chemistry
+minimap2_preset: map-ont
+min_mapping_quality: 20
+min_base_quality: 13
+min_depth: 8
+max_depth: 200
+min_variant_quality: 30
+pileup_max_depth: 1000
