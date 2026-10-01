@@ -1,0 +1,76 @@
+{
+  "sample": "P11",
+  "sample_accession": "SAMEA3895683",
+  "study": "ERP016443",
+  "sample_alias": "sample_BCM_4932_YJS5845,P11",
+  "metadata_checked": "2026-10-01",
+  "ploidy_status": "documented diploid in Peter et al. 2018, Supplementary Table S1 (CIC / Ponton 11); verify against observed coverage and allele balance",
+  "files": [
+    {
+      "run_accession": "ERR1527933",
+      "sample_accession": "SAMEA3895683",
+      "platform": "ILLUMINA",
+      "url": "https://ftp.sra.ebi.ac.uk/vol1/fastq/ERR152/003/ERR1527933/ERR1527933_1.fastq.gz",
+      "filename": "ERR1527933_1.fastq.gz",
+      "md5": "8ace490a6e62fa100860f6e71648c2cd",
+      "bytes": 1437643618
+    },
+    {
+      "run_accession": "ERR1527933",
+      "sample_accession": "SAMEA3895683",
+      "platform": "ILLUMINA",
+      "url": "https://ftp.sra.ebi.ac.uk/vol1/fastq/ERR152/003/ERR1527933/ERR1527933_2.fastq.gz",
+      "filename": "ERR1527933_2.fastq.gz",
+      "md5": "c1d5df580d6e3657c22ed9562625748b",
+      "bytes": 1461539778
+    },
+    {
+      "run_accession": "ERR1539063",
+      "sample_accession": "SAMEA3895683",
+      "platform": "OXFORD_NANOPORE",
+      "url": "https://ftp.sra.ebi.ac.uk/vol1/fastq/ERR153/003/ERR1539063/ERR1539063.fastq.gz",
+      "filename": "ERR1539063.fastq.gz",
+      "md5": "388a9dbe632e160fd9b3d67378fce7d0",
+      "bytes": 75190927
+    },
+    {
+      "run_accession": "ERR1539064",
+      "sample_accession": "SAMEA3895683",
+      "platform": "OXFORD_NANOPORE",
+      "url": "https://ftp.sra.ebi.ac.uk/vol1/fastq/ERR153/004/ERR1539064/ERR1539064.fastq.gz",
+      "filename": "ERR1539064.fastq.gz",
+      "md5": "16c5209e5fbff784b552806e93d2406d",
+      "bytes": 40527410
+    },
+    {
+      "run_accession": "ERR1539065",
+      "sample_accession": "SAMEA3895683",
+      "platform": "OXFORD_NANOPORE",
+      "url": "https://ftp.sra.ebi.ac.uk/vol1/fastq/ERR153/005/ERR1539065/ERR1539065.fastq.gz",
+      "filename": "ERR1539065.fastq.gz",
+      "md5": "5517549e861738c3db6b4ef540d27892",
+      "bytes": 2337341
+    },
+    {
+      "run_accession": "ERR1539066",
+      "sample_accession": "SAMEA3895683",
+      "platform": "OXFORD_NANOPORE",
+      "url": "https://ftp.sra.ebi.ac.uk/vol1/fastq/ERR153/006/ERR1539066/ERR1539066.fastq.gz",
+      "filename": "ERR1539066.fastq.gz",
+      "md5": "ff232687da5e17e158013243ba7f8b6b",
+      "bytes": 242417414
+    },
+    {
+      "run_accession": "ERR1539067",
+      "sample_accession": "SAMEA3895683",
+      "platform": "OXFORD_NANOPORE",
+      "url": "https://ftp.sra.ebi.ac.uk/vol1/fastq/ERR153/007/ERR1539067/ERR1539067.fastq.gz",
+      "filename": "ERR1539067.fastq.gz",
+      "md5": "b051fd619e2e848c6976c70002b34627",
+      "bytes": 180072797
+    }
+  ],
+  "strain": "CIC / Ponton 11",
+  "ploidy": 2,
+  "ont_selection": "consensus twodirections records only, pass and fail; exclude template/complement"
+}

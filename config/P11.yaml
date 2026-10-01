@@ -1,0 +1,15 @@
+reference: data/real/reference.fa
+samples: config/samples.P11.tsv
+dataset_label: "REAL: CIC/Ponton11 (P11), SAMEA3895683; Illumina 25% paired subset; historical ONT consensus 2D pass+fail; R64-1-1 / Ensembl 113; diploid"
+output_dir: results/P11
+log_dir: logs/P11
+benchmark_dir: benchmarks/P11
+minimap2_preset: map-ont
+min_mapping_quality: 20
+min_base_quality: 13
+min_depth: 8
+max_depth: 200
+min_variant_quality: 30
+pileup_max_depth: 1000
+# Nuclear comparison: mitochondrial genome has different inheritance/copy number.
+comparison_exclude_contigs: [Mito]

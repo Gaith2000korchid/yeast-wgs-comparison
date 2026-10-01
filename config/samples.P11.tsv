@@ -1,0 +1,3 @@
+sample	platform	read1	read2	ploidy
+P11	illumina	data/real/prepared/P11.R1.fastq.gz	data/real/prepared/P11.R2.fastq.gz	2
+P11	ont	data/real/prepared/P11.ont.fastq.gz		2

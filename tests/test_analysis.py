@@ -55,6 +55,16 @@ class AnalysisTests(unittest.TestCase):
             self.assertAlmostEqual(result["snp_jaccard"], 2 / 3)
             self.assertEqual(result["genotype_agreement_on_shared_snps"], 0.5)
 
+    def test_excluded_contig_is_absent_from_domain_and_counts(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "a.vcf"
+            vcf(path, [(1, "A", "C", "0/1", "PASS")])
+            result, left, right = compare(path, path, {"chr1": [(0, 10)]}, ["chr1"])
+            self.assertEqual(result["shared_depth_eligible_bases"], 0)
+            self.assertEqual(result["illumina_alternate_snps_all_regions"], 0)
+            self.assertEqual(left, {})
+            self.assertEqual(right, {})
+
     def test_empty_overlap_is_not_perfect_agreement(self):
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / "a.vcf"

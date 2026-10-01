@@ -1,0 +1,59 @@
+{
+  "sample_accession": "SAMEA3895683",
+  "sample_alias": "sample_BCM_4932_YJS5845,P11",
+  "strain": "CIC / Ponton11",
+  "verified_on": "2026-10-01",
+  "identity_sources": [
+    {
+      "url": "https://www.ebi.ac.uk/ena/browser/view/ERX1598835",
+      "library": "BCM_CICOSW_r2",
+      "sample": "ERS1082817",
+      "platform": "Illumina HiSeq 2000"
+    },
+    {
+      "url": "https://www.ebi.ac.uk/ena/browser/view/ERX1609848",
+      "library": "BCM_CIC_ONT_R7",
+      "sample": "ERS1082817",
+      "platform": "MinION, R7-labelled experiment"
+    },
+    {
+      "doi": "10.1093/gigascience/giw018",
+      "table": "Supplementary File 1, Table S5; File 3 run list",
+      "mapping": "CIC = Ponton11; five listed runs match archive"
+    }
+  ],
+  "ploidy_evidence": {
+    "doi": "10.1038/s41586-018-0030-5",
+    "url": "https://www.nature.com/articles/s41586-018-0030-5",
+    "supplement": "41586_2018_30_MOESM3_ESM.xls",
+    "sha256": "b11de13b50bcf91bb2a40cdbd0f2f35372bdef6fc9a018d7538cf5e5eea7f273",
+    "table": "S1",
+    "excel_row": 794,
+    "row": {
+      "Isolate name": "Ponton 11",
+      "Standardized name": "CIC",
+      "Isolation": "Mouth",
+      "Ecological origins": "Human, clinical",
+      "Geographical origins": "Spain",
+      "HO deletion": "no",
+      "Plasmid class": "B",
+      "Plasmid CN": 48.56,
+      "Ploidy": 2.0,
+      "Aneuploidies": "euploid",
+      "Zygosity": "heterozygous",
+      "Total number of SNPs": 68564.0,
+      "Proportion of clean heterozygous SNPs (whole dataset)": 41.09299340761916,
+      "Number of singletons": 825.0,
+      "Mean coverage": 226.73,
+      "Clades": "M3. Mosaic region 3",
+      "MTA (no distribution)": "",
+      "Collection / Provider": "Inserm Universit\u00e9 P. M. Curie, Paris, France (Hennequin C.)",
+      "Reference": ""
+    }
+  },
+  "limitations": [
+    "Ploidy is from the same named strain in a related collection, not a new physical measurement of this sequenced preparation.",
+    "R7-labelled experiment; paper primarily R7.3; per-run chemistry/basecaller version not established.",
+    "Archive mixes 1D template/complement with 2D consensus; selected consensus pass AND fail, quality filtered during alignment QC/calling."
+  ]
+}

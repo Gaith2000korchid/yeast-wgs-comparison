@@ -40,6 +40,7 @@ jobs:
             results/report.html
             results/comparison/
             results/provenance/
+            results/multiqc/
             results/qc/**/*.coverage.json
             logs/
             benchmarks/

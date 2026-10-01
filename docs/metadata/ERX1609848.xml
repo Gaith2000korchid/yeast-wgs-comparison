@@ -1,0 +1,70 @@
+<EXPERIMENT_SET>
+<EXPERIMENT accession="ERX1609848" alias="exp_CIC_ONT_R7" center_name="Genoscope">
+  <IDENTIFIERS>
+    <PRIMARY_ID>ERX1609848</PRIMARY_ID>
+    <SUBMITTER_ID namespace="Genoscope">exp_CIC_ONT_R7</SUBMITTER_ID>
+  </IDENTIFIERS>
+  <TITLE>CIC material MinION sequencing R7 chemistry</TITLE>
+  <STUDY_REF accession="ERP016443">
+    <IDENTIFIERS>
+      <PRIMARY_ID>ERP016443</PRIMARY_ID>
+    </IDENTIFIERS>
+  </STUDY_REF>
+  <DESIGN>
+    <DESIGN_DESCRIPTION/>
+    <SAMPLE_DESCRIPTOR accession="ERS1082817">
+      <IDENTIFIERS>
+        <PRIMARY_ID>ERS1082817</PRIMARY_ID>
+        <EXTERNAL_ID namespace="BioSample">SAMEA3895683</EXTERNAL_ID>
+      </IDENTIFIERS>
+    </SAMPLE_DESCRIPTOR>
+    <LIBRARY_DESCRIPTOR>
+      <LIBRARY_NAME>BCM_CIC_ONT_R7</LIBRARY_NAME>
+      <LIBRARY_STRATEGY>WGS</LIBRARY_STRATEGY>
+      <LIBRARY_SOURCE>GENOMIC</LIBRARY_SOURCE>
+      <LIBRARY_SELECTION>RANDOM</LIBRARY_SELECTION>
+      <LIBRARY_LAYOUT>
+        <SINGLE/>
+      </LIBRARY_LAYOUT>
+      <LIBRARY_CONSTRUCTION_PROTOCOL/>
+    </LIBRARY_DESCRIPTOR>
+  </DESIGN>
+  <PLATFORM>
+    <OXFORD_NANOPORE>
+      <INSTRUMENT_MODEL>MinION</INSTRUMENT_MODEL>
+    </OXFORD_NANOPORE>
+  </PLATFORM>
+  <EXPERIMENT_LINKS>
+    <EXPERIMENT_LINK>
+      <XREF_LINK>
+        <DB>ENA-SAMPLE</DB>
+        <ID>ERS1082817</ID>
+      </XREF_LINK>
+    </EXPERIMENT_LINK>
+    <EXPERIMENT_LINK>
+      <XREF_LINK>
+        <DB>ENA-SUBMISSION</DB>
+        <ID>ERA675896</ID>
+      </XREF_LINK>
+    </EXPERIMENT_LINK>
+    <EXPERIMENT_LINK>
+      <XREF_LINK>
+        <DB>ENA-FASTQ-FILES</DB>
+        <ID><![CDATA[https://www.ebi.ac.uk/ena/portal/api/filereport?accession=ERX1609848&result=read_run&fields=run_accession,fastq_ftp,fastq_md5,fastq_bytes]]></ID>
+      </XREF_LINK>
+    </EXPERIMENT_LINK>
+    <EXPERIMENT_LINK>
+      <XREF_LINK>
+        <DB>ENA-SUBMITTED-FILES</DB>
+        <ID><![CDATA[https://www.ebi.ac.uk/ena/portal/api/filereport?accession=ERX1609848&result=read_run&fields=run_accession,submitted_ftp,submitted_md5,submitted_bytes,submitted_format]]></ID>
+      </XREF_LINK>
+    </EXPERIMENT_LINK>
+  </EXPERIMENT_LINKS>
+  <EXPERIMENT_ATTRIBUTES>
+    <EXPERIMENT_ATTRIBUTE>
+      <TAG>ENA-STATUS</TAG>
+      <VALUE>PUBLIC</VALUE>
+    </EXPERIMENT_ATTRIBUTE>
+  </EXPERIMENT_ATTRIBUTES>
+</EXPERIMENT>
+</EXPERIMENT_SET>

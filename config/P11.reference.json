@@ -1,0 +1,11 @@
+{
+  "url": "https://ftp.ensembl.org/pub/release-113/fasta/saccharomyces_cerevisiae/dna/Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.fa.gz",
+  "assembly": "R64-1-1",
+  "ensembl_release": 113,
+  "download_date": "2026-10-01",
+  "archive_sha256": "a9953096d6a041a01a4cb5352b0232ee9373bf4c050fb23cb7ae673b2e1bb528",
+  "fasta_sha256": "35cc97fccb91762c7a1f0f71b4adb1037b143d48b63fbd3b3f8bad45e5afa44c",
+  "archive_bytes": 3784201,
+  "fasta_bytes": 12360704,
+  "checksum_note": "SHA256 computed after HTTPS download; gzip CRC verified; not independently compared with a publisher SHA256"
+}
