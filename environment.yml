@@ -1,0 +1,16 @@
+name: yeast-wgs
+channels:
+  - conda-forge
+  - bioconda
+  - nodefaults
+dependencies:
+  - python=3.12
+  - snakemake-minimal=9.13.4
+  - bwa=0.7.18
+  - minimap2=2.28
+  - samtools=1.21
+  - bcftools=1.21
+  - fastp=0.24.0
+  - fastqc=0.12.1
+  - nanoplot=1.43.0
+  - multiqc=1.27.1

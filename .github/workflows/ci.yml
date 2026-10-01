@@ -1,0 +1,45 @@
+name: Test workflow
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  analysis-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s tests -v
+  synthetic-integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: mamba-org/setup-micromamba@v2
+        with:
+          environment-file: environment.yml
+          cache-environment: true
+          init-shell: bash
+      - name: Run both read technologies on deterministic toy data
+        shell: bash -el {0}
+        run: |
+          python workflow/scripts/generate_demo.py
+          snakemake -s workflow/Snakefile --cores 2 --dry-run
+          snakemake -s workflow/Snakefile --cores 2 --printshellcmds
+          python tests/check_demo.py
+          snakemake -s workflow/Snakefile --cores 2 --dry-run
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: synthetic-validation
+          path: |
+            results/report.html
+            results/comparison/
+            results/provenance/
+            results/qc/**/*.coverage.json
+            logs/
+            benchmarks/

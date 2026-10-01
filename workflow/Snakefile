@@ -1,0 +1,249 @@
+from pathlib import Path
+import sys
+
+configfile: "config/config.yaml"
+sys.path.insert(0, str(Path(workflow.basedir) / "scripts"))
+from validate_inputs import validate_config
+
+ROWS = validate_config(config)
+SAMPLES = sorted({sample for sample, platform in ROWS})
+PLATFORMS = ["illumina", "ont"]
+REF = config["reference"]
+SCRIPTS = Path(workflow.basedir) / "scripts"
+
+wildcard_constraints:
+    platform="illumina|ont",
+    sample="[A-Za-z0-9][A-Za-z0-9_.-]*"
+
+rule all:
+    input:
+        "results/report.html",
+        expand("results/variants/{sample}.illumina.pass.vcf.gz.csi", sample=SAMPLES),
+        expand("results/variants/{sample}.ont.pass.vcf.gz.csi", sample=SAMPLES)
+
+rule index_reference:
+    input: REF
+    output:
+        fai=f"{REF}.fai",
+        bwa=[f"{REF}{ext}" for ext in [".amb", ".ann", ".bwt", ".pac", ".sa"]]
+    log: "logs/reference/index.log"
+    conda: "../environment.yml"
+    shell:
+        "bwa index {input:q} 2> {log:q}; samtools faidx {input:q} 2>> {log:q}"
+
+rule illumina_qc:
+    input:
+        r1=lambda w: ROWS[w.sample, "illumina"]["read1"],
+        r2=lambda w: ROWS[w.sample, "illumina"]["read2"]
+    output:
+        r1="results/reads/{sample}.R1.fastq.gz",
+        r2="results/reads/{sample}.R2.fastq.gz",
+        json="results/qc/{sample}/fastp.json",
+        html="results/qc/{sample}/fastp.html",
+        fastqc=directory("results/qc/{sample}/fastqc")
+    threads: 2
+    log: "logs/{sample}/illumina_qc.log"
+    benchmark: "benchmarks/{sample}.illumina_qc.tsv"
+    conda: "../environment.yml"
+    shell:
+        """
+        mkdir -p {output.fastqc:q}
+        fastqc --threads {threads} --outdir {output.fastqc:q} {input.r1:q} {input.r2:q} > {log:q} 2>&1
+        fastp --thread {threads} --detect_adapter_for_pe --in1 {input.r1:q} --in2 {input.r2:q} \
+          --out1 {output.r1:q} --out2 {output.r2:q} --json {output.json:q} --html {output.html:q} >> {log:q} 2>&1
+        fastqc --threads {threads} --outdir {output.fastqc:q} {output.r1:q} {output.r2:q} >> {log:q} 2>&1
+        """
+
+rule ont_qc:
+    input: lambda w: ROWS[w.sample, "ont"]["read1"]
+    output: directory("results/qc/{sample}/nanoplot")
+    threads: 2
+    log: "logs/{sample}/ont_qc.log"
+    benchmark: "benchmarks/{sample}.ont_qc.tsv"
+    conda: "../environment.yml"
+    shell:
+        "NanoPlot --fastq {input:q} --threads {threads} --outdir {output:q} --N50 > {log:q} 2>&1"
+
+rule map_illumina:
+    input:
+        ref=REF,
+        bwa=[f"{REF}{ext}" for ext in [".amb", ".ann", ".bwt", ".pac", ".sa"]],
+        r1="results/reads/{sample}.R1.fastq.gz",
+        r2="results/reads/{sample}.R2.fastq.gz"
+    output: bam="results/bam/{sample}.illumina.bam"
+    params: rg=lambda w: r"@RG\tID:" + w.sample + r".illumina\tSM:" + w.sample + r"\tPL:ILLUMINA"
+    threads: 4
+    log: "logs/{sample}/map_illumina.log"
+    benchmark: "benchmarks/{sample}.map_illumina.tsv"
+    conda: "../environment.yml"
+    shell:
+        """
+        (bwa mem -t {threads} -R {params.rg:q} {input.ref:q} {input.r1:q} {input.r2:q} | \
+          samtools sort -n -@ 1 -O BAM | samtools fixmate -m - - | \
+          samtools sort -@ 1 -O BAM | samtools markdup - {output.bam:q}) 2> {log:q}
+        """
+
+rule map_ont:
+    input:
+        ref=REF,
+        reads=lambda w: ROWS[w.sample, "ont"]["read1"]
+    output: bam="results/bam/{sample}.ont.bam"
+    params:
+        preset=config["minimap2_preset"],
+        rg=lambda w: r"@RG\tID:" + w.sample + r".ont\tSM:" + w.sample + r"\tPL:ONT"
+    threads: 4
+    log: "logs/{sample}/map_ont.log"
+    benchmark: "benchmarks/{sample}.map_ont.tsv"
+    conda: "../environment.yml"
+    shell:
+        """
+        (minimap2 -ax {params.preset} -t {threads} -R {params.rg:q} {input.ref:q} {input.reads:q} | \
+          samtools sort -@ 1 -o {output.bam:q}) 2> {log:q}
+        """
+
+rule index_bam:
+    input: "results/bam/{sample}.{platform}.bam"
+    output: "results/bam/{sample}.{platform}.bam.bai"
+    log: "logs/{sample}/index_{platform}.log"
+    conda: "../environment.yml"
+    shell: "samtools index {input:q} {output:q} 2> {log:q}"
+
+rule alignment_qc:
+    input:
+        bam="results/bam/{sample}.{platform}.bam",
+        bai="results/bam/{sample}.{platform}.bam.bai",
+        script=str(SCRIPTS / "coverage.py")
+    output:
+        stats="results/qc/{sample}/{platform}.samtools.stats.txt",
+        flagstat="results/qc/{sample}/{platform}.flagstat.txt",
+        coverage="results/qc/{sample}/{platform}.coverage.json",
+        bed="results/qc/{sample}/{platform}.depth_mask.bed"
+    params:
+        mq=config["min_mapping_quality"], bq=config["min_base_quality"],
+        low=config["min_depth"], high=config["max_depth"]
+    log: "logs/{sample}/qc_{platform}.log"
+    conda: "../environment.yml"
+    shell:
+        """
+        samtools quickcheck -v {input.bam:q} 2> {log:q}
+        samtools stats {input.bam:q} > {output.stats:q} 2>> {log:q}
+        samtools flagstat {input.bam:q} > {output.flagstat:q} 2>> {log:q}
+        (samtools depth -aa -s -q {params.bq} -Q {params.mq} -G 3844 {input.bam:q} | \
+          python {input.script:q} --min-depth {params.low} --max-depth {params.high} \
+            --bed {output.bed:q} --json {output.coverage:q}) 2>> {log:q}
+        """
+
+rule call_variants:
+    input:
+        ref=REF, fai=f"{REF}.fai",
+        bam="results/bam/{sample}.{platform}.bam",
+        bai="results/bam/{sample}.{platform}.bam.bai"
+    output: "results/variants/{sample}.{platform}.raw.vcf.gz"
+    params:
+        ploidy=lambda w: ROWS[w.sample, w.platform]["ploidy"],
+        ont=lambda w: "-B --skip-indels" if w.platform == "ont" else "",
+        mq=config["min_mapping_quality"], bq=config["min_base_quality"], cap=config["pileup_max_depth"]
+    log: "logs/{sample}/call_{platform}.log"
+    benchmark: "benchmarks/{sample}.call_{platform}.tsv"
+    conda: "../environment.yml"
+    shell:
+        """
+        (bcftools mpileup {params.ont} -q {params.mq} -Q {params.bq} -d {params.cap} \
+          --ns 3844 -a FORMAT/DP,FORMAT/AD -Ou -f {input.ref:q} {input.bam:q} | \
+          bcftools call --ploidy {params.ploidy} -mv -Oz -o {output:q}) 2> {log:q}
+        """
+
+rule normalize_filter:
+    input:
+        vcf="results/variants/{sample}.{platform}.raw.vcf.gz",
+        ref=REF, fai=f"{REF}.fai"
+    output:
+        vcf="results/variants/{sample}.{platform}.pass.vcf.gz",
+        stats="results/variants/{sample}.{platform}.bcftools.stats.txt"
+    params:
+        expr=f'QUAL="." || QUAL<{config["min_variant_quality"]} || FMT/DP="." || FMT/DP<{config["min_depth"]} || FMT/DP>{config["max_depth"]}'
+    log: "logs/{sample}/filter_{platform}.log"
+    conda: "../environment.yml"
+    shell:
+        """
+        (bcftools norm -f {input.ref:q} -c e -m -any -Ou {input.vcf:q} | \
+          bcftools view -e {params.expr:q} -Oz -o {output.vcf:q}) 2> {log:q}
+        bcftools stats {output.vcf:q} > {output.stats:q} 2>> {log:q}
+        """
+
+rule index_vcf:
+    input: "results/variants/{sample}.{platform}.pass.vcf.gz"
+    output: "results/variants/{sample}.{platform}.pass.vcf.gz.csi"
+    log: "logs/{sample}/index_vcf_{platform}.log"
+    conda: "../environment.yml"
+    shell: "bcftools index -f {input:q} 2> {log:q}"
+
+rule compare_snps:
+    input:
+        illumina="results/variants/{sample}.illumina.pass.vcf.gz",
+        ont="results/variants/{sample}.ont.pass.vcf.gz",
+        illumina_bed="results/qc/{sample}/illumina.depth_mask.bed",
+        ont_bed="results/qc/{sample}/ont.depth_mask.bed",
+        script=str(SCRIPTS / "compare_snps.py")
+    output:
+        json="results/comparison/{sample}.comparison.json",
+        tsv="results/comparison/{sample}.snps.tsv",
+        bed="results/comparison/{sample}.shared_depth_mask.bed"
+    log: "logs/{sample}/compare.log"
+    conda: "../environment.yml"
+    shell:
+        """
+        python {input.script:q} --illumina {input.illumina:q} --ont {input.ont:q} \
+          --illumina-bed {input.illumina_bed:q} --ont-bed {input.ont_bed:q} \
+          --json {output.json:q} --tsv {output.tsv:q} --shared-bed {output.bed:q} 2> {log:q}
+        """
+
+rule provenance:
+    input: ref=REF, samples=config["samples"]
+    output: "results/provenance/tool_versions.txt"
+    params: config_json=__import__("json").dumps(config, indent=2)
+    run:
+        import hashlib
+        import subprocess
+        with open(output[0], "w") as stream:
+            stream.write("Resolved configuration:\n" + params.config_json + "\n\n")
+            for path in [input.ref, input.samples]:
+                digest = hashlib.sha256()
+                with open(path, "rb") as source:
+                    for block in iter(lambda: source.read(1024 * 1024), b""):
+                        digest.update(block)
+                stream.write(f"SHA256 {path}: {digest.hexdigest()}\n")
+            stream.write("\n" + Path(input.samples).read_text() + "\n")
+            for command in [["bwa"], ["minimap2", "--version"], ["samtools", "--version"],
+                            ["bcftools", "--version"], ["fastp", "--version"], ["fastqc", "--version"],
+                            ["NanoPlot", "--version"], ["multiqc", "--version"], ["snakemake", "--version"]]:
+                process = subprocess.run(command, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+                stream.write("$ " + " ".join(command) + "\n" + process.stdout + "\n")
+
+rule multiqc:
+    input:
+        expand("results/qc/{sample}/fastp.json", sample=SAMPLES),
+        expand("results/qc/{sample}/fastqc", sample=SAMPLES),
+        expand("results/qc/{sample}/nanoplot", sample=SAMPLES),
+        expand("results/qc/{sample}/{platform}.samtools.stats.txt", sample=SAMPLES, platform=PLATFORMS),
+        expand("results/qc/{sample}/{platform}.flagstat.txt", sample=SAMPLES, platform=PLATFORMS),
+        expand("results/variants/{sample}.{platform}.bcftools.stats.txt", sample=SAMPLES, platform=PLATFORMS)
+    output: "results/multiqc/multiqc_report.html"
+    log: "logs/multiqc.log"
+    conda: "../environment.yml"
+    shell:
+        "multiqc results/qc results/variants --force --outdir results/multiqc > {log:q} 2>&1"
+
+rule report:
+    input:
+        json=expand("results/comparison/{sample}.comparison.json", sample=SAMPLES),
+        coverage=expand("results/qc/{sample}/{platform}.coverage.json", sample=SAMPLES, platform=PLATFORMS),
+        multiqc="results/multiqc/multiqc_report.html",
+        provenance="results/provenance/tool_versions.txt",
+        script=str(SCRIPTS / "report.py")
+    output: "results/report.html"
+    params: label=config["dataset_label"]
+    log: "logs/report.log"
+    conda: "../environment.yml"
+    shell:
+        "python {input.script:q} --inputs {input.json:q} {input.coverage:q} --label {params.label:q} --out {output:q} 2> {log:q}"
