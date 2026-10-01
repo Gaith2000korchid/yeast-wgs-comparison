@@ -1,6 +1,6 @@
 # Selected P11 SNPs: diagnostic read support and IGV review
 
-This follow-up measures original-base support in reconstructed P11 alignments at the **15 loci already selected** in [the BQ7 comparison](../bq7.loci_for_review.tsv). It prepares an IGV session and a review worksheet. **No visual inspection in IGV has been performed.** These measurements do not establish truth or classify discordances as errors.
+This follow-up measures original-base support in reconstructed P11 alignments at the **15 loci already selected** in [the BQ7 comparison](../bq7.loci_for_review.tsv). It prepares an IGV session and a review worksheet. A [targeted IGV Web review](IGV_WEB_REVIEW_FR.md) now records six loci examined by Gaith Korchid on 2026-10-01; the remaining nine have not been visually reviewed. These measurements do not establish truth or classify discordances as errors.
 
 ## Observed examples
 
