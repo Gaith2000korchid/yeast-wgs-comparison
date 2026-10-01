@@ -1,0 +1,81 @@
+name: Export real P11 IGV bundle
+on:
+  workflow_dispatch:
+  # One initial build on the dedicated export branch; main runs are manual.
+  push:
+    branches: ['review/p11-igv-bundle']
+    paths:
+      - '.github/workflows/igv-bundle.yml'
+      - 'workflow/scripts/export_igv_bundle.py'
+permissions:
+  contents: read
+concurrency:
+  group: p11-igv-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  real-igv-export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: mamba-org/setup-micromamba@v2
+        with:
+          environment-file: environment.yml
+          cache-environment: true
+          init-shell: bash
+      - name: Install the diagnostic evidence dependency
+        shell: bash -el {0}
+        run: python -m pip install --no-deps pysam==0.23.3
+      - name: Restore verified archive reads and reference
+        shell: bash -el {0}
+        run: |
+          python workflow/scripts/download_reference.py
+          python workflow/scripts/download_reads.py --manifest config/P11.downloads.json --workers 2
+          python workflow/scripts/prepare_real_reads.py --fraction 0.25 --seed 20261001
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          expected=json.loads(Path('docs/results/P11/preparation.json').read_text())['prepared_sha256']
+          actual=json.loads(Path('data/real/prepared/preparation.json').read_text())['prepared_sha256']
+          assert actual == expected, 'Prepared reads differ from the published P11 analysis'
+          PY
+      - name: Reconstruct only the two indexed BAMs
+        shell: bash -el {0}
+        run: |
+          snakemake -s workflow/Snakefile --configfile config/P11.yaml --cores 4 --printshellcmds \
+            results/P11/bam/P11.illumina.bam.bai results/P11/bam/P11.ont.bam.bai
+          samtools quickcheck -v results/P11/bam/P11.illumina.bam results/P11/bam/P11.ont.bam
+      - name: Export portable regional alignments and verify published evidence
+        shell: bash -el {0}
+        run: |
+          python workflow/scripts/export_igv_bundle.py --source-commit "${GITHUB_SHA}"
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          expected=json.loads(Path('docs/results/P11/review/read_support.json').read_text())['loci']
+          actual=json.loads(Path('results/P11/igv_bundle/evidence/read_support.json').read_text())['loci']
+          assert actual == expected, 'Regional evidence differs from the archived P11 measurements'
+          print('All 15 loci reproduce the previously published diagnostic evidence.')
+          PY
+          cp docs/IGV_REVIEW_FR.md results/P11/IGV_REVIEW_FR.md
+      - name: Publish the downloadable review package
+        uses: actions/upload-artifact@v4
+        with:
+          name: P11-IGV-review
+          path: |
+            results/P11/igv_bundle.zip
+            results/P11/IGV_REVIEW_FR.md
+          if-no-files-found: error
+          retention-days: 90
+      - name: Preserve execution diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: P11-IGV-execution-record
+          path: |
+            logs/P11/
+            benchmarks/P11/
+            data/real/prepared/preparation.json
+            results/P11/igv_bundle/manifest.json
+          if-no-files-found: warn
+          retention-days: 90

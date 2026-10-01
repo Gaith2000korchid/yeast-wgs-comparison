@@ -33,6 +33,7 @@ jobs:
           snakemake -s workflow/Snakefile --cores 2 --printshellcmds
           python tests/check_demo.py
           python tests/check_review.py
+          python tests/check_bundle.py
           snakemake -s workflow/quality_sensitivity.smk --cores 2 --printshellcmds
           python tests/check_sensitivity.py
           python tests/check_nanoplot.py
@@ -46,6 +47,7 @@ jobs:
             results/comparison/
             results/provenance/
             results/review.synthetic/
+            results/igv.synthetic.zip
             results/multiqc/
             results/qc/**/*.coverage.json
             logs/
