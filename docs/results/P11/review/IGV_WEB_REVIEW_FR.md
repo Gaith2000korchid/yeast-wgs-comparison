@@ -1,6 +1,6 @@
 # Revue ciblée P11 dans IGV Web - 1 octobre 2026
 
-Gaith Korchid a consulté six loci du paquet régional P11 dans [IGV Web](https://igv.org/app/) et transmis les valeurs des fenêtres de couverture. Ce compte rendu transcrit ces observations ; il ne constitue pas une validation indépendante des variants. Deux captures partagées dans la conversation montrent les alignements à III:105658 et IV:308249. Les captures ne sont pas archivées dans ce dépôt. Pour les quatre autres sites, seuls les comptes transmis sont documentés ici.
+Gaith Korchid a consulté six loci du paquet régional P11 dans [IGV Web](https://igv.org/app/) et transmis les valeurs des fenêtres de couverture. Ce compte rendu transcrit ces observations ; il ne constitue pas une validation indépendante des variants. Deux captures partagées dans la conversation montrent les alignements à III:105658 et IV:308249. Les deux captures originales sont maintenant archivées ci-dessous, sans modification. Pour les quatre autres sites, seuls les comptes transmis sont documentés ici.
 
 La référence `reference.fa` et les BAMs `P11.illumina.regional.bam` / `P11.ont.regional.bam` proviennent du [paquet régional](../../../IGV_REVIEW_FR.md), construit par [l'exécution P11](https://github.com/Gaith2000korchid/yeast-wgs-comparison/actions/runs/36871808202). La version exacte d'IGV et les réglages MAPQ, BQ, flags, chevauchement des mates et sous-échantillonnage n'ont pas été relevés. Ces valeurs sont donc des observations de l'affichage, pas une mesure reproductible avec des paramètres entièrement spécifiés.
 
@@ -48,3 +48,13 @@ Six des quinze loci sélectionnés ont fait l'objet de cette revue ciblée ; les
 Pour approfondir : relever la version et les réglages IGV, archiver les captures avec coordonnées et noms de pistes, inspecter MAPQ/BQ/CIGAR et insertions locales, puis vérifier les intermédiaires d'appel et de filtrage avant d'attribuer une cause aux absences de VCF. Une vérité indépendante serait nécessaire pour mesurer la précision.
 
 Une [reconstruction régionale du caller](REGIONAL_CALLER_AUDIT_FR.md) suit maintenant les trois sites avec support partagé et mesure leur sensibilité à BAQ. Elle complète les observations IGV sans remplacer les intermédiaires du run génome entier.
+
+## Captures originales du reviewer
+
+![III:105558-105758, pistes Illumina et ONT](images/III_105658_IGV_Web.png)
+
+**III:105658 A>T**, fenêtre `III:105558-105758`. Illumina en haut, ONT en bas. Capture de Gaith Korchid le 1 octobre 2026. Comptes des popups transmis séparément : Illumina A=59/T=0 ; ONT A=3/T=7. Les popups ne figurent pas sur cette capture. La version exacte et les filtres d'affichage ne sont pas connus. Le signal est discordant ; aucune vérité biologique indépendante n'est établie.
+
+![IV:308149-308349, pistes Illumina et ONT](images/IV_308249_IGV_Web.png)
+
+**IV:308249 T>C**, fenêtre `IV:308149-308349` saisie par le reviewer ; la capture conserve la règle de coordonnées et les noms de pistes mais coupe la barre de navigation supérieure. Illumina en haut, ONT en bas. Capture de Gaith Korchid le 1 octobre 2026. Comptes transmis séparément : Illumina T=69 ; ONT C=12/A=1 et DEL=5. Les gaps et marqueurs d'insertion visibles motivent l'examen local, sans démontrer un artefact. Les différences entre couverture affichée et mesures filtrées sont documentées plus haut.

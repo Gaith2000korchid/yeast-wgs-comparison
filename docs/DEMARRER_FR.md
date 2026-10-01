@@ -18,9 +18,9 @@ Pour Nanopore, bcftools sert ici de première base exploratoire. Nous devrons ju
 
 ## Passage aux données réelles
 
-Le document DATASETS.md identifie une étude publique de levure avec Illumina et ONT. La prochaine étape scientifique consiste à sélectionner un seul isolat, confirmer que les deux technologies correspondent au même échantillon, vérifier la ploïdie, récupérer les FASTQ et leur provenance, puis exécuter le workflow.
+L'isolat P11 a été sélectionné et analysé : identité entre technologies, modèle diploïde, FASTQ et checksums sont documentés. Consulte la [synthèse finale](PROJECT_SUMMARY_FR.md) puis le [protocole P11](P11_RUN.md) pour reproduire ce travail.
 
-Le premier livrable scientifique sera un tableau de QC, les statistiques de SNP, et quelques discordances examinées dans IGV. Une bonne explication doit dire ce qui a été observé, comment le pipeline le calcule et ce qui reste incertain.
+La QC, la comparaison des SNPs, la sensibilité BQ7, la revue IGV de six sites et l'audit régional du caller sont terminés dans leur périmètre décrit. Neuf loci restent sans revue visuelle, et aucun variant n'est déclaré biologiquement validé. Les prochaines extensions scientifiques sont une vérité indépendante, un masque de répétitions/mappabilité et un caller adapté à la chimie ONT.
 
 ## Ce que tu dois pouvoir expliquer en entretien
 

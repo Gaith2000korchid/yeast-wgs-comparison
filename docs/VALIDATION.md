@@ -2,7 +2,7 @@
 
 ## Executed locally
 
-- Fourteen Python unittest cases passed after adding real-preparation and contig-exclusion checks.
+- 21 Python unittest cases pass, including native bcftools regional-stage auditing, portable BAM evidence preservation, read preparation and SNP comparison checks.
 - Snakemake 9.13.4 constructed the complete 20-job demonstration DAG.
 - The full synthetic analysis (both read branches, QC, BAMs, VCFs, comparison and reports) completed in the pinned environment.
 - Integration assertion: all three planted SNPs recovered by both branches.
@@ -34,6 +34,10 @@ The primary P11 workflow completed successfully on matched public reads; its BAM
 
 A clean pinned environment was used after an in-place local dependency update retained inconsistent package files. Execution resumed from completed scientific outputs after the NanoPlot failures. Successful completion records versions/configuration; failed QC attempts are acknowledged in the run record. No biological result from a failed or partial QC output is published.
 
-The sensitivity integration test recovers identical toy comparison metrics at BQ13 and BQ7 on synthetic high-quality reads. Unit and integration checks validate computation, not clinical/biological accuracy. The real analysis has no truth set, validated repeat/mappability mask or manual IGV confirmation.
+The sensitivity integration test recovers identical toy comparison metrics at BQ13 and BQ7 on synthetic high-quality reads. Unit and integration checks validate computation, not clinical/biological accuracy. The real analysis has no truth set or validated repeat/mappability mask. A [six-locus IGV Web review](results/P11/review/IGV_WEB_REVIEW_FR.md) records observations, including two archived screenshots, without independently validating variants.
 
 MultiQC was regenerated with directory-qualified sample names. Its extracted FastQC table contains all four real-data reports (`raw`/`cleaned` × R1/R2); same-named mates no longer overwrite each other in the aggregate report. This reporting change leaves coverage, variants and comparison metrics unchanged.
+
+## Targeted follow-up
+
+The [regional caller audit](results/P11/review/REGIONAL_CALLER_AUDIT_FR.md) follows three loci through native bcftools stages and a controlled no-BAQ experiment. Input fingerprints and selected VCF records are retained. It does not recreate original full-genome intermediates. The [French synthesis](PROJECT_SUMMARY_FR.md) separates these scopes and summarizes the final case study.
