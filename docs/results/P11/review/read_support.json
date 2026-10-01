@@ -1,0 +1,1394 @@
+{
+  "pysam_version": "0.23.3",
+  "pysam_samtools_version": "1.21",
+  "script_sha256": "5f401c740b1b2b5ad2f567519cbf98215ea05c4c664191f903efa6144f37fa6a",
+  "min_mapping_quality": 20,
+  "excluded_flags": 3844,
+  "sources": {
+    "loci": {
+      "path": "docs/results/P11/bq7.loci_for_review.tsv",
+      "sha256": "55dbb92c4b1182037838959a1a43e94e907c686525113f1034973f0518dc5bda"
+    },
+    "reference": {
+      "path": "data/real/reference.fa",
+      "sha256": "35cc97fccb91762c7a1f0f71b4adb1037b143d48b63fbd3b3f8bad45e5afa44c"
+    },
+    "illumina_bam": {
+      "path": "results/P11/bam/P11.illumina.bam",
+      "sha256": "7d0ff3adaa08149a493dc3b4ba36a212fb0a90ffc0f13750850278ce8d612363"
+    },
+    "ont_bam": {
+      "path": "results/P11/bam/P11.ont.bam",
+      "sha256": "cbbc3970089259404cfdf446e31da6f670e9c8a3b2a53ce56093017fcde1e99a"
+    },
+    "reference_index": {
+      "path": "data/real/reference.fa.fai",
+      "sha256": "65163e1e9c8cb7b63f43befd8294019b11fba0c18dd37c801e9d356e71e391c3"
+    },
+    "illumina_bam_index": {
+      "path": "results/P11/bam/P11.illumina.bam.bai",
+      "sha256": "de6e038ebc8415d028cf87b2dc9b53f5b00c2b5a95a8f87445639572353852bd"
+    },
+    "ont_bam_index": {
+      "path": "results/P11/bam/P11.ont.bam.bai",
+      "sha256": "55e0771a119fb3e4da1612e015ced8ecc7bbfaba03532c16ce04ecbd6099bec3"
+    }
+  },
+  "interpretation": "Diagnostic original-base support, not caller DP/BAQ/GQ, genotype likelihoods or truth. Eligible overlapping mates agree or are excluded; agreeing mates count once. Loci are a selected convenience sample, not genome-wide statistics.",
+  "visual_review_status": "not_performed",
+  "loci": [
+    {
+      "chrom": "I",
+      "pos_1based": 2017,
+      "ref": "G",
+      "alt": "A",
+      "category": "illumina_only",
+      "illumina_gt": "0/1",
+      "ont_gt": "",
+      "views": {
+        "illumina_bq13": {
+          "min_base_quality": 13,
+          "depth": 49,
+          "ref_count": 34,
+          "alt_count": 15,
+          "other_count": 0,
+          "base_counts": {
+            "A": 15,
+            "C": 0,
+            "G": 34,
+            "T": 0,
+            "N": 0
+          },
+          "alt_fraction": 0.30612244897959184,
+          "ref_fraction": 0.6938775510204082,
+          "alt_forward": 3,
+          "alt_reverse": 12,
+          "alt_median_original_base_quality": 39,
+          "alt_within_10bp_of_aligned_query_end": 2,
+          "alt_on_soft_clipped_alignment": 0,
+          "overlapping_mate_observations_collapsed": 26,
+          "conflicting_eligible_fragments_excluded": 0
+        },
+        "ont_bq13": {
+          "min_base_quality": 13,
+          "depth": 1,
+          "ref_count": 1,
+          "alt_count": 0,
+          "other_count": 0,
+          "base_counts": {
+            "A": 0,
+            "C": 0,
+            "G": 1,
+            "T": 0,
+            "N": 0
+          },
+          "alt_fraction": 0.0,
+          "ref_fraction": 1.0,
+          "alt_forward": 0,
+          "alt_reverse": 0,
+          "alt_median_original_base_quality": null,
+          "alt_within_10bp_of_aligned_query_end": 0,
+          "alt_on_soft_clipped_alignment": 0,
+          "overlapping_mate_observations_collapsed": 0,
+          "conflicting_eligible_fragments_excluded": 0
+        },
+        "ont_bq7": {
+          "min_base_quality": 7,
+          "depth": 8,
+          "ref_count": 8,
+          "alt_count": 0,
+          "other_count": 0,
+          "base_counts": {
+            "A": 0,
+            "C": 0,
+            "G": 8,
+            "T": 0,
+            "N": 0
+          },
+          "alt_fraction": 0.0,
+          "ref_fraction": 1.0,
+          "alt_forward": 0,
+          "alt_reverse": 0,
+          "alt_median_original_base_quality": null,
+          "alt_within_10bp_of_aligned_query_end": 0,
+          "alt_on_soft_clipped_alignment": 0,
+          "overlapping_mate_observations_collapsed": 0,
+          "conflicting_eligible_fragments_excluded": 0
+        }
+      },
+      "alignment_filters": {
+        "illumina": {
+          "alignments_overlapping_position": 107,
+          "below_mapping_quality": 30
+        },
+        "ont": {
+          "alignments_overlapping_position": 12,
+          "excluded_alignment_flags": 4
+        }
+      }
+    },
+    {
+      "chrom": "I",
+      "pos_1based": 2062,
+      "ref": "C",
+      "alt": "T",
+      "category": "illumina_only",
+      "illumina_gt": "0/1",
+      "ont_gt": "",
+      "views": {
+        "illumina_bq13": {
+          "min_base_quality": 13,
+          "depth": 52,
+          "ref_count": 42,
+          "alt_count": 9,
+          "other_count": 1,
+          "base_counts": {
+            "A": 0,
+            "C": 42,
+            "G": 1,
+            "T": 9,
+            "N": 0
+          },
+          "alt_fraction": 0.17307692307692307,
+          "ref_fraction": 0.8076923076923077,
+          "alt_forward": 2,
+          "alt_reverse": 7,
+          "alt_median_original_base_quality": 39,
+          "alt_within_10bp_of_aligned_query_end": 0,
+          "alt_on_soft_clipped_alignment": 0,
+          "overlapping_mate_observations_collapsed": 33,
+          "conflicting_eligible_fragments_excluded": 0
+        },
+        "ont_bq13": {
+          "min_base_quality": 13,
+          "depth": 0,
+          "ref_count": 0,
+          "alt_count": 0,
+          "other_count": 0,
+          "base_counts": {
+            "A": 0,
+            "C": 0,
+            "G": 0,
+            "T": 0,
+            "N": 0
+          },
+          "alt_fraction": null,
+          "ref_fraction": null,
+          "alt_forward": 0,
+          "alt_reverse": 0,
+          "alt_median_original_base_quality": null,
+          "alt_within_10bp_of_aligned_query_end": 0,
+          "alt_on_soft_clipped_alignment": 0,
+          "overlapping_mate_observations_collapsed": 0,
+          "conflicting_eligible_fragments_excluded": 0
+        },
+        "ont_bq7": {
+          "min_base_quality": 7,
+          "depth": 8,
+          "ref_count": 6,
+          "alt_count": 0,
+          "other_count": 2,
+          "base_counts": {
+            "A": 0,
+            "C": 6,
+            "G": 2,
+            "T": 0,
+            "N": 0
+          },
+          "alt_fraction": 0.0,
+          "ref_fraction": 0.75,
+          "alt_forward": 0,
+          "alt_reverse": 0,
+          "alt_median_original_base_quality": null,
+          "alt_within_10bp_of_aligned_query_end": 0,
+          "alt_on_soft_clipped_alignment": 0,
+          "overlapping_mate_observations_collapsed": 0,
+          "conflicting_eligible_fragments_excluded": 0
+        }
+      },
+      "alignment_filters": {
+        "illumina": {
+          "alignments_overlapping_position": 126,
+          "below_mapping_quality": 40
+        },
+        "ont": {
+          "alignments_overlapping_position": 12,
+          "excluded_alignment_flags": 4
+        }
+      }
+    },
+    {
+      "chrom": "I",
+      "pos_1based": 2068,
+      "ref": "C",
+      "alt": "A",
+      "category": "illumina_only",
+      "illumina_gt": "0/1",
+      "ont_gt": "",
+      "views": {
+        "illumina_bq13": {
+          "min_base_quality": 13,
+          "depth": 52,
+          "ref_count": 41,
+          "alt_count": 11,
+          "other_count": 0,
+          "base_counts": {
+            "A": 11,
+            "C": 41,
+            "G": 0,
+            "T": 0,
+            "N": 0
+          },
+          "alt_fraction": 0.21153846153846154,
+          "ref_fraction": 0.7884615384615384,
+          "alt_forward": 3,
+          "alt_reverse": 8,
+          "alt_median_original_base_quality": 39,
+          "alt_within_10bp_of_aligned_query_end": 0,
+          "alt_on_soft_clipped_alignment": 0,
+          "overlapping_mate_observations_collapsed": 34,
+          "conflicting_eligible_fragments_excluded": 0
+        },
+        "ont_bq13": {
+          "min_base_quality": 13,
+          "depth": 1,
+          "ref_count": 0,
+          "alt_count": 1,
+          "other_count": 0,
+          "base_counts": {
+            "A": 1,
+            "C": 0,
+            "G": 0,
+            "T": 0,
+            "N": 0
+          },
+          "alt_fraction": 1.0,
+          "ref_fraction": 0.0,
+          "alt_forward": 1,
+          "alt_reverse": 0,
+          "alt_median_original_base_quality": 13,
+          "alt_within_10bp_of_aligned_query_end": 0,
+          "alt_on_soft_clipped_alignment": 1,
+          "overlapping_mate_observations_collapsed": 0,
+          "conflicting_eligible_fragments_excluded": 0
+        },
+        "ont_bq7": {
+          "min_base_quality": 7,
+          "depth": 8,
+          "ref_count": 5,
+          "alt_count": 3,
+          "other_count": 0,
+          "base_counts": {
+            "A": 3,
+            "C": 5,
+            "G": 0,
+            "T": 0,
+            "N": 0
+          },
+          "alt_fraction": 0.375,
+          "ref_fraction": 0.625,
+          "alt_forward": 1,
+          "alt_reverse": 2,
+          "alt_median_original_base_quality": 9,
+          "alt_within_10bp_of_aligned_query_end": 0,
+          "alt_on_soft_clipped_alignment": 3,
+          "overlapping_mate_observations_collapsed": 0,
+          "conflicting_eligible_fragments_excluded": 0
+        }
+      },
+      "alignment_filters": {
+        "illumina": {
+          "alignments_overlapping_position": 150,
+          "below_mapping_quality": 45,
+          "excluded_alignment_flags": 19
+        },
+        "ont": {
+          "alignments_overlapping_position": 12,
+          "excluded_alignment_flags": 4
+        }
+      }
+    },
+    {
+      "chrom": "I",
+      "pos_1based": 2113,
+      "ref": "A",
+      "alt": "G",
+      "category": "illumina_only",
+      "illumina_gt": "0/1",
+      "ont_gt": "",
+      "views": {
+        "illumina_bq13": {
+          "min_base_quality": 13,
+          "depth": 60,
+          "ref_count": 48,
+          "alt_count": 12,
+          "other_count": 0,
+          "base_counts": {
+            "A": 48,
+            "C": 0,
+            "G": 12,
+            "T": 0,
+            "N": 0
+          },
+          "alt_fraction": 0.2,
+          "ref_fraction": 0.8,
+          "alt_forward": 9,
+          "alt_reverse": 3,
+          "alt_median_original_base_quality": 39.0,
+          "alt_within_10bp_of_aligned_query_end": 2,
+          "alt_on_soft_clipped_alignment": 2,
+          "overlapping_mate_observations_collapsed": 29,
+          "conflicting_eligible_fragments_excluded": 0
+        },
+        "ont_bq13": {
+          "min_base_quality": 13,
+          "depth": 1,
+          "ref_count": 0,
+          "alt_count": 1,
+          "other_count": 0,
+          "base_counts": {
+            "A": 0,
+            "C": 0,
+            "G": 1,
+            "T": 0,
+            "N": 0
+          },
+          "alt_fraction": 1.0,
+          "ref_fraction": 0.0,
+          "alt_forward": 1,
+          "alt_reverse": 0,
+          "alt_median_original_base_quality": 14,
+          "alt_within_10bp_of_aligned_query_end": 0,
+          "alt_on_soft_clipped_alignment": 1,
+          "overlapping_mate_observations_collapsed": 0,
+          "conflicting_eligible_fragments_excluded": 0
+        },
+        "ont_bq7": {
+          "min_base_quality": 7,
+          "depth": 8,
+          "ref_count": 5,
+          "alt_count": 3,
+          "other_count": 0,
+          "base_counts": {
+            "A": 5,
+            "C": 0,
+            "G": 3,
+            "T": 0,
+            "N": 0
+          },
+          "alt_fraction": 0.375,
+          "ref_fraction": 0.625,
+          "alt_forward": 2,
+          "alt_reverse": 1,
+          "alt_median_original_base_quality": 10,
+          "alt_within_10bp_of_aligned_query_end": 0,
+          "alt_on_soft_clipped_alignment": 3,
+          "overlapping_mate_observations_collapsed": 0,
+          "conflicting_eligible_fragments_excluded": 0
+        }
+      },
+      "alignment_filters": {
+        "illumina": {
+          "alignments_overlapping_position": 155,
+          "below_mapping_quality": 46,
+          "excluded_alignment_flags": 19
+        },
+        "ont": {
+          "alignments_overlapping_position": 12,
+          "excluded_alignment_flags": 4
+        }
+      }
+    },
+    {
+      "chrom": "I",
+      "pos_1based": 2146,
+      "ref": "G",
+      "alt": "A",
+      "category": "illumina_only",
+      "illumina_gt": "0/1",
+      "ont_gt": "",
+      "views": {
+        "illumina_bq13": {
+          "min_base_quality": 13,
+          "depth": 54,
+          "ref_count": 11,
+          "alt_count": 43,
+          "other_count": 0,
+          "base_counts": {
+            "A": 43,
+            "C": 0,
+            "G": 11,
+            "T": 0,
+            "N": 0
+          },
+          "alt_fraction": 0.7962962962962963,
+          "ref_fraction": 0.2037037037037037,
+          "alt_forward": 15,
+          "alt_reverse": 28,
+          "alt_median_original_base_quality": 40,
+          "alt_within_10bp_of_aligned_query_end": 4,
+          "alt_on_soft_clipped_alignment": 5,
+          "overlapping_mate_observations_collapsed": 28,
+          "conflicting_eligible_fragments_excluded": 0
+        },
+        "ont_bq13": {
+          "min_base_quality": 13,
+          "depth": 0,
+          "ref_count": 0,
+          "alt_count": 0,
+          "other_count": 0,
+          "base_counts": {
+            "A": 0,
+            "C": 0,
+            "G": 0,
+            "T": 0,
+            "N": 0
+          },
+          "alt_fraction": null,
+          "ref_fraction": null,
+          "alt_forward": 0,
+          "alt_reverse": 0,
+          "alt_median_original_base_quality": null,
+          "alt_within_10bp_of_aligned_query_end": 0,
+          "alt_on_soft_clipped_alignment": 0,
+          "overlapping_mate_observations_collapsed": 0,
+          "conflicting_eligible_fragments_excluded": 0
+        },
+        "ont_bq7": {
+          "min_base_quality": 7,
+          "depth": 8,
+          "ref_count": 6,
+          "alt_count": 1,
+          "other_count": 1,
+          "base_counts": {
+            "A": 1,
+            "C": 1,
+            "G": 6,
+            "T": 0,
+            "N": 0
+          },
+          "alt_fraction": 0.125,
+          "ref_fraction": 0.75,
+          "alt_forward": 0,
+          "alt_reverse": 1,
+          "alt_median_original_base_quality": 8,
+          "alt_within_10bp_of_aligned_query_end": 0,
+          "alt_on_soft_clipped_alignment": 1,
+          "overlapping_mate_observations_collapsed": 0,
+          "conflicting_eligible_fragments_excluded": 0
+        }
+      },
+      "alignment_filters": {
+        "illumina": {
+          "alignments_overlapping_position": 135,
+          "below_mapping_quality": 44,
+          "excluded_alignment_flags": 8
+        },
+        "ont": {
+          "alignments_overlapping_position": 12,
+          "excluded_alignment_flags": 4
+        }
+      }
+    },
+    {
+      "chrom": "I",
+      "pos_1based": 2533,
+      "ref": "G",
+      "alt": "T",
+      "category": "shared",
+      "illumina_gt": "0/1",
+      "ont_gt": "1/1",
+      "views": {
+        "illumina_bq13": {
+          "min_base_quality": 13,
+          "depth": 14,
+          "ref_count": 6,
+          "alt_count": 8,
+          "other_count": 0,
+          "base_counts": {
+            "A": 0,
+            "C": 0,
+            "G": 6,
+            "T": 8,
+            "N": 0
+          },
+          "alt_fraction": 0.5714285714285714,
+          "ref_fraction": 0.42857142857142855,
+          "alt_forward": 5,
+          "alt_reverse": 3,
+          "alt_median_original_base_quality": 39.0,
+          "alt_within_10bp_of_aligned_query_end": 0,
+          "alt_on_soft_clipped_alignment": 5,
+          "overlapping_mate_observations_collapsed": 4,
+          "conflicting_eligible_fragments_excluded": 0
+        },
+        "ont_bq13": {
+          "min_base_quality": 13,
+          "depth": 2,
+          "ref_count": 0,
+          "alt_count": 2,
+          "other_count": 0,
+          "base_counts": {
+            "A": 0,
+            "C": 0,
+            "G": 0,
+            "T": 2,
+            "N": 0
+          },
+          "alt_fraction": 1.0,
+          "ref_fraction": 0.0,
+          "alt_forward": 1,
+          "alt_reverse": 1,
+          "alt_median_original_base_quality": 16.5,
+          "alt_within_10bp_of_aligned_query_end": 0,
+          "alt_on_soft_clipped_alignment": 2,
+          "overlapping_mate_observations_collapsed": 0,
+          "conflicting_eligible_fragments_excluded": 0
+        },
+        "ont_bq7": {
+          "min_base_quality": 7,
+          "depth": 8,
+          "ref_count": 0,
+          "alt_count": 8,
+          "other_count": 0,
+          "base_counts": {
+            "A": 0,
+            "C": 0,
+            "G": 0,
+            "T": 8,
+            "N": 0
+          },
+          "alt_fraction": 1.0,
+          "ref_fraction": 0.0,
+          "alt_forward": 3,
+          "alt_reverse": 5,
+          "alt_median_original_base_quality": 10.0,
+          "alt_within_10bp_of_aligned_query_end": 0,
+          "alt_on_soft_clipped_alignment": 8,
+          "overlapping_mate_observations_collapsed": 0,
+          "conflicting_eligible_fragments_excluded": 0
+        }
+      },
+      "alignment_filters": {
+        "illumina": {
+          "alignments_overlapping_position": 26,
+          "below_mapping_quality": 8
+        },
+        "ont": {
+          "alignments_overlapping_position": 10,
+          "excluded_alignment_flags": 1,
+          "deletion_or_refskip": 1
+        }
+      }
+    },
+    {
+      "chrom": "I",
+      "pos_1based": 6001,
+      "ref": "A",
+      "alt": "G",
+      "category": "shared",
+      "illumina_gt": "1/1",
+      "ont_gt": "1/1",
+      "views": {
+        "illumina_bq13": {
+          "min_base_quality": 13,
+          "depth": 71,
+          "ref_count": 1,
+          "alt_count": 70,
+          "other_count": 0,
+          "base_counts": {
+            "A": 1,
+            "C": 0,
+            "G": 70,
+            "T": 0,
+            "N": 0
+          },
+          "alt_fraction": 0.9859154929577465,
+          "ref_fraction": 0.014084507042253521,
+          "alt_forward": 43,
+          "alt_reverse": 27,
+          "alt_median_original_base_quality": 39.5,
+          "alt_within_10bp_of_aligned_query_end": 8,
+          "alt_on_soft_clipped_alignment": 9,
+          "overlapping_mate_observations_collapsed": 15,
+          "conflicting_eligible_fragments_excluded": 1
+        },
+        "ont_bq13": {
+          "min_base_quality": 13,
+          "depth": 2,
+          "ref_count": 0,
+          "alt_count": 2,
+          "other_count": 0,
+          "base_counts": {
+            "A": 0,
+            "C": 0,
+            "G": 2,
+            "T": 0,
+            "N": 0
+          },
+          "alt_fraction": 1.0,
+          "ref_fraction": 0.0,
+          "alt_forward": 2,
+          "alt_reverse": 0,
+          "alt_median_original_base_quality": 15.0,
+          "alt_within_10bp_of_aligned_query_end": 0,
+          "alt_on_soft_clipped_alignment": 2,
+          "overlapping_mate_observations_collapsed": 0,
+          "conflicting_eligible_fragments_excluded": 0
+        },
+        "ont_bq7": {
+          "min_base_quality": 7,
+          "depth": 10,
+          "ref_count": 0,
+          "alt_count": 10,
+          "other_count": 0,
+          "base_counts": {
+            "A": 0,
+            "C": 0,
+            "G": 10,
+            "T": 0,
+            "N": 0
+          },
+          "alt_fraction": 1.0,
+          "ref_fraction": 0.0,
+          "alt_forward": 3,
+          "alt_reverse": 7,
+          "alt_median_original_base_quality": 10.0,
+          "alt_within_10bp_of_aligned_query_end": 0,
+          "alt_on_soft_clipped_alignment": 10,
+          "overlapping_mate_observations_collapsed": 0,
+          "conflicting_eligible_fragments_excluded": 0
+        }
+      },
+      "alignment_filters": {
+        "illumina": {
+          "alignments_overlapping_position": 91
+        },
+        "ont": {
+          "alignments_overlapping_position": 12,
+          "deletion_or_refskip": 2
+        }
+      }
+    },
+    {
+      "chrom": "I",
+      "pos_1based": 27027,
+      "ref": "A",
+      "alt": "T",
+      "category": "shared",
+      "illumina_gt": "1/1",
+      "ont_gt": "1/1",
+      "views": {
+        "illumina_bq13": {
+          "min_base_quality": 13,
+          "depth": 41,
+          "ref_count": 1,
+          "alt_count": 40,
+          "other_count": 0,
+          "base_counts": {
+            "A": 1,
+            "C": 0,
+            "G": 0,
+            "T": 40,
+            "N": 0
+          },
+          "alt_fraction": 0.975609756097561,
+          "ref_fraction": 0.024390243902439025,
+          "alt_forward": 27,
+          "alt_reverse": 13,
+          "alt_median_original_base_quality": 40.0,
+          "alt_within_10bp_of_aligned_query_end": 4,
+          "alt_on_soft_clipped_alignment": 22,
+          "overlapping_mate_observations_collapsed": 14,
+          "conflicting_eligible_fragments_excluded": 0
+        },
+        "ont_bq13": {
+          "min_base_quality": 13,
+          "depth": 3,
+          "ref_count": 0,
+          "alt_count": 3,
+          "other_count": 0,
+          "base_counts": {
+            "A": 0,
+            "C": 0,
+            "G": 0,
+            "T": 3,
+            "N": 0
+          },
+          "alt_fraction": 1.0,
+          "ref_fraction": 0.0,
+          "alt_forward": 1,
+          "alt_reverse": 2,
+          "alt_median_original_base_quality": 14,
+          "alt_within_10bp_of_aligned_query_end": 0,
+          "alt_on_soft_clipped_alignment": 3,
+          "overlapping_mate_observations_collapsed": 0,
+          "conflicting_eligible_fragments_excluded": 0
+        },
+        "ont_bq7": {
+          "min_base_quality": 7,
+          "depth": 14,
+          "ref_count": 1,
+          "alt_count": 13,
+          "other_count": 0,
+          "base_counts": {
+            "A": 1,
+            "C": 0,
+            "G": 0,
+            "T": 13,
+            "N": 0
+          },
+          "alt_fraction": 0.9285714285714286,
+          "ref_fraction": 0.07142857142857142,
+          "alt_forward": 5,
+          "alt_reverse": 8,
+          "alt_median_original_base_quality": 10,
+          "alt_within_10bp_of_aligned_query_end": 0,
+          "alt_on_soft_clipped_alignment": 13,
+          "overlapping_mate_observations_collapsed": 0,
+          "conflicting_eligible_fragments_excluded": 0
+        }
+      },
+      "alignment_filters": {
+        "illumina": {
+          "alignments_overlapping_position": 207,
+          "below_mapping_quality": 129,
+          "excluded_alignment_flags": 23
+        },
+        "ont": {
+          "alignments_overlapping_position": 18,
+          "excluded_alignment_flags": 4
+        }
+      }
+    },
+    {
+      "chrom": "I",
+      "pos_1based": 27031,
+      "ref": "C",
+      "alt": "T",
+      "category": "shared",
+      "illumina_gt": "1/1",
+      "ont_gt": "1/1",
+      "views": {
+        "illumina_bq13": {
+          "min_base_quality": 13,
+          "depth": 40,
+          "ref_count": 1,
+          "alt_count": 39,
+          "other_count": 0,
+          "base_counts": {
+            "A": 0,
+            "C": 1,
+            "G": 0,
+            "T": 39,
+            "N": 0
+          },
+          "alt_fraction": 0.975,
+          "ref_fraction": 0.025,
+          "alt_forward": 26,
+          "alt_reverse": 13,
+          "alt_median_original_base_quality": 40,
+          "alt_within_10bp_of_aligned_query_end": 1,
+          "alt_on_soft_clipped_alignment": 21,
+          "overlapping_mate_observations_collapsed": 13,
+          "conflicting_eligible_fragments_excluded": 1
+        },
+        "ont_bq13": {
+          "min_base_quality": 13,
+          "depth": 4,
+          "ref_count": 0,
+          "alt_count": 4,
+          "other_count": 0,
+          "base_counts": {
+            "A": 0,
+            "C": 0,
+            "G": 0,
+            "T": 4,
+            "N": 0
+          },
+          "alt_fraction": 1.0,
+          "ref_fraction": 0.0,
+          "alt_forward": 2,
+          "alt_reverse": 2,
+          "alt_median_original_base_quality": 16.5,
+          "alt_within_10bp_of_aligned_query_end": 0,
+          "alt_on_soft_clipped_alignment": 4,
+          "overlapping_mate_observations_collapsed": 0,
+          "conflicting_eligible_fragments_excluded": 0
+        },
+        "ont_bq7": {
+          "min_base_quality": 7,
+          "depth": 11,
+          "ref_count": 3,
+          "alt_count": 8,
+          "other_count": 0,
+          "base_counts": {
+            "A": 0,
+            "C": 3,
+            "G": 0,
+            "T": 8,
+            "N": 0
+          },
+          "alt_fraction": 0.7272727272727273,
+          "ref_fraction": 0.2727272727272727,
+          "alt_forward": 4,
+          "alt_reverse": 4,
+          "alt_median_original_base_quality": 14.0,
+          "alt_within_10bp_of_aligned_query_end": 0,
+          "alt_on_soft_clipped_alignment": 8,
+          "overlapping_mate_observations_collapsed": 0,
+          "conflicting_eligible_fragments_excluded": 0
+        }
+      },
+      "alignment_filters": {
+        "illumina": {
+          "alignments_overlapping_position": 204,
+          "below_mapping_quality": 126,
+          "excluded_alignment_flags": 23
+        },
+        "ont": {
+          "alignments_overlapping_position": 18,
+          "excluded_alignment_flags": 4,
+          "deletion_or_refskip": 3
+        }
+      }
+    },
+    {
+      "chrom": "I",
+      "pos_1based": 27036,
+      "ref": "G",
+      "alt": "A",
+      "category": "shared",
+      "illumina_gt": "1/1",
+      "ont_gt": "1/1",
+      "views": {
+        "illumina_bq13": {
+          "min_base_quality": 13,
+          "depth": 40,
+          "ref_count": 1,
+          "alt_count": 39,
+          "other_count": 0,
+          "base_counts": {
+            "A": 39,
+            "C": 0,
+            "G": 1,
+            "T": 0,
+            "N": 0
+          },
+          "alt_fraction": 0.975,
+          "ref_fraction": 0.025,
+          "alt_forward": 27,
+          "alt_reverse": 12,
+          "alt_median_original_base_quality": 40,
+          "alt_within_10bp_of_aligned_query_end": 0,
+          "alt_on_soft_clipped_alignment": 21,
+          "overlapping_mate_observations_collapsed": 13,
+          "conflicting_eligible_fragments_excluded": 1
+        },
+        "ont_bq13": {
+          "min_base_quality": 13,
+          "depth": 5,
+          "ref_count": 0,
+          "alt_count": 5,
+          "other_count": 0,
+          "base_counts": {
+            "A": 5,
+            "C": 0,
+            "G": 0,
+            "T": 0,
+            "N": 0
+          },
+          "alt_fraction": 1.0,
+          "ref_fraction": 0.0,
+          "alt_forward": 3,
+          "alt_reverse": 2,
+          "alt_median_original_base_quality": 15,
+          "alt_within_10bp_of_aligned_query_end": 0,
+          "alt_on_soft_clipped_alignment": 5,
+          "overlapping_mate_observations_collapsed": 0,
+          "conflicting_eligible_fragments_excluded": 0
+        },
+        "ont_bq7": {
+          "min_base_quality": 7,
+          "depth": 13,
+          "ref_count": 3,
+          "alt_count": 10,
+          "other_count": 0,
+          "base_counts": {
+            "A": 10,
+            "C": 0,
+            "G": 3,
+            "T": 0,
+            "N": 0
+          },
+          "alt_fraction": 0.7692307692307693,
+          "ref_fraction": 0.23076923076923078,
+          "alt_forward": 5,
+          "alt_reverse": 5,
+          "alt_median_original_base_quality": 12.5,
+          "alt_within_10bp_of_aligned_query_end": 0,
+          "alt_on_soft_clipped_alignment": 10,
+          "overlapping_mate_observations_collapsed": 0,
+          "conflicting_eligible_fragments_excluded": 0
+        }
+      },
+      "alignment_filters": {
+        "illumina": {
+          "alignments_overlapping_position": 199,
+          "below_mapping_quality": 121,
+          "excluded_alignment_flags": 23
+        },
+        "ont": {
+          "alignments_overlapping_position": 18,
+          "excluded_alignment_flags": 4,
+          "deletion_or_refskip": 1
+        }
+      }
+    },
+    {
+      "chrom": "I",
+      "pos_1based": 27486,
+      "ref": "G",
+      "alt": "A",
+      "category": "ont_only",
+      "illumina_gt": "",
+      "ont_gt": "1/1",
+      "views": {
+        "illumina_bq13": {
+          "min_base_quality": 13,
+          "depth": 3,
+          "ref_count": 0,
+          "alt_count": 3,
+          "other_count": 0,
+          "base_counts": {
+            "A": 3,
+            "C": 0,
+            "G": 0,
+            "T": 0,
+            "N": 0
+          },
+          "alt_fraction": 1.0,
+          "ref_fraction": 0.0,
+          "alt_forward": 1,
+          "alt_reverse": 2,
+          "alt_median_original_base_quality": 37,
+          "alt_within_10bp_of_aligned_query_end": 1,
+          "alt_on_soft_clipped_alignment": 0,
+          "overlapping_mate_observations_collapsed": 1,
+          "conflicting_eligible_fragments_excluded": 0
+        },
+        "ont_bq13": {
+          "min_base_quality": 13,
+          "depth": 4,
+          "ref_count": 0,
+          "alt_count": 4,
+          "other_count": 0,
+          "base_counts": {
+            "A": 4,
+            "C": 0,
+            "G": 0,
+            "T": 0,
+            "N": 0
+          },
+          "alt_fraction": 1.0,
+          "ref_fraction": 0.0,
+          "alt_forward": 2,
+          "alt_reverse": 2,
+          "alt_median_original_base_quality": 14.0,
+          "alt_within_10bp_of_aligned_query_end": 0,
+          "alt_on_soft_clipped_alignment": 4,
+          "overlapping_mate_observations_collapsed": 0,
+          "conflicting_eligible_fragments_excluded": 0
+        },
+        "ont_bq7": {
+          "min_base_quality": 7,
+          "depth": 15,
+          "ref_count": 1,
+          "alt_count": 14,
+          "other_count": 0,
+          "base_counts": {
+            "A": 14,
+            "C": 0,
+            "G": 1,
+            "T": 0,
+            "N": 0
+          },
+          "alt_fraction": 0.9333333333333333,
+          "ref_fraction": 0.06666666666666667,
+          "alt_forward": 6,
+          "alt_reverse": 8,
+          "alt_median_original_base_quality": 10.0,
+          "alt_within_10bp_of_aligned_query_end": 0,
+          "alt_on_soft_clipped_alignment": 14,
+          "overlapping_mate_observations_collapsed": 0,
+          "conflicting_eligible_fragments_excluded": 0
+        }
+      },
+      "alignment_filters": {
+        "illumina": {
+          "alignments_overlapping_position": 5,
+          "below_mapping_quality": 1
+        },
+        "ont": {
+          "alignments_overlapping_position": 16,
+          "excluded_alignment_flags": 1
+        }
+      }
+    },
+    {
+      "chrom": "III",
+      "pos_1based": 105658,
+      "ref": "A",
+      "alt": "T",
+      "category": "ont_only",
+      "illumina_gt": "",
+      "ont_gt": "0/1",
+      "views": {
+        "illumina_bq13": {
+          "min_base_quality": 13,
+          "depth": 40,
+          "ref_count": 40,
+          "alt_count": 0,
+          "other_count": 0,
+          "base_counts": {
+            "A": 40,
+            "C": 0,
+            "G": 0,
+            "T": 0,
+            "N": 0
+          },
+          "alt_fraction": 0.0,
+          "ref_fraction": 1.0,
+          "alt_forward": 0,
+          "alt_reverse": 0,
+          "alt_median_original_base_quality": null,
+          "alt_within_10bp_of_aligned_query_end": 0,
+          "alt_on_soft_clipped_alignment": 0,
+          "overlapping_mate_observations_collapsed": 19,
+          "conflicting_eligible_fragments_excluded": 0
+        },
+        "ont_bq13": {
+          "min_base_quality": 13,
+          "depth": 7,
+          "ref_count": 1,
+          "alt_count": 6,
+          "other_count": 0,
+          "base_counts": {
+            "A": 1,
+            "C": 0,
+            "G": 0,
+            "T": 6,
+            "N": 0
+          },
+          "alt_fraction": 0.8571428571428571,
+          "ref_fraction": 0.14285714285714285,
+          "alt_forward": 2,
+          "alt_reverse": 4,
+          "alt_median_original_base_quality": 21.0,
+          "alt_within_10bp_of_aligned_query_end": 0,
+          "alt_on_soft_clipped_alignment": 6,
+          "overlapping_mate_observations_collapsed": 0,
+          "conflicting_eligible_fragments_excluded": 0
+        },
+        "ont_bq7": {
+          "min_base_quality": 7,
+          "depth": 10,
+          "ref_count": 3,
+          "alt_count": 7,
+          "other_count": 0,
+          "base_counts": {
+            "A": 3,
+            "C": 0,
+            "G": 0,
+            "T": 7,
+            "N": 0
+          },
+          "alt_fraction": 0.7,
+          "ref_fraction": 0.3,
+          "alt_forward": 3,
+          "alt_reverse": 4,
+          "alt_median_original_base_quality": 20,
+          "alt_within_10bp_of_aligned_query_end": 0,
+          "alt_on_soft_clipped_alignment": 7,
+          "overlapping_mate_observations_collapsed": 0,
+          "conflicting_eligible_fragments_excluded": 0
+        }
+      },
+      "alignment_filters": {
+        "illumina": {
+          "alignments_overlapping_position": 59
+        },
+        "ont": {
+          "alignments_overlapping_position": 10
+        }
+      }
+    },
+    {
+      "chrom": "IV",
+      "pos_1based": 308249,
+      "ref": "T",
+      "alt": "C",
+      "category": "ont_only",
+      "illumina_gt": "",
+      "ont_gt": "1/1",
+      "views": {
+        "illumina_bq13": {
+          "min_base_quality": 13,
+          "depth": 52,
+          "ref_count": 52,
+          "alt_count": 0,
+          "other_count": 0,
+          "base_counts": {
+            "A": 0,
+            "C": 0,
+            "G": 0,
+            "T": 52,
+            "N": 0
+          },
+          "alt_fraction": 0.0,
+          "ref_fraction": 1.0,
+          "alt_forward": 0,
+          "alt_reverse": 0,
+          "alt_median_original_base_quality": null,
+          "alt_within_10bp_of_aligned_query_end": 0,
+          "alt_on_soft_clipped_alignment": 0,
+          "overlapping_mate_observations_collapsed": 16,
+          "conflicting_eligible_fragments_excluded": 0
+        },
+        "ont_bq13": {
+          "min_base_quality": 13,
+          "depth": 5,
+          "ref_count": 0,
+          "alt_count": 5,
+          "other_count": 0,
+          "base_counts": {
+            "A": 0,
+            "C": 5,
+            "G": 0,
+            "T": 0,
+            "N": 0
+          },
+          "alt_fraction": 1.0,
+          "ref_fraction": 0.0,
+          "alt_forward": 3,
+          "alt_reverse": 2,
+          "alt_median_original_base_quality": 15,
+          "alt_within_10bp_of_aligned_query_end": 0,
+          "alt_on_soft_clipped_alignment": 5,
+          "overlapping_mate_observations_collapsed": 0,
+          "conflicting_eligible_fragments_excluded": 0
+        },
+        "ont_bq7": {
+          "min_base_quality": 7,
+          "depth": 13,
+          "ref_count": 0,
+          "alt_count": 12,
+          "other_count": 1,
+          "base_counts": {
+            "A": 1,
+            "C": 12,
+            "G": 0,
+            "T": 0,
+            "N": 0
+          },
+          "alt_fraction": 0.9230769230769231,
+          "ref_fraction": 0.0,
+          "alt_forward": 7,
+          "alt_reverse": 5,
+          "alt_median_original_base_quality": 10.5,
+          "alt_within_10bp_of_aligned_query_end": 0,
+          "alt_on_soft_clipped_alignment": 12,
+          "overlapping_mate_observations_collapsed": 0,
+          "conflicting_eligible_fragments_excluded": 0
+        }
+      },
+      "alignment_filters": {
+        "illumina": {
+          "alignments_overlapping_position": 69
+        },
+        "ont": {
+          "alignments_overlapping_position": 18,
+          "deletion_or_refskip": 5
+        }
+      }
+    },
+    {
+      "chrom": "IV",
+      "pos_1based": 1364942,
+      "ref": "C",
+      "alt": "T",
+      "category": "ont_only",
+      "illumina_gt": "",
+      "ont_gt": "1/1",
+      "views": {
+        "illumina_bq13": {
+          "min_base_quality": 13,
+          "depth": 26,
+          "ref_count": 1,
+          "alt_count": 25,
+          "other_count": 0,
+          "base_counts": {
+            "A": 0,
+            "C": 1,
+            "G": 0,
+            "T": 25,
+            "N": 0
+          },
+          "alt_fraction": 0.9615384615384616,
+          "ref_fraction": 0.038461538461538464,
+          "alt_forward": 10,
+          "alt_reverse": 15,
+          "alt_median_original_base_quality": 39,
+          "alt_within_10bp_of_aligned_query_end": 0,
+          "alt_on_soft_clipped_alignment": 0,
+          "overlapping_mate_observations_collapsed": 3,
+          "conflicting_eligible_fragments_excluded": 0
+        },
+        "ont_bq13": {
+          "min_base_quality": 13,
+          "depth": 4,
+          "ref_count": 0,
+          "alt_count": 4,
+          "other_count": 0,
+          "base_counts": {
+            "A": 0,
+            "C": 0,
+            "G": 0,
+            "T": 4,
+            "N": 0
+          },
+          "alt_fraction": 1.0,
+          "ref_fraction": 0.0,
+          "alt_forward": 3,
+          "alt_reverse": 1,
+          "alt_median_original_base_quality": 14.5,
+          "alt_within_10bp_of_aligned_query_end": 0,
+          "alt_on_soft_clipped_alignment": 4,
+          "overlapping_mate_observations_collapsed": 0,
+          "conflicting_eligible_fragments_excluded": 0
+        },
+        "ont_bq7": {
+          "min_base_quality": 7,
+          "depth": 8,
+          "ref_count": 0,
+          "alt_count": 8,
+          "other_count": 0,
+          "base_counts": {
+            "A": 0,
+            "C": 0,
+            "G": 0,
+            "T": 8,
+            "N": 0
+          },
+          "alt_fraction": 1.0,
+          "ref_fraction": 0.0,
+          "alt_forward": 5,
+          "alt_reverse": 3,
+          "alt_median_original_base_quality": 12.5,
+          "alt_within_10bp_of_aligned_query_end": 0,
+          "alt_on_soft_clipped_alignment": 8,
+          "overlapping_mate_observations_collapsed": 0,
+          "conflicting_eligible_fragments_excluded": 0
+        }
+      },
+      "alignment_filters": {
+        "illumina": {
+          "alignments_overlapping_position": 29
+        },
+        "ont": {
+          "alignments_overlapping_position": 8
+        }
+      }
+    },
+    {
+      "chrom": "IX",
+      "pos_1based": 37309,
+      "ref": "A",
+      "alt": "G",
+      "category": "ont_only",
+      "illumina_gt": "",
+      "ont_gt": "1/1",
+      "views": {
+        "illumina_bq13": {
+          "min_base_quality": 13,
+          "depth": 49,
+          "ref_count": 0,
+          "alt_count": 48,
+          "other_count": 1,
+          "base_counts": {
+            "A": 0,
+            "C": 0,
+            "G": 48,
+            "T": 1,
+            "N": 0
+          },
+          "alt_fraction": 0.9795918367346939,
+          "ref_fraction": 0.0,
+          "alt_forward": 19,
+          "alt_reverse": 29,
+          "alt_median_original_base_quality": 38.0,
+          "alt_within_10bp_of_aligned_query_end": 2,
+          "alt_on_soft_clipped_alignment": 26,
+          "overlapping_mate_observations_collapsed": 7,
+          "conflicting_eligible_fragments_excluded": 0
+        },
+        "ont_bq13": {
+          "min_base_quality": 13,
+          "depth": 5,
+          "ref_count": 0,
+          "alt_count": 5,
+          "other_count": 0,
+          "base_counts": {
+            "A": 0,
+            "C": 0,
+            "G": 5,
+            "T": 0,
+            "N": 0
+          },
+          "alt_fraction": 1.0,
+          "ref_fraction": 0.0,
+          "alt_forward": 3,
+          "alt_reverse": 2,
+          "alt_median_original_base_quality": 14,
+          "alt_within_10bp_of_aligned_query_end": 0,
+          "alt_on_soft_clipped_alignment": 5,
+          "overlapping_mate_observations_collapsed": 0,
+          "conflicting_eligible_fragments_excluded": 0
+        },
+        "ont_bq7": {
+          "min_base_quality": 7,
+          "depth": 13,
+          "ref_count": 0,
+          "alt_count": 13,
+          "other_count": 0,
+          "base_counts": {
+            "A": 0,
+            "C": 0,
+            "G": 13,
+            "T": 0,
+            "N": 0
+          },
+          "alt_fraction": 1.0,
+          "ref_fraction": 0.0,
+          "alt_forward": 8,
+          "alt_reverse": 5,
+          "alt_median_original_base_quality": 12,
+          "alt_within_10bp_of_aligned_query_end": 0,
+          "alt_on_soft_clipped_alignment": 13,
+          "overlapping_mate_observations_collapsed": 0,
+          "conflicting_eligible_fragments_excluded": 0
+        }
+      },
+      "alignment_filters": {
+        "illumina": {
+          "alignments_overlapping_position": 68,
+          "deletion_or_refskip": 6
+        },
+        "ont": {
+          "alignments_overlapping_position": 14,
+          "deletion_or_refskip": 1
+        }
+      }
+    }
+  ]
+}

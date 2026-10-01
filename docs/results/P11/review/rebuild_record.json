@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-01",
+  "source_commit": "05564004160f2f072ee35cc9400da6fd3e4f213e",
+  "input_manifest": "config/P11.downloads.json",
+  "alignment_environment": "docs/results/P11/environment-linux-64.explicit.txt",
+  "preparation": "25% paired Illumina, seed 20261001; historical ONT twodirections pass and fail",
+  "alignment_commands": "Existing workflow: BWA-MEM/fixmate/markdup for Illumina; minimap2 map-ont/samtools sort for ONT; four mapping threads",
+  "local_execution_note": "Resource benchmark directives omitted because managed child PIDs are not visible to psutil. Scientific commands unchanged; no runtime/resource benchmark claimed.",
+  "visual_review_status": "not_performed",
+  "prepared_sha256": {
+    "P11.R1.fastq.gz": "7517e77ffc3d2f0bc6cb8a127df000167d6c5365c1423e9143833d511f0ee9ea",
+    "P11.R2.fastq.gz": "c84e4b018f13d639d90071aca4612d0bcf9cc48cacc75fc13410ae8dc4478464",
+    "P11.ont.fastq.gz": "d80dc2882e928c17aa2e222769ab41735eeacc5f2f4356ccb472a83e38bbba89"
+  },
+  "prepared_fingerprints_match_previous_analysis": true,
+  "validation": {
+    "unit_tests_passed": 19,
+    "synthetic_read_support_integration": "passed: three planted alternate SNPs, depth >=8 and alternate fraction >0.95 in all three views"
+  },
+  "bam_quickcheck": "passed for both BAMs",
+  "reference_sha256_matches_previous_analysis": true,
+  "igv_xml_and_resource_paths": "validated; IGV GUI loading not tested",
+  "plot": {
+    "matplotlib_version": "3.10.8",
+    "script_sha256": "550f8ca85dbf27409cbb1d349d1e77b698ce8f32dc3d8885f6e10b90415b1d3d"
+  }
+}

@@ -1,0 +1,16 @@
+chrom	pos_1based	ref	alt	category	reviewer	review_date	igv_version	visual_status	notes	snapshot_filename
+I	2017	G	A	illumina_only				not_reviewed		
+I	2062	C	T	illumina_only				not_reviewed		
+I	2068	C	A	illumina_only				not_reviewed		
+I	2113	A	G	illumina_only				not_reviewed		
+I	2146	G	A	illumina_only				not_reviewed		
+I	2533	G	T	shared				not_reviewed		
+I	6001	A	G	shared				not_reviewed		
+I	27027	A	T	shared				not_reviewed		
+I	27031	C	T	shared				not_reviewed		
+I	27036	G	A	shared				not_reviewed		
+I	27486	G	A	ont_only				not_reviewed		
+III	105658	A	T	ont_only				not_reviewed		
+IV	308249	T	C	ont_only				not_reviewed		
+IV	1364942	C	T	ont_only				not_reviewed		
+IX	37309	A	G	ont_only				not_reviewed		

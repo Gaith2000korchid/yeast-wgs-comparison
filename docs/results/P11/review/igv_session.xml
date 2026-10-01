@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Session genome="../../../../data/real/reference.fa" locus="I:1917-2117" version="3">
+  <Resources>
+    <Resource name="Illumina" path="../../../../results/P11/bam/P11.illumina.bam" index="../../../../results/P11/bam/P11.illumina.bam.bai" />
+    <Resource name="ONT historical consensus 2D" path="../../../../results/P11/bam/P11.ont.bam" index="../../../../results/P11/bam/P11.ont.bam.bai" />
+  </Resources>
+</Session>

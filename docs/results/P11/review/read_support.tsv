@@ -1,0 +1,46 @@
+chrom	pos_1based	ref	alt	category	illumina_gt	ont_gt	view	min_base_quality	depth	ref_count	alt_count	other_count	alt_fraction	alt_forward	alt_reverse	alt_median_original_base_quality	alt_within_10bp_of_aligned_query_end	alt_on_soft_clipped_alignment	overlapping_mate_observations_collapsed	conflicting_eligible_fragments_excluded
+I	2017	G	A	illumina_only	0/1		illumina_bq13	13	49	34	15	0	0.30612244897959184	3	12	39	2	0	26	0
+I	2017	G	A	illumina_only	0/1		ont_bq13	13	1	1	0	0	0.0	0	0		0	0	0	0
+I	2017	G	A	illumina_only	0/1		ont_bq7	7	8	8	0	0	0.0	0	0		0	0	0	0
+I	2062	C	T	illumina_only	0/1		illumina_bq13	13	52	42	9	1	0.17307692307692307	2	7	39	0	0	33	0
+I	2062	C	T	illumina_only	0/1		ont_bq13	13	0	0	0	0		0	0		0	0	0	0
+I	2062	C	T	illumina_only	0/1		ont_bq7	7	8	6	0	2	0.0	0	0		0	0	0	0
+I	2068	C	A	illumina_only	0/1		illumina_bq13	13	52	41	11	0	0.21153846153846154	3	8	39	0	0	34	0
+I	2068	C	A	illumina_only	0/1		ont_bq13	13	1	0	1	0	1.0	1	0	13	0	1	0	0
+I	2068	C	A	illumina_only	0/1		ont_bq7	7	8	5	3	0	0.375	1	2	9	0	3	0	0
+I	2113	A	G	illumina_only	0/1		illumina_bq13	13	60	48	12	0	0.2	9	3	39.0	2	2	29	0
+I	2113	A	G	illumina_only	0/1		ont_bq13	13	1	0	1	0	1.0	1	0	14	0	1	0	0
+I	2113	A	G	illumina_only	0/1		ont_bq7	7	8	5	3	0	0.375	2	1	10	0	3	0	0
+I	2146	G	A	illumina_only	0/1		illumina_bq13	13	54	11	43	0	0.7962962962962963	15	28	40	4	5	28	0
+I	2146	G	A	illumina_only	0/1		ont_bq13	13	0	0	0	0		0	0		0	0	0	0
+I	2146	G	A	illumina_only	0/1		ont_bq7	7	8	6	1	1	0.125	0	1	8	0	1	0	0
+I	2533	G	T	shared	0/1	1/1	illumina_bq13	13	14	6	8	0	0.5714285714285714	5	3	39.0	0	5	4	0
+I	2533	G	T	shared	0/1	1/1	ont_bq13	13	2	0	2	0	1.0	1	1	16.5	0	2	0	0
+I	2533	G	T	shared	0/1	1/1	ont_bq7	7	8	0	8	0	1.0	3	5	10.0	0	8	0	0
+I	6001	A	G	shared	1/1	1/1	illumina_bq13	13	71	1	70	0	0.9859154929577465	43	27	39.5	8	9	15	1
+I	6001	A	G	shared	1/1	1/1	ont_bq13	13	2	0	2	0	1.0	2	0	15.0	0	2	0	0
+I	6001	A	G	shared	1/1	1/1	ont_bq7	7	10	0	10	0	1.0	3	7	10.0	0	10	0	0
+I	27027	A	T	shared	1/1	1/1	illumina_bq13	13	41	1	40	0	0.975609756097561	27	13	40.0	4	22	14	0
+I	27027	A	T	shared	1/1	1/1	ont_bq13	13	3	0	3	0	1.0	1	2	14	0	3	0	0
+I	27027	A	T	shared	1/1	1/1	ont_bq7	7	14	1	13	0	0.9285714285714286	5	8	10	0	13	0	0
+I	27031	C	T	shared	1/1	1/1	illumina_bq13	13	40	1	39	0	0.975	26	13	40	1	21	13	1
+I	27031	C	T	shared	1/1	1/1	ont_bq13	13	4	0	4	0	1.0	2	2	16.5	0	4	0	0
+I	27031	C	T	shared	1/1	1/1	ont_bq7	7	11	3	8	0	0.7272727272727273	4	4	14.0	0	8	0	0
+I	27036	G	A	shared	1/1	1/1	illumina_bq13	13	40	1	39	0	0.975	27	12	40	0	21	13	1
+I	27036	G	A	shared	1/1	1/1	ont_bq13	13	5	0	5	0	1.0	3	2	15	0	5	0	0
+I	27036	G	A	shared	1/1	1/1	ont_bq7	7	13	3	10	0	0.7692307692307693	5	5	12.5	0	10	0	0
+I	27486	G	A	ont_only		1/1	illumina_bq13	13	3	0	3	0	1.0	1	2	37	1	0	1	0
+I	27486	G	A	ont_only		1/1	ont_bq13	13	4	0	4	0	1.0	2	2	14.0	0	4	0	0
+I	27486	G	A	ont_only		1/1	ont_bq7	7	15	1	14	0	0.9333333333333333	6	8	10.0	0	14	0	0
+III	105658	A	T	ont_only		0/1	illumina_bq13	13	40	40	0	0	0.0	0	0		0	0	19	0
+III	105658	A	T	ont_only		0/1	ont_bq13	13	7	1	6	0	0.8571428571428571	2	4	21.0	0	6	0	0
+III	105658	A	T	ont_only		0/1	ont_bq7	7	10	3	7	0	0.7	3	4	20	0	7	0	0
+IV	308249	T	C	ont_only		1/1	illumina_bq13	13	52	52	0	0	0.0	0	0		0	0	16	0
+IV	308249	T	C	ont_only		1/1	ont_bq13	13	5	0	5	0	1.0	3	2	15	0	5	0	0
+IV	308249	T	C	ont_only		1/1	ont_bq7	7	13	0	12	1	0.9230769230769231	7	5	10.5	0	12	0	0
+IV	1364942	C	T	ont_only		1/1	illumina_bq13	13	26	1	25	0	0.9615384615384616	10	15	39	0	0	3	0
+IV	1364942	C	T	ont_only		1/1	ont_bq13	13	4	0	4	0	1.0	3	1	14.5	0	4	0	0
+IV	1364942	C	T	ont_only		1/1	ont_bq7	7	8	0	8	0	1.0	5	3	12.5	0	8	0	0
+IX	37309	A	G	ont_only		1/1	illumina_bq13	13	49	0	48	1	0.9795918367346939	19	29	38.0	2	26	7	0
+IX	37309	A	G	ont_only		1/1	ont_bq13	13	5	0	5	0	1.0	3	2	14	0	5	0	0
+IX	37309	A	G	ont_only		1/1	ont_bq7	7	13	0	13	0	1.0	8	5	12	0	13	0	0
