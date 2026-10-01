@@ -16,7 +16,7 @@ Read groups preserve the biological sample identifier and platform. SAMtools qui
 
 SAMtools depth `-aa` includes zero-coverage positions and unused reference contigs. Base and mapping quality thresholds are explicit. Flags 3844 (0xF04) exclude unmapped, secondary, QC-failed, duplicate and supplementary alignments. `-s` avoids counting overlapping mates twice. The streaming Python step summarizes mean depth (including zero bases), coverage fraction and depth-eligible fraction, with per-contig summaries.
 
-Positions between the configured minimum and maximum depth are written to 0-based half-open BED intervals. The mask intersection is the comparison domain. The mask is a **depth mask**, not a benchmark-grade callable mask. Depth from SAMtools and FORMAT/DP from bcftools can differ because overlap/base handling differs; both restrictions are applied. Depth summaries do not establish copy-number changes or aneuploidy.
+Positions between the configured minimum and maximum depth are written to 0-based half-open BED intervals. The mask intersection is the comparison domain. Optional `comparison_exclude_contigs` removes named contigs from both the domain and total alternate-SNP counts. The P11 analysis excludes `Mito` from the nuclear comparison while retaining whole-reference alignment/coverage outputs. The mask is a **depth mask**, not a benchmark-grade callable mask. Depth from SAMtools and FORMAT/DP from bcftools can differ because overlap/base handling differs; both restrictions are applied. Depth summaries do not establish copy-number changes or aneuploidy.
 
 ## Calling and filtering
 
@@ -34,6 +34,6 @@ Neither metric is precision/recall. Even identical calls can share an error, and
 
 ## Reproducibility and validation
 
-Direct package versions are pinned in environment.yml. The run captures resolved configuration, sample sheet, reference/sample-sheet SHA256 and tool versions. Raw-read checksums and ENA metadata must be kept in a real-data manifest; the first implementation does not hash large FASTQ files automatically. Logs/benchmarks are per sample/rule. The environment has no transitive dependency lockfile yet.
+Direct package versions are pinned in environment.yml. The run captures resolved configuration, sample sheet, reference/sample-sheet SHA256 and tool versions. Raw-read checksums and ENA metadata must be kept in a real-data manifest; the P11 preparation verifies raw MD5 and records prepared FASTQ SHA256 fingerprints. Logs/benchmarks are per sample/rule. The general environment is version-pinned; the real P11 result archive includes an exact Linux package-URL snapshot. A lock covering other platforms is not provided.
 
 Tests cover BED boundaries, depth thresholds/zero bases, mask intersection, reference and missing genotypes, duplicate BED intervals, empty denominators, paired platform/ploidy validation and deterministic fixture generation. The integration check requires all three planted synthetic SNPs to be recovered by both branches; this is an execution check, not a realistic sequencing benchmark.

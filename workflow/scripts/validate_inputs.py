@@ -50,6 +50,13 @@ def validate_config(config):
             raise ValueError(f"{key} must be a nonnegative integer")
     if not 0 < config["min_depth"] <= config["max_depth"] < config["pileup_max_depth"]:
         raise ValueError("Require 0 < min_depth <= max_depth < pileup_max_depth")
+    for key in ("output_dir", "log_dir", "benchmark_dir"):
+        value = config.get(key, {"output_dir": "results", "log_dir": "logs", "benchmark_dir": "benchmarks"}[key])
+        if not isinstance(value, str) or not re.fullmatch(r"[A-Za-z0-9_.-]+(?:/[A-Za-z0-9_.-]+)*", value) or any(part in {".", ".."} for part in value.split("/")):
+            raise ValueError(f"{key} must be a simple relative directory")
+    exclusions = config.get("comparison_exclude_contigs", [])
+    if not isinstance(exclusions, list) or any(not isinstance(contig, str) or not re.fullmatch(r"[A-Za-z0-9_.-]+", contig) for contig in exclusions):
+        raise ValueError("comparison_exclude_contigs must be a list of simple contig names")
     reference = Path(config["reference"])
     if not reference.is_file():
         raise ValueError(f"Missing reference {reference}; generate demo or prepare real data first")

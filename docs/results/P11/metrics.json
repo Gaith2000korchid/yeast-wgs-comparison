@@ -1,0 +1,202 @@
+{
+  "sample": "P11 / CIC / Ponton11",
+  "sample_accession": "SAMEA3895683",
+  "execution_date": "2026-10-01",
+  "ploidy": 2,
+  "illumina_preparation": {
+    "input_pairs": 8415588,
+    "input_bases": 3834443483,
+    "selected_pairs": 2105894,
+    "selected_bases": 959448222,
+    "fraction_requested": 0.25,
+    "seed": 20261001,
+    "algorithm": "SHA256 seed:name, first 64 bits"
+  },
+  "ont_selected_2d_reads": 29914,
+  "ont_selected_2d_bases": 167666033,
+  "fastp_summary": {
+    "fastp_version": "0.24.0",
+    "sequencing": "paired end (251 cycles + 251 cycles)",
+    "before_filtering": {
+      "total_reads": 4211788,
+      "total_bases": 959448222,
+      "q20_bases": 908216363,
+      "q30_bases": 872418471,
+      "q20_rate": 0.946603,
+      "q30_rate": 0.909292,
+      "read1_mean_length": 232,
+      "read2_mean_length": 223,
+      "gc_content": 0.359903
+    },
+    "after_filtering": {
+      "total_reads": 4211788,
+      "total_bases": 959028413,
+      "q20_bases": 907894292,
+      "q30_bases": 872164658,
+      "q20_rate": 0.946681,
+      "q30_rate": 0.909425,
+      "read1_mean_length": 232,
+      "read2_mean_length": 222,
+      "gc_content": 0.359893
+    }
+  },
+  "nuclear_coverage": {
+    "illumina": {
+      "reference_bases": 12071326,
+      "mean_filtered_depth": 45.92728802121656,
+      "covered_fraction": 0.9596555506826674,
+      "depth_eligible_fraction": 0.9488900390893262
+    },
+    "ont": {
+      "reference_bases": 12071326,
+      "mean_filtered_depth": 1.721307336078903,
+      "covered_fraction": 0.7016802462297845,
+      "depth_eligible_fraction": 0.009211415547885958
+    }
+  },
+  "alignment": {
+    "illumina": {
+      "primary_reads": 4211788,
+      "primary_mapped": 4102372,
+      "primary_duplicates": 10404,
+      "primary_mapped_fraction": 0.974021484462181,
+      "primary_duplicate_fraction": 0.0024702098016329407
+    },
+    "ont": {
+      "primary_reads": 29914,
+      "primary_mapped": 22329,
+      "primary_duplicates": 0,
+      "primary_mapped_fraction": 0.7464397940763522,
+      "primary_duplicate_fraction": 0.0
+    }
+  },
+  "nuclear_snp_genotypes": {
+    "illumina": {
+      "nuclear_alternate_snp_records": 77276,
+      "heterozygous_snp_records": 35684,
+      "homozygous_alt_snp_records": 41592,
+      "heterozygous_alt_balance_bins": [
+        0,
+        11,
+        323,
+        585,
+        607,
+        795,
+        1243,
+        2561,
+        5555,
+        6990,
+        8289,
+        4620,
+        2294,
+        790,
+        316,
+        233,
+        156,
+        88,
+        42,
+        186
+      ],
+      "bin_width": 0.05
+    },
+    "ont": {
+      "nuclear_alternate_snp_records": 183,
+      "heterozygous_snp_records": 6,
+      "homozygous_alt_snp_records": 177,
+      "heterozygous_alt_balance_bins": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      "bin_width": 0.05
+    }
+  },
+  "comparison": {
+    "excluded_contigs": [
+      "Mito"
+    ],
+    "shared_depth_eligible_bases": 96235,
+    "illumina_alternate_snps_all_regions": 77276,
+    "ont_alternate_snps_all_regions": 183,
+    "illumina_snps_in_shared_mask": 296,
+    "ont_snps_in_shared_mask": 160,
+    "shared_snps": 156,
+    "illumina_only_snps": 140,
+    "ont_only_snps": 4,
+    "snp_jaccard": 0.52,
+    "genotype_agreement_on_shared_snps": 0.9807692307692307,
+    "interpretation": "Set overlap of non-reference SNPs, not precision/recall or genome-wide genotype concordance. A depth mask is not a validated callable-region mask."
+  },
+  "sensitivity_ont_bq7": {
+    "only_changed_parameter": "ONT minimum base quality: 13 to 7",
+    "comparison": {
+      "excluded_contigs": [
+        "Mito"
+      ],
+      "shared_depth_eligible_bases": 6435340,
+      "illumina_alternate_snps_all_regions": 77276,
+      "ont_alternate_snps_all_regions": 5545,
+      "illumina_snps_in_shared_mask": 38412,
+      "ont_snps_in_shared_mask": 5471,
+      "shared_snps": 5444,
+      "illumina_only_snps": 32968,
+      "ont_only_snps": 27,
+      "snp_jaccard": 0.14162699341814303,
+      "genotype_agreement_on_shared_snps": 0.9867744305657604,
+      "interpretation": "Set overlap of non-reference SNPs, not precision/recall or genome-wide genotype concordance. A depth mask is not a validated callable-region mask."
+    },
+    "nuclear_coverage": {
+      "reference_bases": 12071326,
+      "mean_filtered_depth": 8.433423718322246,
+      "covered_fraction": 0.9595164607434179,
+      "depth_eligible_fraction": 0.5351056710754063
+    },
+    "nuclear_snp_genotypes": {
+      "nuclear_alternate_snp_records": 5545,
+      "heterozygous_snp_records": 8,
+      "homozygous_alt_snp_records": 5537,
+      "heterozygous_alt_balance_bins": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        3,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "bin_width": 0.05
+    },
+    "shared_nuclear_depth_fraction": 0.5331096186119073
+  },
+  "shared_nuclear_depth_fraction": 0.007972197917610708
+}

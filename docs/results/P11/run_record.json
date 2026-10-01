@@ -1,0 +1,49 @@
+{
+  "started_utc": "2026-10-01T09:19:03.581436+00:00",
+  "command": [
+    "/workspace/scratch/5e836983fe42/tooling/bin/micromamba",
+    "run",
+    "-r",
+    "/workspace/scratch/5e836983fe42/tooling/mamba",
+    "-n",
+    "yeast-wgs-verified",
+    "snakemake",
+    "-s",
+    "workflow/local_validation.smk",
+    "--configfile",
+    "config/P11.yaml",
+    "--cores",
+    "4",
+    "--printshellcmds",
+    "--nolock",
+    "--rerun-incomplete"
+  ],
+  "benchmark_collection": "omitted locally due to managed child PID visibility; scientific commands unchanged",
+  "source_sha256": {
+    "workflow/Snakefile": "0e04a7431f751bbd82bfb2e4f19c8b1d8f3bcf220fa8196b242c94f1aa40d914",
+    "workflow/scripts/compare_snps.py": "60f2113fd0a099e9dd39673030096aac3a93628dfbde0a0cf23e89fc23cb0204",
+    "workflow/scripts/coverage.py": "c137a088e599f083640b20c58249059b38062a61d97f49284503cd82de6f8c4f",
+    "workflow/scripts/download_reads.py": "af8de783b785ebdd064c34b05feb87c62060d1a6318d3d9f1903671cd959fe4b",
+    "workflow/scripts/download_reference.py": "8ad40b644ac02b09e2efc7ec58d8482d1f8ba0a391d621326014ae996bf54860",
+    "workflow/scripts/generate_demo.py": "2cae1d160ecb475b0865ff4ed77436f52a5803b2de9acb7541af4ce832862256",
+    "workflow/scripts/prepare_real_reads.py": "b8aed08200fb7f04711f01498f7fa69ebc0091ccb87da4b64a49bde8ed1bdab4",
+    "workflow/scripts/report.py": "b3b3f6aa960400b46d775197e6c627bfcfc01bba01275daf2f943b8ccac790f9",
+    "workflow/scripts/summarize_real_run.py": "8cf2ac637b955c4d1ef2daea46bfb751c8039a32d94eea96d371274b6206173a",
+    "workflow/scripts/validate_inputs.py": "7cd7efa4c6217558365aaa5b9adfb060d82ced09f6eb0e8ccd13969421cd8c59",
+    "config/P11.yaml": "d85c990ad793eeb736ffe08223634111b3919741a89cab57d8b341c591499e75",
+    "config/samples.P11.tsv": "5548c461052618abd7cef7384bdc214151ee4939e6469ca5e8963918cbbe3aa8",
+    "environment.yml": "b8b7950bae955242afcb6c6add5fbca073e2dfa34d87788b09a0ad4bf16e0ff0"
+  },
+  "executed_snakefile_sha256": "8b45f7f55f0d5c97cb285715b0a5ac7cd4ba5fd9ef4e8996674e156a0899ff5b",
+  "exit_code": 0,
+  "finished_utc": "2026-10-01T09:19:33.679612+00:00",
+  "resumed_after_failed_qc_attempts": 2,
+  "note": "Initial scientific read processing/mapping/calling outputs were reused. Failures were NanoPlot plotting; successful completion used a clean pinned environment.",
+  "qc_report_regeneration": {
+    "command": "multiqc results/P11/qc results/P11/variants --dirs --dirs-depth 1 --force --outdir results/P11/multiqc",
+    "exit_code": 0,
+    "fastqc_reports": 4,
+    "purpose": "Keep raw/cleaned mates separate even when filenames match",
+    "workflow_sha256_after_reporting_change": "fbc776bb5032a5cc5f578096f206ae1b70ad6865c68ab0d39f6c2efd74682908"
+  }
+}

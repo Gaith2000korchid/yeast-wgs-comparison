@@ -1,0 +1,15 @@
+chrom	pos_1based	ref	alt	category	illumina_gt	ont_gt
+I	27476	G	A	shared	1/1	1/1
+I	69951	A	T	shared	1/1	1/1
+I	179761	A	C	illumina_only	0/1	
+I	180835	T	C	illumina_only	0/1	
+II	50611	A	G	shared	1/1	1/1
+II	52584	G	A	shared	1/1	1/1
+II	53815	G	A	shared	1/1	1/1
+II	801806	T	C	illumina_only	0/1	
+II	802482	A	T	illumina_only	0/1	
+II	802874	A	T	illumina_only	0/1	
+X	714991	A	T	ont_only		1/1
+XII	451522	C	T	ont_only		1/1
+XII	451751	G	A	ont_only		0/1
+XV	94666	A	T	ont_only		1/1

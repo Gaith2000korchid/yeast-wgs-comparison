@@ -42,7 +42,7 @@ def intersect_masks(left, right):
     return shared
 
 
-def read_snps(path, mask):
+def read_snps(path, mask, excluded_contigs=()):
     result = {}
     starts = {chrom: [start for start, _ in intervals] for chrom, intervals in mask.items()}
     opener = gzip.open if str(path).endswith(".gz") else open
@@ -57,6 +57,8 @@ def read_snps(path, mask):
             if len(fields) != 10:
                 raise ValueError("Expected a single-sample VCF")
             chrom, pos, _, ref, alt, _, filt, _, fmt, sample = fields
+            if chrom in excluded_contigs:
+                continue
             if filt not in {"PASS", "."} or len(ref) != 1 or len(alt) != 1:
                 continue
             if ref not in "ACGT" or alt not in "ACGT" or ref == alt:
@@ -81,12 +83,14 @@ def read_snps(path, mask):
     return result, total_alternate_snps
 
 
-def compare(illumina, ont, mask):
-    a, total_a = read_snps(illumina, mask)
-    b, total_b = read_snps(ont, mask)
+def compare(illumina, ont, mask, excluded_contigs=()):
+    mask = {chrom: intervals for chrom, intervals in mask.items() if chrom not in excluded_contigs}
+    a, total_a = read_snps(illumina, mask, excluded_contigs)
+    b, total_b = read_snps(ont, mask, excluded_contigs)
     shared = a.keys() & b.keys()
     union = a.keys() | b.keys()
     return {
+        "excluded_contigs": sorted(excluded_contigs),
         "shared_depth_eligible_bases": sum(end - start for ranges in mask.values() for start, end in ranges),
         "illumina_alternate_snps_all_regions": total_a,
         "ont_alternate_snps_all_regions": total_b,
@@ -103,9 +107,11 @@ if __name__ == "__main__":
     p = argparse.ArgumentParser(description=__doc__)
     for name in ("illumina", "ont", "illumina-bed", "ont-bed", "json", "tsv", "shared-bed"):
         p.add_argument("--" + name, required=True)
+    p.add_argument("--exclude-contigs", nargs="*", default=[])
     args = p.parse_args()
     mask = intersect_masks(read_bed(args.illumina_bed), read_bed(args.ont_bed))
-    result, left, right = compare(args.illumina, args.ont, mask)
+    mask = {chrom: intervals for chrom, intervals in mask.items() if chrom not in args.exclude_contigs}
+    result, left, right = compare(args.illumina, args.ont, mask, args.exclude_contigs)
     with open(args.json, "w") as stream:
         json.dump(result, stream, indent=2)
         stream.write("\n")

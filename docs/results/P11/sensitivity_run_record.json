@@ -1,0 +1,10 @@
+{
+  "completed": true,
+  "exit_code": 0,
+  "primary": "run_record.json",
+  "workflow": "workflow/quality_sensitivity.smk",
+  "workflow_sha256": "0928d09374200eba1727149ab2f32218d28ffe627e5a47a3d69946a58e1e8618",
+  "command": "snakemake -s workflow/quality_sensitivity.smk --configfile config/P11.yaml --cores 2 --printshellcmds --nolock",
+  "only_changed_parameter": "ONT minimum base quality: 13 to 7; same BAM, Illumina VCF/mask and all other thresholds",
+  "benchmark_collection": "none in this four-job sensitivity workflow"
+}
