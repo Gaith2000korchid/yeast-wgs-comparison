@@ -2,7 +2,7 @@
 
 Reproducible **Snakemake** workflow for matched **Illumina paired-end** and **Oxford Nanopore** reads from *Saccharomyces cerevisiae*: read QC, alignment, coverage, small-variant calling and alternate-SNP overlap.
 
-**Status: a matched real yeast dataset has been analyzed.** [Measured P11 results and limitations](docs/results/P11/README.md) include QC, nuclear SNP overlap and an ONT base-quality sensitivity experiment. A separate deterministic synthetic demonstration validates software execution.
+**Status: a matched real yeast dataset has been analyzed.** [Measured P11 results and limitations](docs/results/P11/README.md) include QC, nuclear SNP overlap and an ONT base-quality sensitivity experiment. A separate deterministic synthetic demonstration validates software execution. [Selected-locus read support and IGV review](docs/results/P11/review/README.md) provide a diagnostic follow-up.
 
 ## What this project does
 
@@ -44,7 +44,7 @@ micromamba create -y -f environment.yml
 micromamba activate yeast-wgs
 
 python workflow/scripts/generate_demo.py
-python -m unittest discover -s tests -v
+python -m unittest discover -s tests -v  # pysam is included in the environment
 snakemake -s workflow/Snakefile --cores 4 --dry-run
 snakemake -s workflow/Snakefile --cores 4 --printshellcmds
 python tests/check_demo.py

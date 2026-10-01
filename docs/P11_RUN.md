@@ -50,3 +50,7 @@ The managed execution environment used for this project cannot expose child PIDs
 After completion, `python workflow/scripts/summarize_real_run.py` exports measured QC, coverage, SNP overlap and review loci to `docs/results/P11/`. This optional export step requires `matplotlib==3.10.8`; install it separately if absent. Raw reads, BAMs, VCFs and the full MultiQC HTML remain local and can be regenerated with the commands above. The GitHub archive contains compact metrics and provenance.
 
 [Completed measured results](results/P11/README.md) document that the strict Q13 domain is very small and show the broader Q7 experiment. Their domains differ; their Jaccard values cannot be used as an accuracy ranking.
+
+## Diagnostic selected-locus follow-up
+
+After BAM reconstruction, use the pinned `environment-review.yml` and run `python workflow/scripts/review_loci.py` followed by `python workflow/scripts/plot_review.py`. [Read support, IGV session and review worksheet](results/P11/review/README.md) describe counting rules and the pending visual review. These scripts do not rerun variant calling or change the original comparison masks.
