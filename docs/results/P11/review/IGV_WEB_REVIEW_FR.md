@@ -46,3 +46,5 @@ Les mesures [externes archivées](read_support.tsv) utilisent MAPQ≥20, exclusi
 Six des quinze loci sélectionnés ont fait l'objet de cette revue ciblée ; les neuf autres restent non examinés dans IGV. Les loci constituent un échantillon de convenance et ne permettent pas une estimation de précision à l'échelle du génome. Aucun site n'est déclaré vrai positif ou faux positif. La donnée ONT est historique (consensus 2D pass + fail) et ne représente pas les performances des chimies modernes.
 
 Pour approfondir : relever la version et les réglages IGV, archiver les captures avec coordonnées et noms de pistes, inspecter MAPQ/BQ/CIGAR et insertions locales, puis vérifier les intermédiaires d'appel et de filtrage avant d'attribuer une cause aux absences de VCF. Une vérité indépendante serait nécessaire pour mesurer la précision.
+
+Une [reconstruction régionale du caller](REGIONAL_CALLER_AUDIT_FR.md) suit maintenant les trois sites avec support partagé et mesure leur sensibilité à BAQ. Elle complète les observations IGV sans remplacer les intermédiaires du run génome entier.

@@ -18,7 +18,7 @@ Values are alternate / retained depth: Illumina fragments at BQ13, ONT reads at 
 | IV:1364942 C>T / ONT-only | 25/26 | 8/8 | Strong alternate support in both alignments. |
 | IX:37309 A>G / ONT-only | 48/49 | 13/13 | Strong alternate support in both alignments. |
 
-Three of the five selected ONT-only loci have alternate observations in Illumina. No retained Illumina alternate base is observed at the other two. This is a diagnostic distinction, not a precision estimate. The precise contribution of calling/BAQ/normalization/filters has not been re-established from full caller intermediates in this follow-up. Do not assign a causal filter explanation or truth label from these counts alone.
+Three of the five selected ONT-only loci have alternate observations in Illumina. No retained Illumina alternate base is observed at the other two. This is a diagnostic distinction, not a precision estimate. A [regional caller audit](REGIONAL_CALLER_AUDIT_FR.md) reconstructs calling and filtering at the three sites with Illumina alternate support: all three are removed by FORMAT/DP, one also by QUAL. Disabling only BAQ rescues two in this regional experiment. Original full-genome caller intermediates have not been reconstructed, so these are not historical full-run DP/QUAL values. Do not assign a causal filter explanation or truth label from these counts alone.
 
 The ONT BQ13 view retains 0–7 bases at these loci, versus 8–15 at BQ7. Fractions based on one or two bases should not be read as confident genotype evidence. All alternate ONT observations here lie on alignments containing some soft clipping; that annotation records clipping **anywhere in the alignment**, not necessarily at the locus. It does not itself demonstrate a local mapping artifact.
 

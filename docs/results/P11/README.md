@@ -56,3 +56,5 @@ Raw FASTQs, BAMs, full VCFs and full HTML QC outputs are excluded from Git and r
 The [selected-locus follow-up](review/README.md) measures original-base support at 15 archived BQ7 loci and prepares a portable IGV session and review worksheet. A [targeted IGV Web review of six loci](review/IGV_WEB_REVIEW_FR.md) records reviewer-supplied coverage counts and two screenshot observations; nine selected loci remain unreviewed. No independent variant validation is claimed.
 
 A defensible accuracy comparison needs repeat/mappability exclusions, suitable truth data, discordance review and a caller validated for the read chemistry. The present result demonstrates reproducible processing and exposes an important filter/caller limitation on legacy ONT data.
+
+A [regional caller reconstruction](review/REGIONAL_CALLER_AUDIT_FR.md) traces the three selected ONT-only loci with Illumina alternate support through calling, normalization and filtering. It records FORMAT/DP and QUAL exclusions and a controlled no-BAQ experiment; it does not replace original full-genome caller intermediates.
