@@ -1,0 +1,1138 @@
+{
+  "scope": "Regional reconstruction, not original full-genome intermediates",
+  "pysam_version": "0.23.3",
+  "samtools_version": "1.21",
+  "script_sha256": "bca5f6099b6dc9b700679cfd51b88d7c298f7b6d7a685da66e385fdcbba231f8",
+  "sources_sha256": {
+    "reference.fa": "35cc97fccb91762c7a1f0f71b4adb1037b143d48b63fbd3b3f8bad45e5afa44c",
+    "reference.fa.fai": "65163e1e9c8cb7b63f43befd8294019b11fba0c18dd37c801e9d356e71e391c3",
+    "extraction_windows.bed": "c0701824263e574eda19e9bdb2706c87e80b97c62add1ac5cf5e9d02feda53dc",
+    "P11.illumina.regional.bam": "977c5e437dd86ef39e927e00ce18170b7f84dd12e1c0839d68c12c3a67931ffc",
+    "P11.illumina.regional.bam.bai": "a3f627a0e935a058f1f4448dc01172e2a4eecf55acbc55ae2f719994cb7bc41b",
+    "P11.ont.regional.bam": "26b22e7fe29ff58aca2b3a9eb4f223019f534e9a0c429c9c61653ead9e562351",
+    "P11.ont.regional.bam.bai": "0140a1e886abc30bab7b55ab24c2c58c20967c2160ed12f694162388c96a374e"
+  },
+  "filter_expression": "QUAL=\".\" || QUAL<30 || FMT/DP=\".\" || FMT/DP<8 || FMT/DP>200",
+  "targets": [
+    {
+      "chrom": "I",
+      "pos_1based": 27486,
+      "ref": "G",
+      "alt": "A"
+    },
+    {
+      "chrom": "IV",
+      "pos_1based": 1364942,
+      "ref": "C",
+      "alt": "T"
+    },
+    {
+      "chrom": "IX",
+      "pos_1based": 37309,
+      "ref": "A",
+      "alt": "G"
+    }
+  ],
+  "experiments": {
+    "illumina_default": {
+      "commands": [
+        {
+          "command": "mpileup",
+          "args": [
+            "-q",
+            "20",
+            "-Q",
+            "13",
+            "-d",
+            "1000",
+            "--ns",
+            "3844",
+            "-a",
+            "FORMAT/DP,FORMAT/AD",
+            "-Ov",
+            "-o",
+            "/workspace/scratch/5e836983fe42/outputs/caller_audit_repro/illumina_default.pileup.vcf",
+            "-f",
+            "/workspace/scratch/5e836983fe42/outputs/validation/igv_bundle/reference.fa",
+            "-R",
+            "/workspace/scratch/5e836983fe42/outputs/validation/igv_bundle/extraction_windows.bed",
+            "/workspace/scratch/5e836983fe42/outputs/validation/igv_bundle/P11.illumina.regional.bam"
+          ],
+          "messages": "[mpileup] 1 samples in 1 input files\n[mpileup] maximum number of reads per input file set to -d 1000\n"
+        },
+        {
+          "command": "call",
+          "args": [
+            "--ploidy",
+            "2",
+            "-mv",
+            "-Ov",
+            "-o",
+            "/workspace/scratch/5e836983fe42/outputs/caller_audit_repro/illumina_default.raw.vcf",
+            "/workspace/scratch/5e836983fe42/outputs/caller_audit_repro/illumina_default.pileup.vcf"
+          ],
+          "messages": ""
+        },
+        {
+          "command": "norm",
+          "args": [
+            "-f",
+            "/workspace/scratch/5e836983fe42/outputs/validation/igv_bundle/reference.fa",
+            "-c",
+            "e",
+            "-m",
+            "-any",
+            "-Ov",
+            "-o",
+            "/workspace/scratch/5e836983fe42/outputs/caller_audit_repro/illumina_default.normalized.vcf",
+            "/workspace/scratch/5e836983fe42/outputs/caller_audit_repro/illumina_default.raw.vcf"
+          ],
+          "messages": "Lines   total/split/joined/realigned/removed/skipped:\t751/6/0/29/0/0\n"
+        },
+        {
+          "command": "view",
+          "args": [
+            "-e",
+            "QUAL=\".\" || QUAL<30 || FMT/DP=\".\" || FMT/DP<8 || FMT/DP>200",
+            "-Ov",
+            "-o",
+            "/workspace/scratch/5e836983fe42/outputs/caller_audit_repro/illumina_default.pass.vcf",
+            "/workspace/scratch/5e836983fe42/outputs/caller_audit_repro/illumina_default.normalized.vcf"
+          ],
+          "messages": ""
+        }
+      ],
+      "bcftools_version_header": [
+        "##bcftoolsVersion=1.21 (pysam)+htslib-1.21"
+      ],
+      "records": {
+        "pileup": [
+          {
+            "chrom": "I",
+            "pos_1based": 27486,
+            "ref": "G",
+            "alt": "A,<*>",
+            "qual": 0.0,
+            "filter": ".",
+            "info": {
+              "DP": "4",
+              "I16": "0,0,1,2,0,0,93,3005,0,0,160,8800,0,0,24,246",
+              "QS": "0,1,0",
+              "VDB": "0.0349627",
+              "SGB": "-0.511536",
+              "MQSBZ": "-0.707107",
+              "MQ0F": "0"
+            },
+            "sample": {
+              "PL": "89,9,0,89,9,89",
+              "DP": "3",
+              "AD": "0,3,0"
+            },
+            "vcf_line": "I\t27486\t.\tG\tA,<*>\t0\t.\tDP=4;I16=0,0,1,2,0,0,93,3005,0,0,160,8800,0,0,24,246;QS=0,1,0;VDB=0.0349627;SGB=-0.511536;MQSBZ=-0.707107;MQ0F=0\tPL:DP:AD\t89,9,0,89,9,89:3:0,3,0"
+          },
+          {
+            "chrom": "IV",
+            "pos_1based": 1364942,
+            "ref": "C",
+            "alt": "T,<*>",
+            "qual": 0.0,
+            "filter": ".",
+            "info": {
+              "DP": "29",
+              "I16": "0,0,2,0,0,0,56,1856,0,0,120,7200,0,0,50,1250",
+              "QS": "0,1,0",
+              "VDB": "0.52",
+              "SGB": "-0.453602",
+              "MQ0F": "0"
+            },
+            "sample": {
+              "PL": "53,6,0,53,6,53",
+              "DP": "2",
+              "AD": "0,2,0"
+            },
+            "vcf_line": "IV\t1364942\t.\tC\tT,<*>\t0\t.\tDP=29;I16=0,0,2,0,0,0,56,1856,0,0,120,7200,0,0,50,1250;QS=0,1,0;VDB=0.52;SGB=-0.453602;MQ0F=0\tPL:DP:AD\t53,6,0,53,6,53:2:0,2,0"
+          },
+          {
+            "chrom": "IX",
+            "pos_1based": 37309,
+            "ref": "A",
+            "alt": "G,<*>",
+            "qual": 0.0,
+            "filter": ".",
+            "info": {
+              "DP": "62",
+              "I16": "0,0,5,1,0,0,151,3875,0,0,360,21600,0,0,129,3065",
+              "QS": "0,1,0",
+              "VDB": "0.578781",
+              "SGB": "-0.616816",
+              "MQSBZ": "0",
+              "MQ0F": "0"
+            },
+            "sample": {
+              "PL": "114,18,0,114,18,114",
+              "DP": "6",
+              "AD": "0,6,0"
+            },
+            "vcf_line": "IX\t37309\t.\tA\tG,<*>\t0\t.\tDP=62;I16=0,0,5,1,0,0,151,3875,0,0,360,21600,0,0,129,3065;QS=0,1,0;VDB=0.578781;SGB=-0.616816;MQSBZ=0;MQ0F=0\tPL:DP:AD\t114,18,0,114,18,114:6:0,6,0"
+          }
+        ],
+        "raw": [
+          {
+            "chrom": "I",
+            "pos_1based": 27486,
+            "ref": "G",
+            "alt": "A",
+            "qual": 59.4147,
+            "filter": ".",
+            "info": {
+              "DP": "4",
+              "VDB": "0.0349627",
+              "SGB": "-0.511536",
+              "MQSBZ": "-0.707107",
+              "MQ0F": "0",
+              "AC": "2",
+              "AN": "2",
+              "DP4": "0,0,1,2",
+              "MQ": "53"
+            },
+            "sample": {
+              "GT": "1/1",
+              "PL": "89,9,0",
+              "DP": "3",
+              "AD": "0,3"
+            },
+            "vcf_line": "I\t27486\t.\tG\tA\t59.4147\t.\tDP=4;VDB=0.0349627;SGB=-0.511536;MQSBZ=-0.707107;MQ0F=0;AC=2;AN=2;DP4=0,0,1,2;MQ=53\tGT:PL:DP:AD\t1/1:89,9,0:3:0,3"
+          },
+          {
+            "chrom": "IV",
+            "pos_1based": 1364942,
+            "ref": "C",
+            "alt": "T",
+            "qual": 23.434,
+            "filter": ".",
+            "info": {
+              "DP": "29",
+              "VDB": "0.52",
+              "SGB": "-0.453602",
+              "MQ0F": "0",
+              "AC": "2",
+              "AN": "2",
+              "DP4": "0,0,2,0",
+              "MQ": "60"
+            },
+            "sample": {
+              "GT": "1/1",
+              "PL": "53,6,0",
+              "DP": "2",
+              "AD": "0,2"
+            },
+            "vcf_line": "IV\t1364942\t.\tC\tT\t23.434\t.\tDP=29;VDB=0.52;SGB=-0.453602;MQ0F=0;AC=2;AN=2;DP4=0,0,2,0;MQ=60\tGT:PL:DP:AD\t1/1:53,6,0:2:0,2"
+          },
+          {
+            "chrom": "IX",
+            "pos_1based": 37309,
+            "ref": "A",
+            "alt": "G",
+            "qual": 84.415,
+            "filter": ".",
+            "info": {
+              "DP": "62",
+              "VDB": "0.578781",
+              "SGB": "-0.616816",
+              "MQSBZ": "0",
+              "MQ0F": "0",
+              "AC": "2",
+              "AN": "2",
+              "DP4": "0,0,5,1",
+              "MQ": "60"
+            },
+            "sample": {
+              "GT": "1/1",
+              "PL": "114,18,0",
+              "DP": "6",
+              "AD": "0,6"
+            },
+            "vcf_line": "IX\t37309\t.\tA\tG\t84.415\t.\tDP=62;VDB=0.578781;SGB=-0.616816;MQSBZ=0;MQ0F=0;AC=2;AN=2;DP4=0,0,5,1;MQ=60\tGT:PL:DP:AD\t1/1:114,18,0:6:0,6"
+          }
+        ],
+        "normalized": [
+          {
+            "chrom": "I",
+            "pos_1based": 27486,
+            "ref": "G",
+            "alt": "A",
+            "qual": 59.4147,
+            "filter": ".",
+            "info": {
+              "DP": "4",
+              "VDB": "0.0349627",
+              "SGB": "-0.511536",
+              "MQSBZ": "-0.707107",
+              "MQ0F": "0",
+              "AC": "2",
+              "AN": "2",
+              "DP4": "0,0,1,2",
+              "MQ": "53"
+            },
+            "sample": {
+              "GT": "1/1",
+              "PL": "89,9,0",
+              "DP": "3",
+              "AD": "0,3"
+            },
+            "vcf_line": "I\t27486\t.\tG\tA\t59.4147\t.\tDP=4;VDB=0.0349627;SGB=-0.511536;MQSBZ=-0.707107;MQ0F=0;AC=2;AN=2;DP4=0,0,1,2;MQ=53\tGT:PL:DP:AD\t1/1:89,9,0:3:0,3",
+            "rejection_reasons": [
+              "FMT/DP<8"
+            ]
+          },
+          {
+            "chrom": "IV",
+            "pos_1based": 1364942,
+            "ref": "C",
+            "alt": "T",
+            "qual": 23.434,
+            "filter": ".",
+            "info": {
+              "DP": "29",
+              "VDB": "0.52",
+              "SGB": "-0.453602",
+              "MQ0F": "0",
+              "AC": "2",
+              "AN": "2",
+              "DP4": "0,0,2,0",
+              "MQ": "60"
+            },
+            "sample": {
+              "GT": "1/1",
+              "PL": "53,6,0",
+              "DP": "2",
+              "AD": "0,2"
+            },
+            "vcf_line": "IV\t1364942\t.\tC\tT\t23.434\t.\tDP=29;VDB=0.52;SGB=-0.453602;MQ0F=0;AC=2;AN=2;DP4=0,0,2,0;MQ=60\tGT:PL:DP:AD\t1/1:53,6,0:2:0,2",
+            "rejection_reasons": [
+              "QUAL<30",
+              "FMT/DP<8"
+            ]
+          },
+          {
+            "chrom": "IX",
+            "pos_1based": 37309,
+            "ref": "A",
+            "alt": "G",
+            "qual": 84.415,
+            "filter": ".",
+            "info": {
+              "DP": "62",
+              "VDB": "0.578781",
+              "SGB": "-0.616816",
+              "MQSBZ": "0",
+              "MQ0F": "0",
+              "AC": "2",
+              "AN": "2",
+              "DP4": "0,0,5,1",
+              "MQ": "60"
+            },
+            "sample": {
+              "GT": "1/1",
+              "PL": "114,18,0",
+              "DP": "6",
+              "AD": "0,6"
+            },
+            "vcf_line": "IX\t37309\t.\tA\tG\t84.415\t.\tDP=62;VDB=0.578781;SGB=-0.616816;MQSBZ=0;MQ0F=0;AC=2;AN=2;DP4=0,0,5,1;MQ=60\tGT:PL:DP:AD\t1/1:114,18,0:6:0,6",
+            "rejection_reasons": [
+              "FMT/DP<8"
+            ]
+          }
+        ],
+        "pass": []
+      }
+    },
+    "ont_bq7": {
+      "commands": [
+        {
+          "command": "mpileup",
+          "args": [
+            "-B",
+            "--skip-indels",
+            "-q",
+            "20",
+            "-Q",
+            "7",
+            "-d",
+            "1000",
+            "--ns",
+            "3844",
+            "-a",
+            "FORMAT/DP,FORMAT/AD",
+            "-Ov",
+            "-o",
+            "/workspace/scratch/5e836983fe42/outputs/caller_audit_repro/ont_bq7.pileup.vcf",
+            "-f",
+            "/workspace/scratch/5e836983fe42/outputs/validation/igv_bundle/reference.fa",
+            "-R",
+            "/workspace/scratch/5e836983fe42/outputs/validation/igv_bundle/extraction_windows.bed",
+            "/workspace/scratch/5e836983fe42/outputs/validation/igv_bundle/P11.ont.regional.bam"
+          ],
+          "messages": "[mpileup] 1 samples in 1 input files\n[mpileup] maximum number of reads per input file set to -d 1000\n"
+        },
+        {
+          "command": "call",
+          "args": [
+            "--ploidy",
+            "2",
+            "-mv",
+            "-Ov",
+            "-o",
+            "/workspace/scratch/5e836983fe42/outputs/caller_audit_repro/ont_bq7.raw.vcf",
+            "/workspace/scratch/5e836983fe42/outputs/caller_audit_repro/ont_bq7.pileup.vcf"
+          ],
+          "messages": ""
+        },
+        {
+          "command": "norm",
+          "args": [
+            "-f",
+            "/workspace/scratch/5e836983fe42/outputs/validation/igv_bundle/reference.fa",
+            "-c",
+            "e",
+            "-m",
+            "-any",
+            "-Ov",
+            "-o",
+            "/workspace/scratch/5e836983fe42/outputs/caller_audit_repro/ont_bq7.normalized.vcf",
+            "/workspace/scratch/5e836983fe42/outputs/caller_audit_repro/ont_bq7.raw.vcf"
+          ],
+          "messages": "Lines   total/split/joined/realigned/removed/skipped:\t280/0/0/0/0/0\n"
+        },
+        {
+          "command": "view",
+          "args": [
+            "-e",
+            "QUAL=\".\" || QUAL<30 || FMT/DP=\".\" || FMT/DP<8 || FMT/DP>200",
+            "-Ov",
+            "-o",
+            "/workspace/scratch/5e836983fe42/outputs/caller_audit_repro/ont_bq7.pass.vcf",
+            "/workspace/scratch/5e836983fe42/outputs/caller_audit_repro/ont_bq7.normalized.vcf"
+          ],
+          "messages": ""
+        }
+      ],
+      "bcftools_version_header": [
+        "##bcftoolsVersion=1.21 (pysam)+htslib-1.21"
+      ],
+      "records": {
+        "pileup": [
+          {
+            "chrom": "I",
+            "pos_1based": 27486,
+            "ref": "G",
+            "alt": "A,<*>",
+            "qual": 0.0,
+            "filter": ".",
+            "info": {
+              "DP": "15",
+              "I16": "0,1,6,8,8,64,152,1748,60,3600,840,50400,25,625,350,8750",
+              "QS": "0.05,0.95,0",
+              "VDB": "0.298272",
+              "SGB": "-0.686358",
+              "RPBZ": "-0.694365",
+              "MQBZ": "0",
+              "MQSBZ": "0",
+              "BQBZ": "1.19183",
+              "SCBZ": "0",
+              "MQ0F": "0"
+            },
+            "sample": {
+              "PL": "77,33,0,80,42,77",
+              "DP": "15",
+              "AD": "1,14,0"
+            },
+            "vcf_line": "I\t27486\t.\tG\tA,<*>\t0\t.\tDP=15;I16=0,1,6,8,8,64,152,1748,60,3600,840,50400,25,625,350,8750;QS=0.05,0.95,0;VDB=0.298272;SGB=-0.686358;RPBZ=-0.694365;MQBZ=0;MQSBZ=0;BQBZ=1.19183;SCBZ=0;MQ0F=0\tPL:DP:AD\t77,33,0,80,42,77:15:1,14,0"
+          },
+          {
+            "chrom": "IV",
+            "pos_1based": 1364942,
+            "ref": "C",
+            "alt": "T,<*>",
+            "qual": 0.0,
+            "filter": ".",
+            "info": {
+              "DP": "8",
+              "I16": "0,0,5,3,0,0,98,1286,0,0,480,28800,0,0,200,5000",
+              "QS": "0,1,0",
+              "VDB": "0.210283",
+              "SGB": "-0.651104",
+              "MQSBZ": "0",
+              "MQ0F": "0"
+            },
+            "sample": {
+              "PL": "72,24,0,72,24,72",
+              "DP": "8",
+              "AD": "0,8,0"
+            },
+            "vcf_line": "IV\t1364942\t.\tC\tT,<*>\t0\t.\tDP=8;I16=0,0,5,3,0,0,98,1286,0,0,480,28800,0,0,200,5000;QS=0,1,0;VDB=0.210283;SGB=-0.651104;MQSBZ=0;MQ0F=0\tPL:DP:AD\t72,24,0,72,24,72:8:0,8,0"
+          },
+          {
+            "chrom": "IX",
+            "pos_1based": 37309,
+            "ref": "A",
+            "alt": "G,<*>",
+            "qual": 0.0,
+            "filter": ".",
+            "info": {
+              "DP": "13",
+              "I16": "0,0,8,5,0,0,159,2035,0,0,780,46800,0,0,325,8125",
+              "QS": "0,1,0",
+              "VDB": "0.0190538",
+              "SGB": "-0.683931",
+              "MQSBZ": "0",
+              "MQ0F": "0"
+            },
+            "sample": {
+              "PL": "91,39,0,91,39,91",
+              "DP": "13",
+              "AD": "0,13,0"
+            },
+            "vcf_line": "IX\t37309\t.\tA\tG,<*>\t0\t.\tDP=13;I16=0,0,8,5,0,0,159,2035,0,0,780,46800,0,0,325,8125;QS=0,1,0;VDB=0.0190538;SGB=-0.683931;MQSBZ=0;MQ0F=0\tPL:DP:AD\t91,39,0,91,39,91:13:0,13,0"
+          }
+        ],
+        "raw": [
+          {
+            "chrom": "I",
+            "pos_1based": 27486,
+            "ref": "G",
+            "alt": "A",
+            "qual": 50.208,
+            "filter": ".",
+            "info": {
+              "DP": "15",
+              "VDB": "0.298272",
+              "SGB": "-0.686358",
+              "RPBZ": "-0.694365",
+              "MQBZ": "0",
+              "MQSBZ": "0",
+              "BQBZ": "1.19183",
+              "SCBZ": "0",
+              "MQ0F": "0",
+              "AC": "2",
+              "AN": "2",
+              "DP4": "0,1,6,8",
+              "MQ": "60"
+            },
+            "sample": {
+              "GT": "1/1",
+              "PL": "77,33,0",
+              "DP": "15",
+              "AD": "1,14"
+            },
+            "vcf_line": "I\t27486\t.\tG\tA\t50.208\t.\tDP=15;VDB=0.298272;SGB=-0.686358;RPBZ=-0.694365;MQBZ=0;MQSBZ=0;BQBZ=1.19183;SCBZ=0;MQ0F=0;AC=2;AN=2;DP4=0,1,6,8;MQ=60\tGT:PL:DP:AD\t1/1:77,33,0:15:1,14"
+          },
+          {
+            "chrom": "IV",
+            "pos_1based": 1364942,
+            "ref": "C",
+            "alt": "T",
+            "qual": 42.4147,
+            "filter": ".",
+            "info": {
+              "DP": "8",
+              "VDB": "0.210283",
+              "SGB": "-0.651104",
+              "MQSBZ": "0",
+              "MQ0F": "0",
+              "AC": "2",
+              "AN": "2",
+              "DP4": "0,0,5,3",
+              "MQ": "60"
+            },
+            "sample": {
+              "GT": "1/1",
+              "PL": "72,24,0",
+              "DP": "8",
+              "AD": "0,8"
+            },
+            "vcf_line": "IV\t1364942\t.\tC\tT\t42.4147\t.\tDP=8;VDB=0.210283;SGB=-0.651104;MQSBZ=0;MQ0F=0;AC=2;AN=2;DP4=0,0,5,3;MQ=60\tGT:PL:DP:AD\t1/1:72,24,0:8:0,8"
+          },
+          {
+            "chrom": "IX",
+            "pos_1based": 37309,
+            "ref": "A",
+            "alt": "G",
+            "qual": 61.4147,
+            "filter": ".",
+            "info": {
+              "DP": "13",
+              "VDB": "0.0190538",
+              "SGB": "-0.683931",
+              "MQSBZ": "0",
+              "MQ0F": "0",
+              "AC": "2",
+              "AN": "2",
+              "DP4": "0,0,8,5",
+              "MQ": "60"
+            },
+            "sample": {
+              "GT": "1/1",
+              "PL": "91,39,0",
+              "DP": "13",
+              "AD": "0,13"
+            },
+            "vcf_line": "IX\t37309\t.\tA\tG\t61.4147\t.\tDP=13;VDB=0.0190538;SGB=-0.683931;MQSBZ=0;MQ0F=0;AC=2;AN=2;DP4=0,0,8,5;MQ=60\tGT:PL:DP:AD\t1/1:91,39,0:13:0,13"
+          }
+        ],
+        "normalized": [
+          {
+            "chrom": "I",
+            "pos_1based": 27486,
+            "ref": "G",
+            "alt": "A",
+            "qual": 50.208,
+            "filter": ".",
+            "info": {
+              "DP": "15",
+              "VDB": "0.298272",
+              "SGB": "-0.686358",
+              "RPBZ": "-0.694365",
+              "MQBZ": "0",
+              "MQSBZ": "0",
+              "BQBZ": "1.19183",
+              "SCBZ": "0",
+              "MQ0F": "0",
+              "AC": "2",
+              "AN": "2",
+              "DP4": "0,1,6,8",
+              "MQ": "60"
+            },
+            "sample": {
+              "GT": "1/1",
+              "PL": "77,33,0",
+              "DP": "15",
+              "AD": "1,14"
+            },
+            "vcf_line": "I\t27486\t.\tG\tA\t50.208\t.\tDP=15;VDB=0.298272;SGB=-0.686358;RPBZ=-0.694365;MQBZ=0;MQSBZ=0;BQBZ=1.19183;SCBZ=0;MQ0F=0;AC=2;AN=2;DP4=0,1,6,8;MQ=60\tGT:PL:DP:AD\t1/1:77,33,0:15:1,14",
+            "rejection_reasons": []
+          },
+          {
+            "chrom": "IV",
+            "pos_1based": 1364942,
+            "ref": "C",
+            "alt": "T",
+            "qual": 42.4147,
+            "filter": ".",
+            "info": {
+              "DP": "8",
+              "VDB": "0.210283",
+              "SGB": "-0.651104",
+              "MQSBZ": "0",
+              "MQ0F": "0",
+              "AC": "2",
+              "AN": "2",
+              "DP4": "0,0,5,3",
+              "MQ": "60"
+            },
+            "sample": {
+              "GT": "1/1",
+              "PL": "72,24,0",
+              "DP": "8",
+              "AD": "0,8"
+            },
+            "vcf_line": "IV\t1364942\t.\tC\tT\t42.4147\t.\tDP=8;VDB=0.210283;SGB=-0.651104;MQSBZ=0;MQ0F=0;AC=2;AN=2;DP4=0,0,5,3;MQ=60\tGT:PL:DP:AD\t1/1:72,24,0:8:0,8",
+            "rejection_reasons": []
+          },
+          {
+            "chrom": "IX",
+            "pos_1based": 37309,
+            "ref": "A",
+            "alt": "G",
+            "qual": 61.4147,
+            "filter": ".",
+            "info": {
+              "DP": "13",
+              "VDB": "0.0190538",
+              "SGB": "-0.683931",
+              "MQSBZ": "0",
+              "MQ0F": "0",
+              "AC": "2",
+              "AN": "2",
+              "DP4": "0,0,8,5",
+              "MQ": "60"
+            },
+            "sample": {
+              "GT": "1/1",
+              "PL": "91,39,0",
+              "DP": "13",
+              "AD": "0,13"
+            },
+            "vcf_line": "IX\t37309\t.\tA\tG\t61.4147\t.\tDP=13;VDB=0.0190538;SGB=-0.683931;MQSBZ=0;MQ0F=0;AC=2;AN=2;DP4=0,0,8,5;MQ=60\tGT:PL:DP:AD\t1/1:91,39,0:13:0,13",
+            "rejection_reasons": []
+          }
+        ],
+        "pass": [
+          {
+            "chrom": "I",
+            "pos_1based": 27486,
+            "ref": "G",
+            "alt": "A",
+            "qual": 50.208,
+            "filter": ".",
+            "info": {
+              "DP": "15",
+              "VDB": "0.298272",
+              "SGB": "-0.686358",
+              "RPBZ": "-0.694365",
+              "MQBZ": "0",
+              "MQSBZ": "0",
+              "BQBZ": "1.19183",
+              "SCBZ": "0",
+              "MQ0F": "0",
+              "AC": "2",
+              "AN": "2",
+              "DP4": "0,1,6,8",
+              "MQ": "60"
+            },
+            "sample": {
+              "GT": "1/1",
+              "PL": "77,33,0",
+              "DP": "15",
+              "AD": "1,14"
+            },
+            "vcf_line": "I\t27486\t.\tG\tA\t50.208\t.\tDP=15;VDB=0.298272;SGB=-0.686358;RPBZ=-0.694365;MQBZ=0;MQSBZ=0;BQBZ=1.19183;SCBZ=0;MQ0F=0;AC=2;AN=2;DP4=0,1,6,8;MQ=60\tGT:PL:DP:AD\t1/1:77,33,0:15:1,14"
+          },
+          {
+            "chrom": "IV",
+            "pos_1based": 1364942,
+            "ref": "C",
+            "alt": "T",
+            "qual": 42.4147,
+            "filter": ".",
+            "info": {
+              "DP": "8",
+              "VDB": "0.210283",
+              "SGB": "-0.651104",
+              "MQSBZ": "0",
+              "MQ0F": "0",
+              "AC": "2",
+              "AN": "2",
+              "DP4": "0,0,5,3",
+              "MQ": "60"
+            },
+            "sample": {
+              "GT": "1/1",
+              "PL": "72,24,0",
+              "DP": "8",
+              "AD": "0,8"
+            },
+            "vcf_line": "IV\t1364942\t.\tC\tT\t42.4147\t.\tDP=8;VDB=0.210283;SGB=-0.651104;MQSBZ=0;MQ0F=0;AC=2;AN=2;DP4=0,0,5,3;MQ=60\tGT:PL:DP:AD\t1/1:72,24,0:8:0,8"
+          },
+          {
+            "chrom": "IX",
+            "pos_1based": 37309,
+            "ref": "A",
+            "alt": "G",
+            "qual": 61.4147,
+            "filter": ".",
+            "info": {
+              "DP": "13",
+              "VDB": "0.0190538",
+              "SGB": "-0.683931",
+              "MQSBZ": "0",
+              "MQ0F": "0",
+              "AC": "2",
+              "AN": "2",
+              "DP4": "0,0,8,5",
+              "MQ": "60"
+            },
+            "sample": {
+              "GT": "1/1",
+              "PL": "91,39,0",
+              "DP": "13",
+              "AD": "0,13"
+            },
+            "vcf_line": "IX\t37309\t.\tA\tG\t61.4147\t.\tDP=13;VDB=0.0190538;SGB=-0.683931;MQSBZ=0;MQ0F=0;AC=2;AN=2;DP4=0,0,8,5;MQ=60\tGT:PL:DP:AD\t1/1:91,39,0:13:0,13"
+          }
+        ]
+      }
+    },
+    "illumina_no_baq": {
+      "commands": [
+        {
+          "command": "mpileup",
+          "args": [
+            "-B",
+            "-q",
+            "20",
+            "-Q",
+            "13",
+            "-d",
+            "1000",
+            "--ns",
+            "3844",
+            "-a",
+            "FORMAT/DP,FORMAT/AD",
+            "-Ov",
+            "-o",
+            "/workspace/scratch/5e836983fe42/outputs/caller_audit_repro/illumina_no_baq.pileup.vcf",
+            "-f",
+            "/workspace/scratch/5e836983fe42/outputs/validation/igv_bundle/reference.fa",
+            "-R",
+            "/workspace/scratch/5e836983fe42/outputs/validation/igv_bundle/extraction_windows.bed",
+            "/workspace/scratch/5e836983fe42/outputs/validation/igv_bundle/P11.illumina.regional.bam"
+          ],
+          "messages": "[mpileup] 1 samples in 1 input files\n[mpileup] maximum number of reads per input file set to -d 1000\n"
+        },
+        {
+          "command": "call",
+          "args": [
+            "--ploidy",
+            "2",
+            "-mv",
+            "-Ov",
+            "-o",
+            "/workspace/scratch/5e836983fe42/outputs/caller_audit_repro/illumina_no_baq.raw.vcf",
+            "/workspace/scratch/5e836983fe42/outputs/caller_audit_repro/illumina_no_baq.pileup.vcf"
+          ],
+          "messages": ""
+        },
+        {
+          "command": "norm",
+          "args": [
+            "-f",
+            "/workspace/scratch/5e836983fe42/outputs/validation/igv_bundle/reference.fa",
+            "-c",
+            "e",
+            "-m",
+            "-any",
+            "-Ov",
+            "-o",
+            "/workspace/scratch/5e836983fe42/outputs/caller_audit_repro/illumina_no_baq.normalized.vcf",
+            "/workspace/scratch/5e836983fe42/outputs/caller_audit_repro/illumina_no_baq.raw.vcf"
+          ],
+          "messages": "Lines   total/split/joined/realigned/removed/skipped:\t774/7/0/29/0/0\n"
+        },
+        {
+          "command": "view",
+          "args": [
+            "-e",
+            "QUAL=\".\" || QUAL<30 || FMT/DP=\".\" || FMT/DP<8 || FMT/DP>200",
+            "-Ov",
+            "-o",
+            "/workspace/scratch/5e836983fe42/outputs/caller_audit_repro/illumina_no_baq.pass.vcf",
+            "/workspace/scratch/5e836983fe42/outputs/caller_audit_repro/illumina_no_baq.normalized.vcf"
+          ],
+          "messages": ""
+        }
+      ],
+      "bcftools_version_header": [
+        "##bcftoolsVersion=1.21 (pysam)+htslib-1.21"
+      ],
+      "records": {
+        "pileup": [
+          {
+            "chrom": "I",
+            "pos_1based": 27486,
+            "ref": "G",
+            "alt": "A,<*>",
+            "qual": 0.0,
+            "filter": ".",
+            "info": {
+              "DP": "4",
+              "I16": "0,0,1,2,0,0,117,4709,0,0,160,8800,0,0,24,246",
+              "QS": "0,1,0",
+              "VDB": "0.0349627",
+              "SGB": "-0.511536",
+              "MQSBZ": "-0.707107",
+              "MQ0F": "0"
+            },
+            "sample": {
+              "PL": "103,9,0,103,9,103",
+              "DP": "3",
+              "AD": "0,3,0"
+            },
+            "vcf_line": "I\t27486\t.\tG\tA,<*>\t0\t.\tDP=4;I16=0,0,1,2,0,0,117,4709,0,0,160,8800,0,0,24,246;QS=0,1,0;VDB=0.0349627;SGB=-0.511536;MQSBZ=-0.707107;MQ0F=0\tPL:DP:AD\t103,9,0,103,9,103:3:0,3,0"
+          },
+          {
+            "chrom": "IV",
+            "pos_1based": 1364942,
+            "ref": "C",
+            "alt": "T,<*>",
+            "qual": 0.0,
+            "filter": ".",
+            "info": {
+              "DP": "29",
+              "I16": "0,1,10,15,16,256,987,41143,60,3600,1500,90000,25,625,621,15441",
+              "QS": "0.0159521,0.984048,0",
+              "VDB": "0.101666",
+              "SGB": "-0.692914",
+              "RPBZ": "1.00068",
+              "MQBZ": "0",
+              "MQSBZ": "0",
+              "BQBZ": "1.65981",
+              "SCBZ": "0",
+              "MQ0F": "0"
+            },
+            "sample": {
+              "PL": "255,61,0,255,75,255",
+              "DP": "26",
+              "AD": "1,25,0"
+            },
+            "vcf_line": "IV\t1364942\t.\tC\tT,<*>\t0\t.\tDP=29;I16=0,1,10,15,16,256,987,41143,60,3600,1500,90000,25,625,621,15441;QS=0.0159521,0.984048,0;VDB=0.101666;SGB=-0.692914;RPBZ=1.00068;MQBZ=0;MQSBZ=0;BQBZ=1.65981;SCBZ=0;MQ0F=0\tPL:DP:AD\t255,61,0,255,75,255:26:1,25,0"
+          },
+          {
+            "chrom": "IX",
+            "pos_1based": 37309,
+            "ref": "A",
+            "alt": "G,<*>",
+            "qual": 0.0,
+            "filter": ".",
+            "info": {
+              "DP": "62",
+              "I16": "0,0,18,28,0,0,1620,63416,0,0,2760,165600,0,0,1028,24170",
+              "QS": "0,1,0",
+              "VDB": "0.515635",
+              "SGB": "-0.693147",
+              "MQSBZ": "0",
+              "MQ0F": "0"
+            },
+            "sample": {
+              "PL": "255,138,0,255,138,255",
+              "DP": "46",
+              "AD": "0,46,0"
+            },
+            "vcf_line": "IX\t37309\t.\tA\tG,<*>\t0\t.\tDP=62;I16=0,0,18,28,0,0,1620,63416,0,0,2760,165600,0,0,1028,24170;QS=0,1,0;VDB=0.515635;SGB=-0.693147;MQSBZ=0;MQ0F=0\tPL:DP:AD\t255,138,0,255,138,255:46:0,46,0"
+          }
+        ],
+        "raw": [
+          {
+            "chrom": "I",
+            "pos_1based": 27486,
+            "ref": "G",
+            "alt": "A",
+            "qual": 73.4149,
+            "filter": ".",
+            "info": {
+              "DP": "4",
+              "VDB": "0.0349627",
+              "SGB": "-0.511536",
+              "MQSBZ": "-0.707107",
+              "MQ0F": "0",
+              "AC": "2",
+              "AN": "2",
+              "DP4": "0,0,1,2",
+              "MQ": "53"
+            },
+            "sample": {
+              "GT": "1/1",
+              "PL": "103,9,0",
+              "DP": "3",
+              "AD": "0,3"
+            },
+            "vcf_line": "I\t27486\t.\tG\tA\t73.4149\t.\tDP=4;VDB=0.0349627;SGB=-0.511536;MQSBZ=-0.707107;MQ0F=0;AC=2;AN=2;DP4=0,0,1,2;MQ=53\tGT:PL:DP:AD\t1/1:103,9,0:3:0,3"
+          },
+          {
+            "chrom": "IV",
+            "pos_1based": 1364942,
+            "ref": "C",
+            "alt": "T",
+            "qual": 228.358,
+            "filter": ".",
+            "info": {
+              "DP": "29",
+              "VDB": "0.101666",
+              "SGB": "-0.692914",
+              "RPBZ": "1.00068",
+              "MQBZ": "0",
+              "MQSBZ": "0",
+              "BQBZ": "1.65981",
+              "SCBZ": "0",
+              "MQ0F": "0",
+              "AC": "2",
+              "AN": "2",
+              "DP4": "0,1,10,15",
+              "MQ": "60"
+            },
+            "sample": {
+              "GT": "1/1",
+              "PL": "255,61,0",
+              "DP": "26",
+              "AD": "1,25"
+            },
+            "vcf_line": "IV\t1364942\t.\tC\tT\t228.358\t.\tDP=29;VDB=0.101666;SGB=-0.692914;RPBZ=1.00068;MQBZ=0;MQSBZ=0;BQBZ=1.65981;SCBZ=0;MQ0F=0;AC=2;AN=2;DP4=0,1,10,15;MQ=60\tGT:PL:DP:AD\t1/1:255,61,0:26:1,25"
+          },
+          {
+            "chrom": "IX",
+            "pos_1based": 37309,
+            "ref": "A",
+            "alt": "G",
+            "qual": 225.417,
+            "filter": ".",
+            "info": {
+              "DP": "62",
+              "VDB": "0.515635",
+              "SGB": "-0.693147",
+              "MQSBZ": "0",
+              "MQ0F": "0",
+              "AC": "2",
+              "AN": "2",
+              "DP4": "0,0,18,28",
+              "MQ": "60"
+            },
+            "sample": {
+              "GT": "1/1",
+              "PL": "255,138,0",
+              "DP": "46",
+              "AD": "0,46"
+            },
+            "vcf_line": "IX\t37309\t.\tA\tG\t225.417\t.\tDP=62;VDB=0.515635;SGB=-0.693147;MQSBZ=0;MQ0F=0;AC=2;AN=2;DP4=0,0,18,28;MQ=60\tGT:PL:DP:AD\t1/1:255,138,0:46:0,46"
+          }
+        ],
+        "normalized": [
+          {
+            "chrom": "I",
+            "pos_1based": 27486,
+            "ref": "G",
+            "alt": "A",
+            "qual": 73.4149,
+            "filter": ".",
+            "info": {
+              "DP": "4",
+              "VDB": "0.0349627",
+              "SGB": "-0.511536",
+              "MQSBZ": "-0.707107",
+              "MQ0F": "0",
+              "AC": "2",
+              "AN": "2",
+              "DP4": "0,0,1,2",
+              "MQ": "53"
+            },
+            "sample": {
+              "GT": "1/1",
+              "PL": "103,9,0",
+              "DP": "3",
+              "AD": "0,3"
+            },
+            "vcf_line": "I\t27486\t.\tG\tA\t73.4149\t.\tDP=4;VDB=0.0349627;SGB=-0.511536;MQSBZ=-0.707107;MQ0F=0;AC=2;AN=2;DP4=0,0,1,2;MQ=53\tGT:PL:DP:AD\t1/1:103,9,0:3:0,3",
+            "rejection_reasons": [
+              "FMT/DP<8"
+            ]
+          },
+          {
+            "chrom": "IV",
+            "pos_1based": 1364942,
+            "ref": "C",
+            "alt": "T",
+            "qual": 228.358,
+            "filter": ".",
+            "info": {
+              "DP": "29",
+              "VDB": "0.101666",
+              "SGB": "-0.692914",
+              "RPBZ": "1.00068",
+              "MQBZ": "0",
+              "MQSBZ": "0",
+              "BQBZ": "1.65981",
+              "SCBZ": "0",
+              "MQ0F": "0",
+              "AC": "2",
+              "AN": "2",
+              "DP4": "0,1,10,15",
+              "MQ": "60"
+            },
+            "sample": {
+              "GT": "1/1",
+              "PL": "255,61,0",
+              "DP": "26",
+              "AD": "1,25"
+            },
+            "vcf_line": "IV\t1364942\t.\tC\tT\t228.358\t.\tDP=29;VDB=0.101666;SGB=-0.692914;RPBZ=1.00068;MQBZ=0;MQSBZ=0;BQBZ=1.65981;SCBZ=0;MQ0F=0;AC=2;AN=2;DP4=0,1,10,15;MQ=60\tGT:PL:DP:AD\t1/1:255,61,0:26:1,25",
+            "rejection_reasons": []
+          },
+          {
+            "chrom": "IX",
+            "pos_1based": 37309,
+            "ref": "A",
+            "alt": "G",
+            "qual": 225.417,
+            "filter": ".",
+            "info": {
+              "DP": "62",
+              "VDB": "0.515635",
+              "SGB": "-0.693147",
+              "MQSBZ": "0",
+              "MQ0F": "0",
+              "AC": "2",
+              "AN": "2",
+              "DP4": "0,0,18,28",
+              "MQ": "60"
+            },
+            "sample": {
+              "GT": "1/1",
+              "PL": "255,138,0",
+              "DP": "46",
+              "AD": "0,46"
+            },
+            "vcf_line": "IX\t37309\t.\tA\tG\t225.417\t.\tDP=62;VDB=0.515635;SGB=-0.693147;MQSBZ=0;MQ0F=0;AC=2;AN=2;DP4=0,0,18,28;MQ=60\tGT:PL:DP:AD\t1/1:255,138,0:46:0,46",
+            "rejection_reasons": []
+          }
+        ],
+        "pass": [
+          {
+            "chrom": "IV",
+            "pos_1based": 1364942,
+            "ref": "C",
+            "alt": "T",
+            "qual": 228.358,
+            "filter": ".",
+            "info": {
+              "DP": "29",
+              "VDB": "0.101666",
+              "SGB": "-0.692914",
+              "RPBZ": "1.00068",
+              "MQBZ": "0",
+              "MQSBZ": "0",
+              "BQBZ": "1.65981",
+              "SCBZ": "0",
+              "MQ0F": "0",
+              "AC": "2",
+              "AN": "2",
+              "DP4": "0,1,10,15",
+              "MQ": "60"
+            },
+            "sample": {
+              "GT": "1/1",
+              "PL": "255,61,0",
+              "DP": "26",
+              "AD": "1,25"
+            },
+            "vcf_line": "IV\t1364942\t.\tC\tT\t228.358\t.\tDP=29;VDB=0.101666;SGB=-0.692914;RPBZ=1.00068;MQBZ=0;MQSBZ=0;BQBZ=1.65981;SCBZ=0;MQ0F=0;AC=2;AN=2;DP4=0,1,10,15;MQ=60\tGT:PL:DP:AD\t1/1:255,61,0:26:1,25"
+          },
+          {
+            "chrom": "IX",
+            "pos_1based": 37309,
+            "ref": "A",
+            "alt": "G",
+            "qual": 225.417,
+            "filter": ".",
+            "info": {
+              "DP": "62",
+              "VDB": "0.515635",
+              "SGB": "-0.693147",
+              "MQSBZ": "0",
+              "MQ0F": "0",
+              "AC": "2",
+              "AN": "2",
+              "DP4": "0,0,18,28",
+              "MQ": "60"
+            },
+            "sample": {
+              "GT": "1/1",
+              "PL": "255,138,0",
+              "DP": "46",
+              "AD": "0,46"
+            },
+            "vcf_line": "IX\t37309\t.\tA\tG\t225.417\t.\tDP=62;VDB=0.515635;SGB=-0.693147;MQSBZ=0;MQ0F=0;AC=2;AN=2;DP4=0,0,18,28;MQ=60\tGT:PL:DP:AD\t1/1:255,138,0:46:0,46"
+          }
+        ]
+      }
+    }
+  }
+}
