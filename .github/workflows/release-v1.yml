@@ -1,0 +1,50 @@
+name: Publish verified v1.0.0
+on:
+  workflow_run:
+    workflows: ['Test workflow']
+    types: [completed]
+    branches: [main]
+permissions:
+  contents: read
+concurrency:
+  group: publish-v1.0.0
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: >-
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'push' &&
+      github.event.workflow_run.head_branch == 'main' &&
+      github.event.workflow_run.head_repository.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+          persist-credentials: false
+      - name: Publish once at the exact tested main commit
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          VALIDATED_SHA: ${{ github.event.workflow_run.head_sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ "$VALIDATED_SHA" =~ ^[0-9a-f]{40}$ ]]
+          test "$(git rev-parse HEAD)" = "$VALIDATED_SHA"
+          test -f docs/releases/v1.0.0.md
+          # Later successful main runs leave this fixed release untouched.
+          if gh release view v1.0.0 --json tagName >/dev/null 2>&1; then
+            echo 'v1.0.0 already exists; no changes made.'
+            exit 0
+          fi
+          # Never move a pre-existing tag to a different commit.
+          if tag_sha=$(gh api "repos/$GH_REPO/git/ref/tags/v1.0.0" --jq '.object.sha' 2>/dev/null); then
+            test "$tag_sha" = "$VALIDATED_SHA"
+          fi
+          gh release create v1.0.0 --target "$VALIDATED_SHA" \
+            --title 'v1.0.0 - Yeast WGS comparison case study' \
+            --notes-file docs/releases/v1.0.0.md

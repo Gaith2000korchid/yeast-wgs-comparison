@@ -1,8 +1,23 @@
 # Yeast WGS comparison
 
-Reproducible **Snakemake** workflow for matched **Illumina paired-end** and **Oxford Nanopore** reads from *Saccharomyces cerevisiae*: read QC, alignment, coverage, small-variant calling and alternate-SNP overlap.
+Reproducible **Snakemake** analysis of matched **Illumina paired-end** and **Oxford Nanopore** whole-genome reads from *Saccharomyces cerevisiae*. The project follows read QC, alignment, coverage, small-variant calling and filtered alternate-SNP comparison, then investigates selected discordances in IGV and caller intermediates.
 
-**Status: a matched real yeast dataset has been analyzed.** [Measured P11 results and limitations](docs/results/P11/README.md) include QC, nuclear SNP overlap and an ONT base-quality sensitivity experiment. A separate deterministic synthetic demonstration validates software execution. [Selected-locus read support and IGV review](docs/results/P11/review/README.md) provide a diagnostic follow-up.
+**Completed case study:** real P11 analysis, controlled ONT base-quality sensitivity, six-locus IGV Web review and a three-locus regional caller audit. **21 Python tests** and synthetic end-to-end CI validate execution. Historical ONT consensus 2D data and the exploratory caller limit biological interpretation.
+
+[French project summary](docs/PROJECT_SUMMARY_FR.md) · [Measured real results](docs/results/P11/README.md) · [IGV screenshots and review](docs/results/P11/review/IGV_WEB_REVIEW_FR.md) · [Regional caller audit](docs/results/P11/review/REGIONAL_CALLER_AUDIT_FR.md) · [Reproduce P11](docs/P11_RUN.md)
+
+## Key findings
+
+| Evidence | Result | Meaning |
+|---|---|---|
+| Real read QC | Illumina primary alignment 97.40%; ONT mean read quality Q8 | Coverage and quality differ substantially between the datasets. |
+| Whole-genome threshold experiment | Shared nuclear depth domain: 0.80% at ONT BQ13, 53.31% at BQ7 | The comparison depends strongly on base-quality eligibility. |
+| BQ7 alternate-SNP overlap | 5,444 shared; 32,968 Illumina-only; 27 ONT-only | These are filtered set differences, not true/false classifications. |
+| Targeted IGV review | Three selected ONT-only SNPs also have Illumina alternate support | Absence from a filtered VCF does not mean absence from reads. |
+| Regional caller reconstruction | All three are called in Illumina, then removed for FORMAT/DP<8; one also for QUAL<30 | Trace the caller stages before explaining a discordance. |
+| Controlled regional no-BAQ experiment | Two of the three pass the filters when only BAQ is disabled | This is a sensitivity diagnostic; no accuracy gain is established. |
+
+The regional audit does not reconstruct original full-genome intermediates. No independent truth set or platform-ranking claim is provided. Genotype agreement is measured only at shared alternate SNPs, not across the genome.
 
 ## What this project does
 
@@ -46,7 +61,8 @@ micromamba create -y -f environment.yml
 micromamba activate yeast-wgs
 
 python workflow/scripts/generate_demo.py
-python -m unittest discover -s tests -v  # pysam is included in the environment
+python -m pip install --no-deps pysam==0.23.3
+python -m unittest discover -s tests -v
 snakemake -s workflow/Snakefile --cores 4 --dry-run
 snakemake -s workflow/Snakefile --cores 4 --printshellcmds
 python tests/check_demo.py
