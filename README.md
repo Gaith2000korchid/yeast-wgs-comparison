@@ -31,6 +31,8 @@ snakemake -s workflow/Snakefile --configfile config/P11.yaml --cores 4
 snakemake -s workflow/quality_sensitivity.smk --configfile config/P11.yaml --cores 2
 ```
 
+For the next manual step, follow the [French IGV inspection guide](docs/IGV_REVIEW_FR.md). The dedicated GitHub Actions export reconstructs P11 BAMs and makes a portable regional review ZIP; no local bioinformatics installation is needed to open it in IGV.
+
 See [full QC, both comparison domains and interpretation](docs/results/P11/README.md). Large reads/BAMs/VCFs remain outside Git.
 
 ## Run the synthetic demonstration

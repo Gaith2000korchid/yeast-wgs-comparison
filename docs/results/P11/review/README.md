@@ -45,6 +45,8 @@ micromamba run -n yeast-wgs-review python workflow/scripts/plot_review.py
 
 This writes `results/P11/review/`. Keep its XML beside the outputs: paths are relative to the session file. The archived [IGV session](igv_session.xml) instead resolves relative to `docs/results/P11/review/`, pointing to the same repository-root `data/real/reference.fa` and `results/P11/bam/` paths. Use the local S288C FASTA, not a differently named online genome build.
 
+For an easier Windows setup, use the [portable regional bundle and French inspection guide](../../../IGV_REVIEW_FR.md). The complete-reference/regional-BAM package includes its own indexes and tests evidence preservation at these 15 loci.
+
 ## Perform the visual review
 
 1. Install IGV Desktop and open the local `igv_session.xml` using **File → Open Session**. The reference, two BAMs and BAM indexes must exist at the indicated paths. XML structure and path resolution are tested; GUI loading has not been tested in this environment.
