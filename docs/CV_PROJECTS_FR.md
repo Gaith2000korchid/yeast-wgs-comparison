@@ -1,23 +1,46 @@
-# Descriptions factuelles pour les CV et entretiens
+# Descriptions de projets pour les CV ciblés
 
-Sélectionner deux ou trois projets selon le poste. Ces formulations décrivent les dépôts ; elles ne doivent pas servir à inventer une expérience professionnelle ou une maîtrise des plateformes absentes.
+Ces formulations décrivent les dépôts publics, et non une expérience professionnelle. Sélectionner deux ou trois projets selon l'offre.
 
-## Bioinformatique / génomique
+## Yeast WGS comparison
+**Version courte :** Workflow Snakemake/Python de comparaison WGS Illumina–Nanopore sur levure, avec contrôle qualité, appels de variants et investigation des discordances.
 
-**Yeast WGS comparison — Python, Snakemake, BWA, minimap2, samtools, bcftools.** Développement d’un workflow reproductible comparant des SNP alternatifs Illumina et Nanopore sur un échantillon de levure apparié ; contrôles qualité, domaine de profondeur partagé, investigation de discordances et traçabilité des résultats. Caller ONT exploratoire, sans revendication d’exactitude ni classement des technologies.
+**Version développée :** Construction d'un workflow reproductible sur données publiques appariées : QC, alignement, profondeur, variants et comparaison dans un domaine partagé. Analyse de sensibilité aux filtres ONT et investigation ciblée des discordances avec traçabilité des résultats. Caller exploratoire, sans vérité terrain indépendante.
 
-**Viral genome comparator — R, Biostrings, DECIPHER, MAFFT.** Développement d’un package testé et d’une analyse comparative de 29 génomes de bactériophages : qualité des séquences, identité/couverture/distance, concordance taxonomique, conservation et arbre exploratoire. Distinction entre voisinage local et partitionnement global.
+**Candidatures :** bioinformatique NGS, génomique, ingénierie de recherche, Python scientifique.
 
-## Data science santé / méthodes quantitatives
+## Reproducible cervical biopsy modeling
+**Version courte :** Étude prédictive sur données publiques de biopsie cervicale : validation imbriquée groupée, prévention des fuites et analyses de sensibilité.
 
-**Reproducible cervical biopsy modeling — Python, scikit-learn, XGBoost.** Comparaison de modèles sur un jeu public déséquilibré, avec prétraitement appris dans les plis d’entraînement, validation imbriquée groupée, baseline naïve et quatre analyses de sensibilité. Publication de prédictions hors pli et d’intervalles conditionnels ; performances modestes, sans usage clinique revendiqué.
+**Version développée :** Développement d'une analyse Python comparant régression logistique, XGBoost et modèle naïf, avec prétraitement appris dans les plis d'entraînement et quatre sensibilités. Publication des prédictions hors pli, des résultats et d'une reproduction complète ; ROC AUC publiée de 0,613 pour la logistique, concordante au recalcul. Écarts de recalcul XGBoost documentés.
 
-## Python / logiciel scientifique
+**Candidatures :** data science santé, méthodes quantitatives, biostatistiques prédictives, recherche.
 
-**Biopython M-pro Atlas — Python, Biopython, API biologiques.** Construction d’une CLI reliant PROSITE, UniProt et PDB/SIFTS, avec filtrage par couverture du domaine, contrôle des annotations, sources datées et relecture hors ligne vérifiée.
+## Biopython M-pro Atlas
+**Version courte :** CLI Python/Biopython reliant PROSITE, UniProtKB et PDB/SIFTS pour contrôler la couverture de domaines et les coordonnées structurales.
 
-**De Bruijn genome assembler — Python, NetworkX, Docker, GitHub Actions.** Implémentation de l’assemblage à partir d’un scaffold universitaire attribué, complétée par des contrôles FASTQ, des tests de régression, des dépendances figées et une chaîne de test/conteneurisation. Projet pédagogique, sans passage à grande échelle revendiqué.
+**Version développée :** Développement d'une chaîne d'interrogation et d'audit d'annotations biologiques : filtrage des structures par couverture du domaine, correspondance des segments SIFTS et analyse des références PROSITE. Sources datées et empreintes, relecture hors ligne et tests Python 3.10/3.12.
 
-## Mise à jour du CV Master
+**Candidatures :** bioinformatique structurale, développement Python, qualité des données biologiques.
 
-Ajouter les projets publics Yeast WGS, Cervical Biopsy, Viral Comparator et De Bruijn. Actualiser M-pro Atlas avec la couverture du domaine, SIFTS et la relecture des sources. Conserver Energy Grid, Vélib’ et Spark/Delta comme prévus/en cours tant que leurs dépôts et résultats ne sont pas vérifiables. Ne pas remplacer les preuves d’expérience professionnelle par des fonctionnalités de portfolio et ne pas publier le CV Master dans un dépôt public.
+## Viral genome comparator R
+**Version courte :** Package R testé et analyse comparative reproductible de 29 génomes de bactériophages, avec alignement MAFFT et analyses taxonomiques.
+
+**Version développée :** Analyse d'un panel public versionné : QC, alignement complet, identité/couverture/distance, conservation et arbre Neighbor-Joining exploratoire. Évaluation quantitative du voisinage taxonomique et des limites du partitionnement en deux clusters ; package et analyses exécutés en CI.
+
+**Candidatures :** génomique comparative, computational biology, développement R, ingénierie de recherche.
+
+## De Bruijn genome assembler
+**Version courte :** Assembleur pédagogique Python fondé sur un graphe de De Bruijn pondéré, avec export FASTA, tests de régression et Docker/CI.
+
+**Version développée :** Implémentation des fonctions d'assemblage à partir d'un scaffold universitaire attribué : k-mers, graphes pondérés, simplification des bulles/tips et reconstruction de contigs. Ajout de contrôles FASTQ, de tests ciblés et d'un parcours conteneurisé FASTQ vers FASTA.
+
+**Candidatures :** développement Python, algorithmique, logiciel scientifique, bioinformatique.
+
+## Sélection
+- **Vitrine générale :** Yeast WGS, Cervical Biopsy, M-pro Atlas.
+- **Génomique/R :** Yeast WGS, Viral Comparator, puis le projet le plus proche de l'offre.
+- **Python :** M-pro Atlas, De Bruijn, Yeast WGS.
+- **Data science santé :** Cervical Biopsy, puis les expériences biomédicales pertinentes du CV.
+
+Les dépôts ne démontrent pas à eux seuls une plateforme data en production, une validation clinique externe ou un assemblage à grande échelle. Le CV Master reste interne ; ne pas le publier.

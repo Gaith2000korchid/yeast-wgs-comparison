@@ -6,6 +6,24 @@ Reproducible **Snakemake** analysis of matched **Illumina paired-end** and **Oxf
 
 [Portfolio and role mapping](docs/PORTFOLIO_FR.md) · [CV-ready project descriptions](docs/CV_PROJECTS_FR.md) · [French project summary](docs/PROJECT_SUMMARY_FR.md) · [Measured real results](docs/results/P11/README.md) · [IGV screenshots and review](docs/results/P11/review/IGV_WEB_REVIEW_FR.md) · [Regional caller audit](docs/results/P11/review/REGIONAL_CALLER_AUDIT_FR.md) · [Reproduce P11](docs/P11_RUN.md)
 
+## Start here
+
+**Contribution:** a Snakemake workflow joining read QC, alignment, filtered variant comparison and targeted investigation, with versioned provenance and regression tests.
+
+**Recorded result:** the BQ7 sensitivity run finds 5,444 shared alternate SNPs in a domain covering 53.31% of nuclear bases. Set differences are investigated through read support and filtering, rather than treated as sequencing errors.
+
+![Measured P11 nuclear coverage](docs/results/P11/coverage.svg)
+
+**Demo entry point** (after [environment setup](#run-the-synthetic-demonstration), from the repository root):
+
+```bash
+python workflow/scripts/generate_demo.py
+snakemake -s workflow/Snakefile --cores 4 --printshellcmds
+python tests/check_demo.py
+```
+
+[Measured results](docs/results/P11/README.md) · [Methods](docs/METHODS.md) · [Real-run reproduction](docs/P11_RUN.md)
+
 ## Key findings
 
 | Evidence | Result | Meaning |
@@ -35,8 +53,6 @@ The ONT caller is an **exploratory bcftools baseline**, not a validated ONT call
 The [reproducible real run](docs/P11_RUN.md) uses ENA sample SAMEA3895683 with documented diploidy, a 25% paired Illumina subset and 29,914 historical ONT consensus 2D reads. Archive byte counts/MD5 and prepared SHA256 fingerprints are recorded.
 
 Illumina maps at 97.40% and has 45.93× mean filtered nuclear depth. These older ONT reads have mean quality Q8; the primary BQ13 comparison covers only 0.80% of nuclear bases. A controlled ONT BQ7 sensitivity comparison covers 53.31%, with 5,444 shared alternate SNPs and 32,968 Illumina-only alternate SNPs in that domain. The baseline strongly underrepresents heterozygous ONT calls. These measured limitations prevent an accuracy or platform-ranking claim.
-
-![Real nuclear coverage](docs/results/P11/coverage.svg)
 
 ```bash
 python workflow/scripts/download_reference.py
