@@ -37,6 +37,8 @@ jobs:
           snakemake -s workflow/quality_sensitivity.smk --cores 2 --printshellcmds
           python tests/check_sensitivity.py
           python tests/check_nanoplot.py
+          python workflow/scripts/prepare_local_workflow.py
+          snakemake -s workflow/local_validation.smk --cores 2 --dry-run
           snakemake -s workflow/Snakefile --cores 2 --dry-run
       - uses: actions/upload-artifact@v4
         if: always()

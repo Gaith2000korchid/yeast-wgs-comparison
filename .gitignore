@@ -1,4 +1,12 @@
 __pycache__/
+.venv/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+workflow/local_validation.smk
+workflow/local_validation.smk.provenance.json
 *.py[cod]
 .snakemake/
 /data/

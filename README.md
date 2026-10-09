@@ -2,9 +2,9 @@
 
 Reproducible **Snakemake** analysis of matched **Illumina paired-end** and **Oxford Nanopore** whole-genome reads from *Saccharomyces cerevisiae*. The project follows read QC, alignment, coverage, small-variant calling and filtered alternate-SNP comparison, then investigates selected discordances in IGV and caller intermediates.
 
-**Completed case study:** real P11 analysis, controlled ONT base-quality sensitivity, six-locus IGV Web review and a three-locus regional caller audit. **21 Python tests** and synthetic end-to-end CI validate execution. Historical ONT consensus 2D data and the exploratory caller limit biological interpretation.
+**Completed case study:** real P11 analysis, controlled ONT base-quality sensitivity, six-locus IGV Web review and a three-locus regional caller audit. **24 Python tests** and synthetic end-to-end CI validate execution. Historical ONT consensus 2D data and the exploratory caller limit biological interpretation.
 
-[French project summary](docs/PROJECT_SUMMARY_FR.md) · [Measured real results](docs/results/P11/README.md) · [IGV screenshots and review](docs/results/P11/review/IGV_WEB_REVIEW_FR.md) · [Regional caller audit](docs/results/P11/review/REGIONAL_CALLER_AUDIT_FR.md) · [Reproduce P11](docs/P11_RUN.md)
+[Portfolio and role mapping](docs/PORTFOLIO_FR.md) · [CV-ready project descriptions](docs/CV_PROJECTS_FR.md) · [French project summary](docs/PROJECT_SUMMARY_FR.md) · [Measured real results](docs/results/P11/README.md) · [IGV screenshots and review](docs/results/P11/review/IGV_WEB_REVIEW_FR.md) · [Regional caller audit](docs/results/P11/review/REGIONAL_CALLER_AUDIT_FR.md) · [Reproduce P11](docs/P11_RUN.md)
 
 ## Key findings
 

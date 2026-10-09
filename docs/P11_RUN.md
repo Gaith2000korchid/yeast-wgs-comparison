@@ -43,7 +43,17 @@ The two inputs have unequal coverage and different error profiles. SNP overlap i
 
 ## Local execution limitation
 
-The managed execution environment used for this project cannot expose child PIDs to psutil, causing Snakemake resource benchmarking to fail. Real and synthetic local runs use a temporary otherwise identical Snakefile with `benchmark:` lines omitted; no scientific command or dependency is changed. The committed workflow retains benchmarks, and GitHub's synthetic CI executes them on an ordinary Ubuntu runner. No local CPU/memory benchmark values are claimed.
+The managed execution environment used for this project cannot expose child PIDs to psutil, causing Snakemake resource benchmarking to fail. The historical real run used a temporary Snakefile with `benchmark:` lines omitted; no scientific-command change was intended. That exact temporary file and its source snapshot were not retained, so the recorded historical checksum cannot currently be reconstructed from Git. Do not claim a byte-identical reconstruction of that historical run.
+
+Future restricted-environment runs can generate and fingerprint the workaround explicitly:
+
+```bash
+python workflow/scripts/prepare_local_workflow.py
+snakemake -s workflow/local_validation.smk --configfile config/P11.yaml --cores 4 --dry-run
+snakemake -s workflow/local_validation.smk --configfile config/P11.yaml --cores 4 --printshellcmds
+```
+
+The generator removes only single-line `benchmark:` directives, preserves every other byte and records both file hashes and removed line numbers in `workflow/local_validation.smk.provenance.json`. Keep that record with each future result export. It is a new reproducibility safeguard, not a recovery of the missing historical file. The committed workflow retains benchmarks, and GitHub's synthetic CI executes them on an ordinary Ubuntu runner. No local CPU/memory benchmark values are claimed.
 
 ## Export compact evidence
 
